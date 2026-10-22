@@ -8,7 +8,7 @@
   <title>NexoLab | Perfil organizacional</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     .home-team-heading h2 a { display:inline-flex; align-items:center; gap:9px; padding:10px 15px; border-radius:10px; background:var(--teal); color:#fff; font-size:16px; line-height:1.2; text-decoration:none; transition:background .18s ease,transform .18s ease; }
     .home-team-heading h2 a:hover { background:#06696d; transform:translateY(-1px); }
@@ -1812,8 +1812,8 @@ input.nx-secret{-webkit-text-security:disc;text-security:disc;font-family:inheri
 .nx-signers .protocol-signer-editor,.nx-signers .protocol-signer-editor.nl-dk{background:transparent!important;background-color:transparent!important;border:0!important;padding:8px 0 10px!important;margin-top:4px!important}
 .template-library-dialog .nx-signers .nx-signer-add{background:#fff!important;color:#0b1e33!important;-webkit-text-fill-color:#0b1e33!important;border:1.5px dashed #0b1e33!important}
 .template-library-dialog .nx-signers .nx-signer-add:hover:not(:disabled){background:#0b1e33!important;color:#fff!important;-webkit-text-fill-color:#fff!important}
-/* marca de agua: la vista previa muestra el color elegido; fondo en damero para ver tanto marcas negras como blancas */
-.watermark-stage .document-frame,.watermark-stage .document-frame.nl-dk{background-color:#a9b2bc!important;background-image:linear-gradient(45deg,#c4cbd3 25%,transparent 25%,transparent 75%,#c4cbd3 75%),linear-gradient(45deg,#c4cbd3 25%,transparent 25%,transparent 75%,#c4cbd3 75%)!important;background-size:20px 20px!important;background-position:0 0,10px 10px!important}
+/* vista previa de marca de agua / compresión: fondo liso (sin damero) */
+.watermark-stage .document-frame,.watermark-stage .document-frame.nl-dk{background:transparent!important;background-image:none!important}
 
 /* ===== v88: calendarios más legibles (números, días, "Quitar selección") y años en cuadrícula pareja ===== */
 .absence-day-number{width:32px!important;height:32px!important;font-size:18px!important;font-weight:800!important;letter-spacing:0!important}
@@ -1888,12 +1888,13 @@ input.nx-secret{-webkit-text-security:disc;text-security:disc;font-family:inheri
 .nx-manual-mail .nx-manual-copy{border-color:rgba(226,164,95,.45)!important;background:transparent!important}
 
 /* v90: barra «Descargar este resultado» y diálogo más grande en Análisis de datos */
-.nx-dlbar{margin:18px 0 6px;padding:14px 16px;border:1px solid rgba(226,164,95,.38);border-radius:12px;background:rgba(226,164,95,.07)}
+.nx-dlbar{margin:14px 0 6px;padding:0;border:0;background:none}
 .nx-dlbar .nx-dl-t{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
 .nx-dlbar .nx-dl-t strong{color:#f4d9b4;font-size:15px}
 .nx-dlbar .nx-dl-t span{color:#9fb3c8;font-size:13px}
 .nx-dlbar .nx-dl-b{margin:10px 0 4px}
-.nx-dlbar .nx-dl-b button{min-width:92px}
+.nx-dlbar .nx-dl-b,.nx-out .nx-dl-b{margin:8px 0 4px}
+.nx-dlbar .nx-dl-b button,.nx-out .nx-dl-b button{min-width:92px}
 .nx-dlbar .nx-dl-b button:disabled{opacity:.6;cursor:progress}
 .nx-dlbar .nx-dlmsg{margin:4px 0 0;min-height:1.2em}
 #nx-k-act{display:none!important}
@@ -1910,6 +1911,93 @@ input.nx-secret{-webkit-text-security:disc;text-security:disc;font-family:inheri
 .nx-demobar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:2px 0 10px}
 .nx-demobar small{flex:1 1 230px;min-width:0;line-height:1.4;color:inherit;opacity:.78}
 .nx-demobar .people-tracking-edit{padding:7px 12px}
+/* v91: Conversores · Marca de agua — cuadros alineados y opciones de capa / diagonal */
+.workspace-grid{align-items:stretch!important}
+.workspace-grid>div{display:flex;flex-direction:column;min-width:0}
+.workspace-grid>div:last-child>.operation-fields{flex:1 1 auto}
+.workspace-grid>div:first-child>.company-logo-download:not([hidden]){flex:1 1 auto}
+.workspace-grid>div:first-child:not(:has(.company-logo-download:not([hidden])))>.workspace-block:last-of-type{flex:1 1 auto;display:flex;flex-direction:column}
+.workspace-grid>div:first-child:not(:has(.company-logo-download:not([hidden])))>.workspace-block:last-of-type>.file-drop{flex:1 1 auto}
+.wm-note{display:block;margin-top:8px;color:#8fa6b8;line-height:1.4;font-size:12px}
+.preview-watermark.wm-under{mix-blend-mode:multiply}
+.preview-watermark.wm-diag{max-width:none!important;overflow:visible!important;text-overflow:clip!important;line-height:1!important;right:auto!important;bottom:auto!important;transform-origin:center center}
+.workspace-grid>div:first-child>.company-logo-download{margin-top:10px!important}
+.workspace-grid>div:first-child:not(:has(.company-logo-download:not([hidden])))>.workspace-block:last-of-type{margin-bottom:0!important}
+.workspace-grid>div:first-child>.company-logo-download:not([hidden]){margin-bottom:0!important}
+
+/* v91: calendarios — el cuadro «Hoy · fecha» va pegado al título y alineado con él */
+@media(min-width:701px){
+ .absence-dialog-head{justify-content:flex-start!important;align-items:center!important;gap:0!important}
+ .absence-dialog-head h2{margin:0!important;line-height:1.2!important;flex:0 1 auto}
+ .absence-dialog-head .nx-hoy{margin:0 auto 0 18px!important;align-self:center}
+ .absence-dialog-head>.action-close,.absence-dialog-head>.absence-head-actions{margin-left:auto!important}
+ .absence-dialog-head .nx-hoy ~ .action-close,.absence-dialog-head .nx-hoy ~ .absence-head-actions{margin-left:0!important}
+}
+/* v91: números del calendario (años y días) en Roboto */
+.absence-day-number,.absence-year,#work-dates-calendar .absence-year,#absence-backdrop .absence-year,#work-dates-calendar .absence-day-number,#absence-backdrop .absence-day-number{font-family:'Roboto','Helvetica Neue',Arial,sans-serif!important;font-weight:700!important;letter-spacing:0!important;font-variant-numeric:tabular-nums lining-nums!important;font-feature-settings:"tnum" 1,"lnum" 1!important}
+/* v91: «Eventos del día» directo bajo su título (se quita el rótulo «Fechas guardadas»; así la lista no queda al final del panel) */
+.work-dates-layout>.absence-roster>h3.absence-picker-title:not(.work-date-events-heading){display:none!important}
+
+/* v91: «Título o formación» con varias carreras afines (etiquetas dentro del campo) */
+.nx-tags{display:flex;flex-wrap:wrap;align-items:center;gap:6px;box-sizing:border-box;width:100%;min-height:38px;padding:3px 8px 3px 12px;border:1px solid rgba(255,255,255,.18);border-radius:7px;background:rgba(6,18,33,.85);cursor:text}
+.nx-tags:focus-within{border-color:#e2a45f;box-shadow:0 0 0 1px rgba(226,164,95,.55)}
+.nx-tags .nx-combo-input.nx-combo-input{flex:1 1 170px;width:auto!important;min-width:150px;height:30px!important;min-height:30px!important;padding:0 2px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;outline:0!important}
+.nx-tags:has(.nx-chip) .nx-combo-input::placeholder{color:transparent}
+.nx-chip{display:inline-flex;align-items:center;gap:4px;max-width:100%;background:rgba(226,164,95,.13);border:1px solid #e2a45f;color:#f4d9b5;border-radius:999px;padding:2px 3px 2px 10px;font-size:12.5px;font-weight:600;line-height:1.25}
+.nx-chip-t{overflow-wrap:anywhere}
+.nx-chip-x{flex:none;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;cursor:pointer;color:#e2a45f;font-size:14px;line-height:1;font-weight:700}
+.nx-chip-x:hover,.nx-chip-x:focus-visible{background:#e2a45f;color:#0b1e33;outline:0}
+.nx-combo-hint{padding:8px 12px 6px;color:#9fb3c6;font-size:12px;font-weight:500;border-top:1px solid rgba(226,164,95,.25);margin-top:4px}
+
+/* v91: botones de ejemplo en ofertas laborales */
+#action-fields>.nx-offer-demo{grid-column:1/-1;margin:0 0 6px}
+.nx-demo-btn{appearance:none;border:1px solid #e2a45f;background:#e2a45f;color:#0b1e33;border-radius:8px;padding:8px 14px;font:700 13px/1 inherit;font-family:inherit;cursor:pointer}
+.nx-demo-btn:hover{filter:brightness(1.08)}
+.nx-demo-btn-ghost{background:transparent;color:#e2a45f}
+.nx-demo-btn-ghost:hover{background:rgba(226,164,95,.12);filter:none}
+
+/* v91: Guía de gráficos de Excel más grande */
+.action-dialog.nx-guide-dialog{width:min(1680px,98vw)!important;max-width:98vw!important;max-height:96vh!important;padding:30px 44px 34px!important}
+.nx-guide-dialog #action-title{font-size:30px!important}
+.nx-guide-dialog .nx-intro{font-size:16px!important}
+.nx-guide-dialog .nx-guide-wrap table{width:100%;font-size:16px}
+.nx-guide-dialog .nx-guide-wrap th{font-size:15px;padding:16px 20px!important}
+.nx-guide-dialog .nx-guide-wrap td{padding:16px 20px!important;line-height:1.5}
+.nx-guide-dialog .nx-note{font-size:14px}
+
+/* v91: «Formato de la oferta» — todos los campos alineados y la opción de emojis al final */
+.offer-generated-format .offer-format-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 20px;align-items:start}
+.offer-generated-format .offer-format-grid>.action-field{margin:0!important;display:grid;grid-template-rows:auto 44px;row-gap:7px;align-content:start}
+#action-result .offer-generated-format .offer-format-grid :is(select,.offer-format-color){box-sizing:border-box!important;height:44px!important;min-height:44px!important;max-height:44px!important;margin:0!important;padding-top:0!important;padding-bottom:0!important}
+#action-result .offer-generated-format .offer-format-grid .offer-format-color{padding:4px!important}
+.offer-generated-format .offer-emoji-box{box-sizing:border-box;display:flex;align-items:center;gap:10px;height:44px;padding:0 14px;border:1px solid rgba(255,255,255,.18);border-radius:9px;background:rgba(6,18,33,.85);color:#e6edf4;font-size:14px;font-weight:500;cursor:pointer}
+.offer-generated-format .offer-emoji-box:hover{border-color:rgba(226,164,95,.6)}
+@media (max-width:900px){.offer-generated-format .offer-format-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.offer-generated-format .offer-format-grid{grid-template-columns:1fr}}
+
+/* v91: todos los calendarios de Gestión de fechas con el mismo tamaño (el más grande que entra en pantalla) */
+#absence-backdrop .absence-dialog,#work-dates-backdrop .absence-dialog{--nx-cell-h:clamp(60px,min(calc((100vh - 460px)/6),9.5vw),124px);box-sizing:border-box!important;width:calc(100vw - 36px)!important;max-width:calc(100vw - 36px)!important;height:calc(100vh - 36px)!important;max-height:calc(100vh - 36px)!important;overflow:auto}
+#absence-backdrop .absence-layout.days-view{grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr)!important;align-items:stretch!important}
+#absence-backdrop .absence-layout.days-view>.absence-roster{display:grid;grid-template-rows:auto auto minmax(0,1fr);min-height:0}
+#absence-backdrop .absence-layout.days-view .absence-roster-list{overflow-y:auto;align-content:start;min-height:0}
+#work-dates-backdrop .absence-day,#work-dates-backdrop .absence-day-empty,#absence-backdrop .absence-day,#absence-backdrop .absence-day-empty{height:var(--nx-cell-h)!important;min-height:var(--nx-cell-h)!important;box-sizing:border-box}
+#work-dates-calendar .absence-year-grid,#absence-backdrop .absence-year-grid,#work-dates-calendar .absence-month-grid,#absence-backdrop .absence-month-grid{width:100%!important;max-width:none!important}
+@media (max-width:900px){#absence-backdrop .absence-layout.days-view{grid-template-columns:1fr!important}}
+@media (max-width:700px){#absence-backdrop .absence-dialog,#work-dates-backdrop .absence-dialog{width:calc(100vw - 16px)!important;max-width:calc(100vw - 16px)!important;height:calc(100vh - 16px)!important;max-height:calc(100vh - 16px)!important}}
+
+/* ===== v91: «Quitar selección» proporcionado al título (calendario y lista «Eventos del día») ===== */
+.absence-calendar-nav .clear-general-date-selection,.clear-general-date-selection{font-size:12.5px!important;font-weight:700!important;padding:5px 11px!important;min-height:0!important;height:auto!important;line-height:1.2!important;gap:6px!important;border-radius:8px!important}
+.clear-general-date-selection .nx-x{width:10px!important;height:10px!important}
+#work-dates-backdrop .work-date-clear-selection{width:auto!important;height:auto!important;min-width:0!important;min-height:0!important;padding:4px 9px!important;font-size:12.5px!important;line-height:1.2!important;border-radius:7px!important}
+#work-dates-backdrop .work-date-clear-selection svg{width:10px;height:10px}
+#work-dates-backdrop .work-date-events-back{width:26px!important;height:26px!important;font-size:17px!important;border-radius:7px!important}
+/* Licencias, vacaciones y ausencias: encabezado del equipo con su botón «Quitar selección» */
+#absence-backdrop .absence-roster .nx-roster-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 6px}
+#absence-backdrop .absence-roster .nx-roster-head h3{margin:0!important}
+#absence-backdrop .absence-roster .nx-roster-head .clear-general-date-selection{margin:0!important}
+#absence-backdrop .absence-roster .nx-roster-head .clear-general-date-selection:disabled{opacity:.4;cursor:default}
+.nx-nearest-note{margin:0 0 10px;padding:7px 10px;border-radius:8px;background:rgba(226,164,95,.12);border:1px solid rgba(226,164,95,.35);color:#f4d9b4;font-size:12.5px;line-height:1.35}
+#absence-backdrop .absence-day:not(.focused-record).nx-abs-dim{opacity:.55}
 </style>
 <script>/* compatibilidad */
 (function(){try{
@@ -3380,10 +3468,10 @@ B('¿Qué beneficio valorabas más?'),B('¿Qué beneficio faltaba?'),B('¿La ofe
       if (op === 'extract') host.innerHTML = '<label class="workspace-label">Páginas a extraer<input class="workspace-control" id="extract-pages" type="text" placeholder="Hacé clic en cada página o indicá 1, 3-5"></label><p style="margin:9px 0 0;color:#627586;font-size:11px">Hacé clic en cada página de la vista previa para seleccionarla. Podés elegir varias y volver a hacer clic para quitar una. Los demás formatos se descargan sin cambios.</p>';
       if (op === 'rotate') { host.innerHTML = '<div id="rotate-upload-slot"></div><p style="margin:10px 0 0;color:#627586;font-size:11px">Elegí las páginas desde las miniaturas y usá las flechas junto al documento para ajustar el giro.</p>';host.querySelector('#rotate-upload-slot').append(workspaceUploadBlock); }
       else if(workspaceUploadBlock&&workspaceUploadHome&&workspaceUploadBlock.parentElement!==workspaceUploadHome)workspaceUploadHome.append(workspaceUploadBlock);
-      if (op === 'watermark') host.innerHTML = '<label class="workspace-label">Texto<input class="workspace-control" id="watermark-text" type="text" placeholder="Ej.: CONFIDENCIAL"></label><label class="workspace-label" style="display:flex;align-items:center;gap:8px;margin-top:10px"><input id="watermark-use-logo" type="checkbox" style="width:auto"> Usar el logo de NexoLab como marca de agua</label><div class="operation-row"><label class="workspace-label">Fuente<select class="workspace-control" id="watermark-font"><option value="Helvetica">Helvetica</option><option value="HelveticaBold">Helvetica Bold</option><option value="HelveticaOblique">Helvetica Oblique</option><option value="TimesRoman">Times New Roman</option><option value="TimesRomanBold">Times New Roman Bold</option><option value="TimesRomanItalic">Times New Roman Italic</option><option value="Courier">Courier</option><option value="CourierBold">Courier Bold</option><option value="Symbol">Symbol</option><option value="ZapfDingbats">Zapf Dingbats</option></select></label><label class="workspace-label">Color<input class="workspace-control" id="watermark-color" type="color" value="#627586"></label></div><label class="workspace-label" style="margin-top:11px">Ubicación<select class="workspace-control" id="watermark-position"><option value="center">Centro</option><option value="top-left">Arriba a la izquierda</option><option value="top-center">Arriba al centro</option><option value="top-right">Arriba a la derecha</option><option value="middle-left">Centro a la izquierda</option><option value="middle-right">Centro a la derecha</option><option value="bottom-left">Abajo a la izquierda</option><option value="bottom-center">Abajo al centro</option><option value="bottom-right">Abajo a la derecha</option></select></label>';
+      if (op === 'watermark') host.innerHTML = '<label class="workspace-label">Texto<input class="workspace-control" id="watermark-text" type="text" placeholder="Ej.: CONFIDENCIAL"></label><label class="workspace-label" style="display:flex;align-items:center;gap:8px;margin-top:10px"><input id="watermark-use-logo" type="checkbox" style="width:auto"> Usar el logo de NexoLab como marca de agua</label><div class="operation-row"><label class="workspace-label">Fuente<select class="workspace-control" id="watermark-font"><option value="Helvetica">Helvetica</option><option value="HelveticaBold">Helvetica Bold</option><option value="HelveticaOblique">Helvetica Oblique</option><option value="TimesRoman">Times New Roman</option><option value="TimesRomanBold">Times New Roman Bold</option><option value="TimesRomanItalic">Times New Roman Italic</option><option value="Courier">Courier</option><option value="CourierBold">Courier Bold</option><option value="Symbol">Symbol</option><option value="ZapfDingbats">Zapf Dingbats</option></select></label><label class="workspace-label">Color<input class="workspace-control" id="watermark-color" type="color" value="#627586"></label></div><label class="workspace-label" style="margin-top:11px">Ubicación<select class="workspace-control" id="watermark-position"><option value="center">Centro</option><option value="top-left">Arriba a la izquierda</option><option value="top-center">Arriba al centro</option><option value="top-right">Arriba a la derecha</option><option value="middle-left">Centro a la izquierda</option><option value="middle-right">Centro a la derecha</option><option value="bottom-left">Abajo a la izquierda</option><option value="bottom-center">Abajo al centro</option><option value="bottom-right">Abajo a la derecha</option></select></label><div class="operation-row" style="margin-top:11px"><label class="workspace-label">Orientación<select class="workspace-control" id="watermark-angle"><option value="0">Horizontal</option><option value="diag">Diagonal</option></select></label><label class="workspace-label">Capa<select class="workspace-control" id="watermark-layer"><option value="over">Sobre el contenido</option><option value="under">Detrás del contenido</option></select></label></div><small class="wm-note">Detrás del contenido: el texto y las partes oscuras quedan por encima de la marca, que se nota sobre las zonas claras.</small>';
       if (op === 'watermark') host.insertAdjacentHTML('beforeend','<label class="workspace-label" style="margin-top:11px">Tamaño de fuente<select class="workspace-control" id="watermark-size"><option value="12">12</option><option value="16">16</option><option value="20">20</option><option value="24">24</option><option value="32" selected>32</option><option value="40">40</option><option value="48">48</option><option value="64">64</option><option value="72">72</option></select><small style="display:block;margin-top:4px;color:#627586">Se aplica en puntos para PDF y en píxeles para imágenes.</small></label>');
       if (op === 'watermark') host.insertAdjacentHTML('beforeend','<label class="workspace-label" style="margin-top:11px">Transparencia <span id="watermark-opacity-value">42%</span><input class="workspace-control" id="watermark-opacity" type="range" min="0" max="100" value="42"></label>');
-      if (op === 'watermark') {['watermark-text','watermark-font','watermark-size','watermark-color','watermark-position','watermark-use-logo'].forEach(id=>host.querySelector(`#${id}`).addEventListener('input',updateOperationPreview));host.querySelector('#watermark-opacity').addEventListener('input',event=>updateWatermarkOpacityPreview(event.target.value));}
+      if (op === 'watermark') {['watermark-text','watermark-font','watermark-size','watermark-color','watermark-position','watermark-angle','watermark-layer','watermark-use-logo'].forEach(id=>host.querySelector(`#${id}`).addEventListener('input',updateOperationPreview));host.querySelector('#watermark-opacity').addEventListener('input',event=>updateWatermarkOpacityPreview(event.target.value));}
       if (op === 'compress') ['compress-width','compress-height','compress-quality'].forEach(id=>host.querySelector(`#${id}`)?.addEventListener('input',updateOperationPreview));
       const fileInput=document.getElementById('workspace-files');fileInput.multiple=op==='merge';document.getElementById('file-upload-label').textContent=op==='merge'?'Archivos':'Archivo';
       if(op==='compress') updateCompressPanel();
@@ -3462,7 +3550,7 @@ B('¿Qué beneficio valorabas más?'),B('¿Qué beneficio faltaba?'),B('¿La ofe
     }
     function formatFileSize(bytes){if(!Number.isFinite(bytes))return'—';if(bytes<1024)return`${bytes} B`;const kb=bytes/1024;if(kb<1024)return`${new Intl.NumberFormat('es-AR',{maximumFractionDigits:1}).format(kb)} KB`;return`${new Intl.NumberFormat('es-AR',{maximumFractionDigits:1}).format(kb/1024)} MB`;}
     async function renderDocumentStage(file,op) {
-      const strip=document.getElementById('extract-preview'),type=fileFormat(file),isRotate=op==='rotate',isExtract=op==='extract',isWatermark=op==='watermark';
+      const strip=document.getElementById('extract-preview'),type=fileFormat(file),isRotate=op==='rotate',isExtract=op==='extract',isWatermark=op==='watermark',rid=workspacePreviewRenderId;
       if(!window.previewSelectedPages)window.previewSelectedPages=new Set();
       let pageCount=1,sourcePdf=null;
       if(type==='pdf'){
@@ -3489,8 +3577,8 @@ B('¿Qué beneficio valorabas más?'),B('¿Qué beneficio faltaba?'),B('¿La ofe
       const zoomValue=viewer.querySelector('#document-zoom-value');if(zoomValue)zoomValue.textContent=`${Math.round(workspacePreviewZoom*100)}%`;fitDocumentPreview();
       viewer.append(frame);const caption=document.createElement('div');caption.className='workspace-status';caption.style.marginTop='8px';caption.textContent=`${file.name}${type==='pdf'?` · página ${active} de ${pageCount}`:''}`;viewer.append(caption);stage.append(viewer);
       if(isRotate){const right=document.createElement('div');right.className='document-stage-side';right.innerHTML='<button class="rotate-button" type="button" aria-label="Rotar a la derecha">↷</button>';stage.append(right);right.firstChild.addEventListener('click',()=>changeRotation(90));}
-      strip.append(stage);if(isRotate){stage.querySelectorAll('.document-stage-side').forEach(s=>s.remove());const zb=viewer.querySelector('.document-zoom');const mk=(t,l,d)=>{const b=document.createElement('button');b.type='button';b.className='rotate-button';b.textContent=t;b.setAttribute('aria-label',l);b.addEventListener('click',()=>changeRotation(d));return b;};zb.prepend(mk('↶','Rotar a la izquierda',-90));zb.append(mk('↷','Rotar a la derecha',90));}fitDocumentPreview();requestAnimationFrame(fitDocumentPreview);
-      if(type==='pdf'&&pageCount>1){const thumbs=document.createElement('div');thumbs.className='document-thumbnails';for(let n=1;n<=pageCount;n++){const page=await sourcePdf.getPage(n),v=page.getViewport({scale:.15}),thumb=document.createElement('canvas');thumb.width=Math.ceil(v.width);thumb.height=Math.ceil(v.height);await page.render({canvasContext:thumb.getContext('2d'),viewport:v}).promise;const button=document.createElement('button');button.className=`document-thumb${(isRotate||isExtract)&&window.previewSelectedPages.has(n)?' selected':''}`;button.type='button';button.title=isRotate||isExtract?`Seleccionar página ${n}`:`Ver página ${n}`;button.append(thumb);button.addEventListener('click',()=>{if(isRotate||isExtract){if(window.previewSelectedPages.has(n))window.previewSelectedPages.delete(n);else window.previewSelectedPages.add(n);if(isExtract){const field=document.getElementById('extract-pages');if(field)field.value=[...window.previewSelectedPages].sort((a,b)=>a-b).join(', ');}}workspaceActivePage=n;renderOperationPreview();});thumbs.append(button);}strip.append(thumbs);}
+      if(rid!==workspacePreviewRenderId)return;strip.append(stage);if(isRotate){stage.querySelectorAll('.document-stage-side').forEach(s=>s.remove());const zb=viewer.querySelector('.document-zoom');const mk=(t,l,d)=>{const b=document.createElement('button');b.type='button';b.className='rotate-button';b.textContent=t;b.setAttribute('aria-label',l);b.addEventListener('click',()=>changeRotation(d));return b;};zb.prepend(mk('↶','Rotar a la izquierda',-90));zb.append(mk('↷','Rotar a la derecha',90));}fitDocumentPreview();requestAnimationFrame(fitDocumentPreview);
+      if(type==='pdf'&&pageCount>1){const thumbs=document.createElement('div');thumbs.className='document-thumbnails';for(let n=1;n<=pageCount;n++){if(rid!==workspacePreviewRenderId)return;const page=await sourcePdf.getPage(n),v=page.getViewport({scale:.15}),thumb=document.createElement('canvas');thumb.width=Math.ceil(v.width);thumb.height=Math.ceil(v.height);await page.render({canvasContext:thumb.getContext('2d'),viewport:v}).promise;const button=document.createElement('button');button.className=`document-thumb${(isRotate||isExtract)&&window.previewSelectedPages.has(n)?' selected':''}`;button.type='button';button.title=isRotate||isExtract?`Seleccionar página ${n}`:`Ver página ${n}`;button.append(thumb);button.addEventListener('click',()=>{if(isRotate||isExtract){if(window.previewSelectedPages.has(n))window.previewSelectedPages.delete(n);else window.previewSelectedPages.add(n);if(isExtract){const field=document.getElementById('extract-pages');if(field)field.value=[...window.previewSelectedPages].sort((a,b)=>a-b).join(', ');}}workspaceActivePage=n;renderOperationPreview();});thumbs.append(button);}if(rid!==workspacePreviewRenderId)return;strip.append(thumbs);NX.rotUi();}
     }
     function extractSelectionSummary(){const selected=[...(window.previewSelectedPages||[])].sort((a,b)=>a-b);return selected.length?`Páginas seleccionadas (${selected.length}): ${selected.join(', ')}.`:'No hay páginas seleccionadas; al procesar se incluirán todas las páginas.';}
     async function renderExtractPageRail(strip,pdf,pageCount){
@@ -3501,14 +3589,14 @@ B('¿Qué beneficio valorabas más?'),B('¿Qué beneficio faltaba?'),B('¿La ofe
       }
       strip.append(rail);const field=document.getElementById('extract-pages');if(field){field.addEventListener('input',()=>{let selected=new Set();try{if(field.value.trim())selected=new Set(parsePageList(field.value,pageCount));}catch(error){return;}window.previewSelectedPages=selected;rail.querySelectorAll('.extract-page-card').forEach((card,index)=>{const button=card.querySelector('.extract-page-select'),selectedPage=selected.has(index+1);button.classList.toggle('selected',selectedPage);button.setAttribute('aria-pressed',String(selectedPage));button.setAttribute('aria-label',`${selectedPage?'Quitar selección de':'Seleccionar'} página ${index+1}`);});const meta=document.getElementById('preview-meta');if(meta)meta.textContent=extractSelectionSummary();});}
     }
-    function fitDocumentPreview(){const frame=document.getElementById('document-frame'),preview=document.getElementById('document-preview-canvas');if(!frame||!preview)return;const nw=preview.naturalWidth||preview.width||1,nh=preview.naturalHeight||preview.height||1;if(!preview.complete&&preview.tagName==='IMG'&&!preview.naturalWidth){preview.addEventListener('load',fitDocumentPreview,{once:true});return;}const stage=frame.closest('.document-stage'),availW=Math.min(980,Math.max(320,(stage?stage.parentElement.clientWidth:900)-80)),availH=Math.max(300,Math.round(window.innerHeight*.62)),ew=workspaceRotation%180!==0?nh:nw,eh=workspaceRotation%180!==0?nw:nh,base=Math.min(1,availW/ew,availH/eh),z=workspacePreviewZoom,w=Math.round(nw*base*z),h=Math.round(nh*base*z),rotated=workspaceRotation%180!==0;preview.style.width=w+'px';preview.style.height=h+'px';preview.style.maxWidth='none';preview.style.maxHeight='none';preview.style.transformOrigin='center center';preview.style.transform=`rotate(${workspaceRotation}deg)`;frame.style.width=(rotated?h:w)+'px';frame.style.height=(rotated?w:h)+'px';frame.style.overflow='visible';frame.style.setProperty('--wm',Math.round(14*z)+'px');frame.querySelectorAll('.preview-watermark[data-n]').forEach(m=>{m.style.fontSize=(Number(m.dataset.n)*z)+'px';});}
+    function fitDocumentPreview(){const frame=document.getElementById('document-frame'),preview=document.getElementById('document-preview-canvas');if(!frame||!preview)return;const nw=preview.naturalWidth||preview.width||1,nh=preview.naturalHeight||preview.height||1;if(!preview.complete&&preview.tagName==='IMG'&&!preview.naturalWidth){preview.addEventListener('load',fitDocumentPreview,{once:true});return;}const stage=frame.closest('.document-stage'),availW=Math.min(980,Math.max(320,(stage?stage.parentElement.clientWidth:900)-80)),availH=Math.max(300,Math.round(window.innerHeight*.62)),rotNow=NX.rotNow(),ew=rotNow%180!==0?nh:nw,eh=rotNow%180!==0?nw:nh,base=Math.min(1,availW/ew,availH/eh),z=workspacePreviewZoom,w=Math.round(nw*base*z),h=Math.round(nh*base*z),rotated=rotNow%180!==0;preview.style.width=w+'px';preview.style.height=h+'px';preview.style.maxWidth='none';preview.style.maxHeight='none';preview.style.transformOrigin='center center';preview.style.transform=`rotate(${rotNow}deg)`;frame.style.width=(rotated?h:w)+'px';frame.style.height=(rotated?w:h)+'px';frame.style.overflow='visible';frame.style.setProperty('--wm',Math.round(14*z)+'px');frame.querySelectorAll('.preview-watermark[data-n]').forEach(m=>{m.style.fontSize=(Number(m.dataset.n)*z)+'px';});NX.rotUi();}
     function changeRotation(delta){workspaceRotation=(workspaceRotation+delta+360)%360;const angle=document.getElementById('document-angle');if(angle)angle.textContent=`${workspaceRotation}°`;fitDocumentPreview();}
     function changePreviewZoom(delta){workspacePreviewZoom=Math.min(2.5,Math.max(.5,workspacePreviewZoom+delta));fitDocumentPreview();const value=document.getElementById('document-zoom-value');if(value)value.textContent=`${Math.round(workspacePreviewZoom*100)}%`;}
     function addWatermarkPreview(container){const position=document.getElementById('watermark-position')?.value||'center',opacity=String(Number(document.getElementById('watermark-opacity')?.value??42)/100);if(document.getElementById('watermark-use-logo')?.checked){const mark=document.createElement('img');mark.className=`preview-watermark ${position}`;mark.alt='Logo de NexoLab como marca de agua';mark.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="840" height="180" viewBox="0 0 840 180"><rect x="24" y="24" width="132" height="132" rx="42" fill="#087e83"/><path d="M54 120V72h12l36 30V72h12v48h-12L66 90v30H54Z" fill="white"/><circle cx="132" cy="50" r="9" fill="#9de3da"/><text x="190" y="123" fill="#112e40" font-family="Arial,sans-serif" font-size="82" font-weight="700">NexoLab</text></svg>');mark.style.width='34%';mark.style.height='auto';mark.style.opacity=opacity;container.append(mark);return;}const text=document.getElementById('watermark-text')?.value.trim();if(!text)return;const mark=document.createElement('span'),font=document.getElementById('watermark-font').value;mark.className=`preview-watermark nl-keep ${position}`;mark.textContent=text;{const n=Number(document.getElementById('watermark-size')?.value||32);mark.dataset.n=String(n);mark.style.fontSize=`${n*(container&&container.id==='document-frame'?workspacePreviewZoom:1)}px`;}mark.style.color=document.getElementById('watermark-color').value;mark.style.opacity=opacity;mark.style.fontFamily=watermarkPreviewFont(font);mark.style.fontWeight=font.toLowerCase().includes('bold')?'700':'400';mark.style.fontStyle=font.toLowerCase().includes('italic')||font.toLowerCase().includes('oblique')?'italic':'normal';container.append(mark);}
     function watermarkPreviewFont(key) { return ({Helvetica:'Arial, sans-serif',HelveticaBold:'Arial, sans-serif',HelveticaOblique:'Arial, sans-serif',TimesRoman:'Georgia, serif',TimesRomanBold:'Georgia, serif',TimesRomanItalic:'Georgia, serif',Courier:'monospace',CourierBold:'monospace',Symbol:'serif',ZapfDingbats:'serif'})[key] || 'sans-serif'; }
     function updateOperationPreview() {
       const op=document.getElementById('file-operation')?.value;
-      if(op==='rotate') document.querySelectorAll('#extract-preview canvas').forEach(canvas=>canvas.style.transform=`rotate(${workspaceRotation}deg) scale(${workspacePreviewZoom})`);
+      if(op==='rotate'){fitDocumentPreview();NX.rotUi();}
       if(op==='watermark'||op==='compress'||op==='convert') renderOperationPreview();
     }
     function updateWatermarkOpacityPreview(value){const percentage=Math.max(0,Math.min(100,Number(value)||0)),opacity=String(percentage/100),label=document.getElementById('watermark-opacity-value');if(label)label.textContent=`${percentage}%`;document.querySelectorAll('#extract-preview .preview-watermark').forEach(mark=>mark.style.opacity=opacity);}
@@ -3758,7 +3846,7 @@ const salaryAmounts=value=>(String(value||'').match(/\d[\d.,\s]*/g)||[]).map(par
         </div>`;      } else if (/generar preguntas para entrevistas/.test(lowerTitle)) {
         description = 'Indicá el puesto y sus responsabilidades para generar preguntas laborales específicas, variadas y basadas en tareas, conocimientos y conductas observables.';
         fields = `<label class="action-field interview-wide">Puesto a cubrir<input name="interview-position" type="text" placeholder="Ej.: Analista de producto"></label>
-          <label class="action-field nx-combo">Título o formación (si corresponde)<input name="interview-title" class="nx-combo-input" type="text" autocomplete="off" placeholder="Escribí para buscar: logística, contador, técnico…" role="combobox" aria-expanded="false"></label>
+          <label class="action-field nx-combo">Título o formación (si corresponde)<span class="nx-tags"><input name="interview-title-q" class="nx-combo-input" data-multi="1" type="text" autocomplete="off" placeholder="Escribí para buscar: logística, contador, técnico…" role="combobox" aria-expanded="false"></span><input type="hidden" name="interview-title"></label>
           <label class="action-field">Tipo de entrevista<select name="interview-type">${Object.keys(IV_TYPES).map(k=>`<option value="${k}">${k}</option>`).join('')}</select></label>
           <label class="action-field interview-wide">Descripción del puesto<textarea name="interview-description" rows="4" placeholder="Responsabilidades, objetivos, herramientas y contexto del rol (una tarea por línea)"></textarea></label>`;      } else if (data.title==='Herramientas de RRHH' && /^(Onboarding|Capacitación|Desvinculaciones|Generar (plan de capacitación|formulario de clima laboral|encuestas de satisfacción|entrevistas de salida|evaluación de desempeño|criterios de competencias))$/i.test(title)) {
         const toolTitle=title.toLocaleLowerCase();
@@ -3825,7 +3913,7 @@ const salaryAmounts=value=>(String(value||'').match(/\d[\d.,\s]*/g)||[]).map(par
       const skillWrap=document.getElementById('offer-skill-input-wrap'),skillInput=document.getElementById('offer-skill-input'),skillList=document.getElementById('offer-skill-list'),skills=[];if(skillWrap){const drawSkills=()=>{skillList.innerHTML='';const selectedType=document.querySelector('#action-fields input[name="offer-skill-type"]:checked')?.value;skills.forEach((item,index)=>{if(!selectedType||item.type!==selectedType)return;const chip=document.createElement('span');chip.className='offer-skill-chip';chip.append(document.createTextNode(`${item.type}: ${item.name}`));const remove=document.createElement('button');remove.type='button';remove.className='offer-skill-remove';remove.setAttribute('aria-label',`Eliminar ${item.name}`);remove.textContent='×';remove.addEventListener('click',()=>{skills.splice(index,1);drawSkills();});chip.append(remove);skillList.append(chip);});};document.querySelectorAll('#action-fields input[name="offer-skill-type"]').forEach(radio=>radio.addEventListener('change',()=>{const selected=actionFields.querySelector('input[name="offer-skill-type"]:checked');skillWrap.hidden=!selected;drawSkills();if(radio.checked){skillInput.placeholder=radio.value==='Soft Skills'?'Ej.: Trabajo en equipo':'Ej.: Excel avanzado';skillInput.focus();}}));skillInput.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();const type=document.querySelector('#action-fields input[name="offer-skill-type"]:checked')?.value,name=skillInput.value.trim();if(type&&name&&!skills.some(item=>item.type===type&&item.name.toLocaleLowerCase()===name.toLocaleLowerCase()))skills.push({type,name});skillInput.value='';drawSkills();}});document.getElementById('action-form').dataset.offerSkills='';Object.defineProperty(document.getElementById('action-form'),'offerSkills',{configurable:true,get:()=>skills});}
       const licenseInputs=[...document.querySelectorAll('#action-fields input[name="offer-license"]')];licenseInputs.forEach(input=>input.addEventListener('change',()=>{if(input.value==='No requerida'&&input.checked)licenseInputs.filter(item=>item!==input).forEach(item=>item.checked=false);else if(input.checked){const none=licenseInputs.find(item=>item.value==='No requerida');if(none)none.checked=false;}}));
       const logoInput=document.getElementById('offer-logo'),logoPreview=document.getElementById('offer-logo-preview');if(logoInput&&logoPreview)logoInput.addEventListener('change',()=>{logoPreview.replaceChildren();if(logoInput.dataset.previewUrl)URL.revokeObjectURL(logoInput.dataset.previewUrl);const file=logoInput.files?.[0];if(!file)return;const url=URL.createObjectURL(file);logoInput.dataset.previewUrl=url;const name=document.createElement('span');name.textContent=file.name;logoPreview.append(name);if(file.type.startsWith('image/')){const image=document.createElement('img');image.src=url;image.alt='Vista previa del logo';logoPreview.append(image);}else if(file.type==='application/pdf'||file.name.toLowerCase().endsWith('.pdf')){const link=document.createElement('a');link.href=url;link.target='_blank';link.rel='noopener';link.textContent='Abrir vista previa del PDF';logoPreview.append(link);}});
-      actionFields.querySelectorAll('input[type="radio"]').forEach(radio=>{let selected=radio.checked;radio.addEventListener('change',()=>{selected=radio.checked;});radio.addEventListener('click',()=>{if(selected){radio.checked=false;selected=false;radio.dispatchEvent(new Event('change',{bubbles:true}));}});});
+      {const grpNow=new Map(),current=r=>{const c=[...actionFields.querySelectorAll('input[type="radio"]')].find(x=>x.name===r.name&&x.checked);return c?c.value:null;};actionFields.querySelectorAll('input[type="radio"]').forEach(radio=>{if(radio.checked)grpNow.set(radio.name,radio.value);radio.addEventListener('change',()=>{grpNow.set(radio.name,current(radio));});radio.addEventListener('click',()=>{if(grpNow.get(radio.name)===radio.value){radio.checked=false;grpNow.set(radio.name,null);radio.dispatchEvent(new Event('change',{bubbles:true}));}});});}
       dialog.classList.add('open');
       document.getElementById('action-close').focus();
     }
@@ -4257,9 +4345,9 @@ const salaryAmounts=value=>(String(value||'').match(/\d[\d.,\s]*/g)||[]).map(par
         const data=ivBuild(position,titulo,description,type),cfg=data.cfg;
         const li=x=>`<li>${x.p?'<span class="iv-star" title="Prioritaria para este tipo de entrevista">★</span> ':''}${escapeHtml(x.q)}</li>`,groupBy=list=>{const g=[];list.forEach(x=>{const l=g[g.length-1];if(l&&l.a===x.a)l.items.push(x);else g.push({a:x.a,items:[x]});});return g;},blocks=list=>{let n=0;return groupBy(list).map(g=>{const start=n+1,pri=g.items[0].p;n+=g.items.length;return`<div class="iv-block"><h5 class="iv-cat${pri?' pri':''}"><span>${escapeHtml(g.a)}</span><small>${pri?'★ prioritario · ':''}${g.items.length} pregunta${g.items.length>1?'s':''}</small></h5><ol start="${start}">${g.items.map(li).join('')}</ol></div>`;}).join('');};
         result.className='action-result interview-generated interview-question-output';
-        result.innerHTML=`<h3>Guía de entrevista · ${escapeHtml(type)} · ${escapeHtml(position)}</h3><p class="candidate-status">${titulo?`Título o formación: ${escapeHtml(titulo)}. `:''}<strong>Objetivo:</strong> ${escapeHtml(cfg.goal)} <strong>Duración sugerida:</strong> ${escapeHtml(cfg.time)}. Las preguntas con ★ son prioritarias para este tipo de entrevista. Van agrupadas por tema: primero los bloques prioritarios y luego el resto, en el orden en que conviene hacerlas.</p><h4>Preguntas específicas del puesto (25)</h4>${blocks(data.spec.slice(0,25))}<h4>Preguntas generales para todos los puestos (25)</h4>${blocks(data.gen.slice(0,25))}<div class="template-library-actions iv-actions"><button type="button" class="template-model-button" data-iv="docx">Word (.docx)</button><button type="button" class="template-model-button" data-iv="pdf">PDF</button><button type="button" class="template-model-button" data-iv="txt">Texto (.txt)</button></div><p class="candidate-status" id="iv-status"></p>`;
+        result.innerHTML=`<h3>Guía de entrevista · ${escapeHtml(type)} · ${escapeHtml(position)}</h3><p class="candidate-status">${titulo?`${titulo.includes(';')?'Títulos o formaciones afines':'Título o formación'}: ${escapeHtml(titulo.split(/\s*;\s*/).join('; '))}. `:''}<strong>Objetivo:</strong> ${escapeHtml(cfg.goal)} <strong>Duración sugerida:</strong> ${escapeHtml(cfg.time)}. Las preguntas con ★ son prioritarias para este tipo de entrevista. Van agrupadas por tema: primero los bloques prioritarios y luego el resto, en el orden en que conviene hacerlas.</p><h4>Preguntas específicas del puesto (25)</h4>${blocks(data.spec.slice(0,25))}<h4>Preguntas generales para todos los puestos (25)</h4>${blocks(data.gen.slice(0,25))}<div class="template-library-actions iv-actions"><button type="button" class="template-model-button" data-iv="docx">Word (.docx)</button><button type="button" class="template-model-button" data-iv="pdf">PDF</button><button type="button" class="template-model-button" data-iv="txt">Texto (.txt)</button></div><p class="candidate-status" id="iv-status"></p>`;
         const plain=x=>`${x.p?'(*) ':''}${x.q}`,docBlocks=list=>{let n=0;return groupBy(list).flatMap(g=>{const pri=g.items[0].p,head=`» ${g.a}${pri?' · prioritario':''} (${g.items.length})`;const rows=g.items.map(x=>`${++n}. ${plain(x)}`);return['',head,...rows];});};
-        const doc=['GUÍA DE ENTREVISTA · '+type.toLocaleUpperCase(),position,'',`Puesto: ${position}`,...(titulo?[`Título o formación: ${titulo}`]:[]),`Objetivo: ${cfg.goal}`,`Duración sugerida: ${cfg.time}`,'Las preguntas marcadas con (*) son prioritarias para este tipo de entrevista.','','PREGUNTAS ESPECÍFICAS DEL PUESTO',...docBlocks(data.spec.slice(0,25)),'','PREGUNTAS GENERALES PARA TODOS LOS PUESTOS',...docBlocks(data.gen.slice(0,25)),'','REGISTRO DE LA ENTREVISTA','Candidato/a: ____________________________________________','Entrevistador/a: ________________________________________','Fecha: __________________________________________________','Valoración global (1 a 5): _______________________________','Observaciones: __________________________________________'].join('\n');
+        const doc=['GUÍA DE ENTREVISTA · '+type.toLocaleUpperCase(),position,'',`Puesto: ${position}`,...(titulo?[`${titulo.includes(';')?'Títulos o formaciones afines':'Título o formación'}: ${titulo}`]:[]),`Objetivo: ${cfg.goal}`,`Duración sugerida: ${cfg.time}`,'Las preguntas marcadas con (*) son prioritarias para este tipo de entrevista.','','PREGUNTAS ESPECÍFICAS DEL PUESTO',...docBlocks(data.spec.slice(0,25)),'','PREGUNTAS GENERALES PARA TODOS LOS PUESTOS',...docBlocks(data.gen.slice(0,25)),'','REGISTRO DE LA ENTREVISTA','Candidato/a: ____________________________________________','Entrevistador/a: ________________________________________','Fecha: __________________________________________________','Valoración global (1 a 5): _______________________________','Observaciones: __________________________________________'].join('\n');
         result.querySelectorAll('[data-iv]').forEach(btn=>btn.addEventListener('click',async()=>{const st=result.querySelector('#iv-status');btn.disabled=true;st.textContent='Preparando archivo…';try{await downloadTemplateModel(btn.dataset.iv,'Entrevista','guia-entrevista-'+position,doc);st.textContent='Archivo descargado.';}catch(e){st.textContent=e.message||'No se pudo preparar el archivo.';}finally{btn.disabled=false;}}));
         result.style.display='block';result.scrollIntoView({behavior:'smooth',block:'nearest'});return;
       }      if(form.dataset.hrToolType){
@@ -5234,7 +5322,7 @@ function ivBuild(puesto,titulo,descripcion,tipo){
  const T=i=>tasks.length?`«${tasks[i%tasks.length]}»`:'una tarea central del puesto';
  const blob=(puesto+' '+titulo+' '+descripcion).toLowerCase();
  const head=(puesto+' '+titulo).toLowerCase(),pick=t=>IV_FAMILIES.find(f=>f.id!=='general'&&f.re.test(t)),fam=pick(head)||pick(blob)||IV_FAMILIES[IV_FAMILIES.length-1];
- const formacion=titulo||'tu formación';
+ const titles=String(titulo||'').split(/\s*;\s*/).filter(Boolean),formacion=titles.length>1?titles.slice(0,-1).join(', ')+' y '+titles[titles.length-1]:(titles[0]||'tu formación');
  const fill=s=>s.replace(/\{puesto\}/g,puesto).replace(/\{formacion\}/g,formacion).replace(/\{t1\}/g,T(0)).replace(/\{t2\}/g,T(1)).replace(/\{t3\}/g,T(2)).replace(/\{t4\}/g,T(3)).replace(/\{t5\}/g,T(4)).replace(/\{t6\}/g,T(5));
  const spec=[...fam.q.map(([a,q])=>({a,q})),...IV_ADAPT.map(([a,q])=>({a,q:fill(q)}))];
  const gen=IV_GENERAL.map(([a,q])=>({a,q}));
@@ -5357,11 +5445,11 @@ NX.table=(rows,head)=>`<table class="nx-table">${head?`<thead><tr>${head.map(h=>
 NX.download=(blob,name)=>{const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);};
 NX.csv=rows=>'﻿'+rows.map(r=>r.map(v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"').join(';')).join('\r\n');
 NX.pdfFromCanvas=async function(canvas){const blob=await new Promise(r=>canvas.toBlob(r,'image/jpeg',.93)),jpg=new Uint8Array(await blob.arrayBuffer()),enc=new TextEncoder(),parts=[],offs=[];let pos=0;const push=u=>{parts.push(u);pos+=u.length;},str=s=>push(enc.encode(s));
-const pw=595.28,ph=Math.max(841.89,pw*canvas.height/canvas.width);str('%PDF-1.4\n');
+const pw=595.28,ph=841.89,mg=24,sc=Math.min((pw-2*mg)/canvas.width,(ph-2*mg)/canvas.height),iw=canvas.width*sc,ih=canvas.height*sc,ix=(pw-iw)/2,iy=ph-mg-ih;/* A4 vertical; la imagen se ajusta a la hoja */str('%PDF-1.4\n');
 const obj=(i,body)=>{offs[i]=pos;str(`${i} 0 obj\n${body}\nendobj\n`);};
-obj(1,'<< /Type /Catalog /Pages 2 0 R >>');obj(2,'<< /Type /Pages /Kids [3 0 R] /Count 1 >>');obj(3,`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pw} ${ph.toFixed(2)}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>`);
+obj(1,'<< /Type /Catalog /Pages 2 0 R >>');obj(2,'<< /Type /Pages /Kids [3 0 R] /Count 1 >>');obj(3,`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pw} ${ph}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>`);
 offs[4]=pos;str(`4 0 obj\n<< /Type /XObject /Subtype /Image /Width ${canvas.width} /Height ${canvas.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpg.length} >>\nstream\n`);push(jpg);str('\nendstream\nendobj\n');
-const content=`q ${pw} 0 0 ${ph.toFixed(2)} 0 0 cm /Im0 Do Q`;obj(5,`<< /Length ${content.length} >>\nstream\n${content}\nendstream`);
+const content=`q ${iw.toFixed(2)} 0 0 ${ih.toFixed(2)} ${ix.toFixed(2)} ${iy.toFixed(2)} cm /Im0 Do Q`;obj(5,`<< /Length ${content.length} >>\nstream\n${content}\nendstream`);
 const xref=pos;str('xref\n0 6\n0000000000 65535 f \n');for(let i=1;i<=5;i++)str(String(offs[i]).padStart(10,'0')+' 00000 n \n');str(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`);
 return new Blob(parts,{type:'application/pdf'});};
 NX.pie=function(ctx,cx,cy,r,items,font){const total=items.reduce((s,i)=>s+Math.max(0,i.v),0);if(total<=0)return;let a=-Math.PI/2;items.forEach(it=>{if(it.v<=0)return;const ang=it.v/total*Math.PI*2;ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a,a+ang);ctx.closePath();ctx.fillStyle=it.c;ctx.fill();ctx.lineWidth=2;ctx.strokeStyle='#ffffff';ctx.stroke();const pct=it.v/total*100;if(pct>=6){const m=a+ang/2;ctx.fillStyle=it.t||'#fff';ctx.font=`700 ${Math.round(r*.15)}px ${font}`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(pct.toFixed(1).replace('.',',')+'%',cx+Math.cos(m)*r*.66,cy+Math.sin(m)*r*.66);}a+=ang;});ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.lineWidth=3;ctx.strokeStyle='#0b1e33';ctx.stroke();};
@@ -5494,9 +5582,13 @@ NX.openPayroll=function(){const f=NX.open('Liquidar sueldos','Liquidación mensu
   if(!p.period||!p.employee||(p.mode==='mensual'&&!(p.basic>0))||(p.mode==='jornal'&&!(p.wage>0))){out.innerHTML='<p class="nx-error">Completá al menos el período, el nombre del trabajador y el sueldo básico (o el valor del jornal).</p>';return;}
   const m=NX.payrollCalc(p),cv=NX.drawReceipt(m),url=cv.toDataURL('image/png');
   const kp=[NX.card('Bruto',NX.money.format(m.gross),`Remunerativo ${NX.money.format(m.totalRem)}`),NX.card('Descuentos',NX.money.format(m.totalDed),`${(m.gross?m.totalDed/m.gross*100:0).toFixed(1).replace('.',',')}% del bruto`),NX.card('Neto a cobrar',NX.money.format(m.net),'',' strong'),NX.card('Costo laboral',NX.money.format(m.cost),`Contribuciones ${NX.money.format(m.patTotal)}`)].join('');
-  out.innerHTML=`<div class="nx-kpis">${kp}</div>${m.warns.map(w=>`<p class="nx-warn">⚠ ${NX.esc(w)}</p>`).join('')}<img class="nx-receipt" alt="Recibo de haberes" src="${url}"><div class="nx-actions"><button type="button" data-d="pdf">Descargar PDF</button><button type="button" data-d="png">Descargar imagen (PNG)</button><button type="button" data-d="csv">Descargar Excel (CSV)</button></div>`;
+  out.innerHTML=`<div class="nx-kpis">${kp}</div>${m.warns.map(w=>`<p class="nx-warn">⚠ ${NX.esc(w)}</p>`).join('')}<img class="nx-receipt" alt="Recibo de haberes" src="${url}"><div class="nx-actions nx-dl-b"><button type="button" data-d="xlsx">Descargar Excel</button><button type="button" data-d="docx">Descargar Word</button><button type="button" data-d="pdf">Descargar PDF</button><button type="button" data-d="csv">Descargar CSV</button><button type="button" data-d="png">Descargar imagen (PNG)</button></div><p class="nx-note nx-dlmsg" role="status"></p>`;
   const stem=`recibo-${(p.employee||'sueldo').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-')}-${p.period}`;
-  out.querySelectorAll('[data-d]').forEach(b=>b.addEventListener('click',async()=>{try{if(b.dataset.d==='png')cv.toBlob(bl=>NX.download(bl,stem+'.png'));else if(b.dataset.d==='pdf')NX.download(await NX.pdfFromCanvas(cv),stem+'.pdf');else{const rows=[['Código','Concepto','Unidades','Haberes c/ aportes','Haberes s/ aportes','Deducciones'],...m.lines.map(l=>[l.code,l.concept,l.units,l.kind==='rem'?l.amount:'',l.kind==='nr'?l.amount:'',l.kind==='ded'?l.amount:'']),[],['','Totales','',m.totalRem,m.totalNR,m.totalDed],['','Neto a cobrar','','','',m.net],['','Contribuciones patronales','','','',m.patTotal],['','Costo laboral total','','','',m.cost]];NX.download(new Blob([NX.csv(rows)],{type:'text/csv;charset=utf-8'}),stem+'.csv');}}catch(e){out.insertAdjacentHTML('beforeend',`<p class="nx-error">${NX.esc(e.message)}</p>`);}}));
+  const mny=v=>v===''||v==null?'':NX.money.format(v),H6=['Código','Concepto','Unidades','Haberes c/ aportes','Haberes s/ aportes','Deducciones'];
+  const rowsN=[...m.lines.map(l=>[l.code,l.concept,l.units,l.kind==='rem'?l.amount:'',l.kind==='nr'?l.amount:'',l.kind==='ded'?l.amount:'']),['','Totales','',m.totalRem,m.totalNR,m.totalDed],['','Neto a cobrar','','','',m.net],['','Contribuciones patronales','','','',m.patTotal],['','Costo laboral total','','','',m.cost]];
+  const rowsT=rowsN.map(r=>r.map((v,i)=>i>=3?mny(v):v));
+  const spec={title:'Recibo de haberes',subtitle:`${p.employee} · Período ${p.period}${p.company?' · '+p.company:''}`,summary:[['Bruto',NX.money.format(m.gross)],['Descuentos',NX.money.format(m.totalDed)],['Neto a cobrar',NX.money.format(m.net)],['Costo laboral',NX.money.format(m.cost)]],headers:H6,rows:rowsT,file:stem,sheetName:'Recibo',tableName:'Recibo',orient:'portrait'};
+  out.querySelectorAll('[data-d]').forEach(b=>b.addEventListener('click',async()=>{const msg=out.querySelector('.nx-dlmsg');b.disabled=true;if(msg)msg.textContent='Preparando archivo…';try{const k=b.dataset.d;if(k==='png')cv.toBlob(bl=>NX.download(bl,stem+'.png'));else if(k==='pdf')NX.download(await NX.pdfFromCanvas(cv),stem+'.pdf');else if(k==='csv')NX.download(new Blob([NX.csv([H6,...rowsN])],{type:'text/csv;charset=utf-8'}),stem+'.csv');else if(k==='xlsx')NX.download(await NX.reportXlsx({...spec,rows:rowsN}),stem+'.xlsx');else if(k==='docx')NX.download(await NX.reportDocx(spec),stem+'.docx');if(msg)msg.textContent='Archivo listo.';}catch(e){if(msg)msg.textContent=e.message||'No se pudo preparar el archivo.';out.insertAdjacentHTML('beforeend',`<p class="nx-error">${NX.esc(e.message)}</p>`);}finally{b.disabled=false;}}));
   out.scrollIntoView({behavior:'smooth',block:'nearest'});});
 };
 
@@ -5804,9 +5896,9 @@ NX.cx=NX.cx||{};
  /* histograma */
  cx.hist=(vals,o={})=>{const st=NX.stats(vals),n=vals.length,isInt=vals.every(Number.isInteger),lo=st.min,hi=st.max===st.min?st.min+1:st.max;let k,w;if(isInt&&hi-lo<=14){k=hi-lo+1;w=1;}else{k=Math.min(12,Math.max(5,Math.round(Math.sqrt(n))));w=(hi-lo)/k;}
   const bins=Array(k).fill(0);vals.forEach(x=>{const i=w===1&&isInt?x-lo:Math.min(k-1,Math.floor((x-lo)/w));bins[i]++;});
-  const H=300,L=56,R=20,T=26,B=62,mx=Math.max(...bins),bw=(W-L-R)/k,f=o.fmt||nf;let s=grid(L,R,T,H,B,0,mx,v=>NX.fmt(v,0));
-  bins.forEach((c,i)=>{const bh=(H-T-B)*c/mx,x=L+i*bw,lab=w===1&&isInt?String(lo+i):f(lo+i*w);s+=`<rect x="${x+1}" y="${H-B-bh}" width="${Math.max(1,bw-2)}" height="${Math.max(0,bh)}" fill="#8fb8d9"/>${c?`<text x="${x+bw/2}" y="${H-B-bh-5}" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">${c}</text>`:''}${(k<=9||i%2===0)?`<text x="${x+bw/2}" y="${H-B+15}" text-anchor="middle" fill="#c3d1de" font-size="10.5">${E(lab)}</text>`:''}`;});
-  const mp=v=>L+(w===1&&isInt?(v-lo+.5)*bw:(v-lo)/w*bw);s+=`<line x1="${mp(st.median)}" x2="${mp(st.median)}" y1="${T}" y2="${H-B}" stroke="#e2a45f" stroke-width="2" stroke-dasharray="5 4"/><text x="${Math.min(mp(st.median)+6,W-110)}" y="${T+12}" fill="#e2a45f" font-size="11.5" font-weight="700">Mediana ${E(f(st.median))}</text>`;
+  const H=324,L=56,R=20,T=50,B=62,mx=Math.max(...bins),bw=(W-L-R)/k,f=o.fmt||nf;let s=grid(L,R,T,H,B,0,mx,v=>NX.fmt(v,0)),cnt='';
+  bins.forEach((c,i)=>{const bh=(H-T-B)*c/mx,x=L+i*bw,lab=w===1&&isInt?String(lo+i):f(lo+i*w);s+=`<rect x="${x+1}" y="${H-B-bh}" width="${Math.max(1,bw-2)}" height="${Math.max(0,bh)}" fill="#8fb8d9"/>${(k<=9||i%2===0)?`<text x="${x+bw/2}" y="${H-B+15}" text-anchor="middle" fill="#c3d1de" font-size="10.5">${E(lab)}</text>`:''}`;if(c)cnt+=`<text x="${x+bw/2}" y="${H-B-bh-5}" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700" stroke="#0a1829" stroke-width="3" paint-order="stroke">${c}</text>`;});
+  const mp=v=>L+(w===1&&isInt?(v-lo+.5)*bw:(v-lo)/w*bw);{const mx0=mp(st.median),lab='Mediana '+f(st.median),tw=lab.length*6.7+4,right=mx0+6+tw<=W-R,tx=right?mx0+6:mx0-6;s+=`<line x1="${mx0}" x2="${mx0}" y1="18" y2="${H-B}" stroke="#e2a45f" stroke-width="2" stroke-dasharray="5 4"/><text x="${tx}" y="16" text-anchor="${right?'start':'end'}" fill="#e2a45f" font-size="11.5" font-weight="700">${E(lab)}</text>`;}s+=cnt;
   s+=axisTitle((L+W-R)/2,H-10,o.xl)+axisTitle(14,(T+H-B)/2,'Cantidad de registros',true);return NX.svgWrap(W,H,s,o.title||'Histograma');};
  /* cuadro y bigotes (horizontal) */
  cx.box=(groups,o={})=>{const rowH=46,T=14,L=176,R=26,H=T*2+groups.length*rowH+30,all=groups.flatMap(g=>g.vals),mn=Math.min(...all),mx=Math.max(...all),sx=v=>L+(W-L-R)*(v-mn)/((mx-mn)||1),f=o.fmt||nf;let s='';
@@ -5852,7 +5944,7 @@ NX.cx=NX.cx||{};
   s+=legend(groups.slice(0,6),8,H+4);return NX.svgWrap(W,H+26,s,o.title||'Rectángulos');};
  /* Gantt */
  cx.gantt=(rows,o={})=>{const rowH=26,T=34,L=176,R=24,H=T+rows.length*rowH+30,t0=Math.min(...rows.map(r=>+r.s)),t1=Math.max(...rows.map(r=>+r.e)),sx=t=>L+(W-L-R)*(t-t0)/((t1-t0)||1),cats=[...new Set(rows.map(r=>r.c))];let s=cats.length>1?legend(cats.slice(0,6),L,8):'';
-  for(let g=0;g<=4;g++){const t=t0+(t1-t0)*g/4,x=sx(t),d=new Date(t);s+=`<line x1="${x}" x2="${x}" y1="${T-6}" y2="${H-26}" stroke="#ffffff22"/><text x="${x}" y="${H-10}" text-anchor="middle" fill="#c3d1de" font-size="11">${E(NX.fmtDate?NX.fmtDate(d):d.toLocaleDateString('es-AR'))}</text>`;}
+  for(let g=0;g<=4;g++){const t=t0+(t1-t0)*g/4,x=sx(t),d=new Date(t);s+=`<line x1="${x}" x2="${x}" y1="${T-6}" y2="${H-26}" stroke="#ffffff22"/><text x="${x}" y="${H-10}" text-anchor="${g===4?'end':'middle'}" fill="#c3d1de" font-size="11">${E(NX.fmtDate?NX.fmtDate(d):d.toLocaleDateString('es-AR'))}</text>`;}
   rows.forEach((r,i)=>{const y=T+i*rowH,ci=cats.indexOf(r.c)%8;s+=`<text x="${L-10}" y="${y+16}" text-anchor="end" fill="#dfe7ef" font-size="12">${E(NX.trunc(r.l,22))}</text><rect x="${sx(+r.s)}" y="${y+3}" width="${Math.max(4,sx(+r.e)-sx(+r.s))}" height="${rowH-8}" rx="4" fill="${C[ci]}"/>`;});return NX.svgWrap(W,H,s,o.title||'Gantt');};
  /* radar */
  cx.radar=(axes,o={})=>{const H=340,cxm=W/2,cym=H/2+6,R=118,n=axes.length,mx=o.max||Math.max(...axes.map(a=>a.v),1),pt=(i,r)=>[cxm+r*Math.sin(2*Math.PI*i/n),cym-r*Math.cos(2*Math.PI*i/n)];let s='';
@@ -6132,7 +6224,7 @@ NX.cx=NX.cx||{};
  NX.openChartGuide=function(){
   const rows=cx.CATALOG.filter(c=>c[0]!=='surface').map(c=>({cells:[`<strong>${E(c[1])}</strong>`,E(c[2]),E(c[3]),E(c[4])],num:false}));
   const f=NX.open('Guía de gráficos de Excel','Cuándo conviene cada tipo de gráfico, para qué sirve y qué evitar.',
-   `<div class="nx-intro interview-wide">Referencia rápida para elegir el gráfico según la pregunta que querés responder. Si adjuntás tu planilla en <strong>Gráficos recomendados</strong>, esta misma lógica se aplica a tus datos.</div><div class="interview-wide nx-guide-wrap">${NX.table(rows,['Gráfico','Mejor para','Evitar si','Dónde está en Excel'])}</div><p class="nx-note interview-wide">Los gráficos 3D y de superficie se evitan en general: distorsionan la lectura y casi siempre existe una alternativa en 2D.</p>`);
+   `<div class="nx-out interview-wide nx-guide-out"><div class="nx-intro">Referencia rápida para elegir el gráfico según la pregunta que querés responder. Si adjuntás tu planilla en <strong>Gráficos recomendados</strong>, esta misma lógica se aplica a tus datos.</div><div class="nx-guide-wrap">${NX.table(rows,['Gráfico','Mejor para','Evitar si','Dónde está en Excel'])}</div><p class="nx-note">Los gráficos 3D y de superficie se evitan en general: distorsionan la lectura y casi siempre existe una alternativa en 2D.</p></div>`);
   f.classList.add('nx-form');return f;};
 })();
 
@@ -6294,21 +6386,45 @@ templateTopicAllowsSignatures=function(topic){return !['Formulario de clima labo
   const now=Date.now();if(now-last>300){last=now;try{el.scrollIntoView({behavior:'smooth',block:'center'});el.focus({preventScroll:true});}catch(x){}}
  },true);})();
 
-/* ===== Buscador de títulos y formaciones (escribís y se filtra por coincidencia) ===== */
-(function(){const norm=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+/* ===== Buscador de títulos y formaciones: se escribe y se filtra; en «Título o formación» se pueden sumar varias carreras afines (etiquetas removibles) ===== */
+(function(){const norm=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+ const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
  let panel=null,active=-1,items=[];
- const close=()=>{if(panel){panel.remove();panel=null;}active=-1;document.querySelectorAll('.nx-combo-input').forEach(i=>i.setAttribute('aria-expanded','false'));};
- const build=input=>{const q=norm(input.value).split(/\s+/).filter(Boolean);const groups=(typeof IV_TITLES!=='undefined'?IV_TITLES:[]).map(([g,list])=>[g,list.filter(t=>{const n=norm(t);return q.every(w=>n.includes(w));})]).filter(([g,l])=>l.length);
-  if(!panel){panel=document.createElement('div');panel.className='nx-combo-list';panel.setAttribute('role','listbox');input.closest('label').append(panel);}
-  items=[];let html='';groups.forEach(([g,l])=>{html+=`<div class="nx-combo-group">${g.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</div>`;l.forEach(t=>{items.push(t);const safe=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');html+=`<div class="nx-combo-opt" role="option" data-v="${safe}">${safe}</div>`;});});
-  if(!items.length)html=`<div class="nx-combo-empty">Sin coincidencias: se usará lo que escribiste${input.value.trim()?` («${input.value.trim().replace(/&/g,'&amp;').replace(/</g,'&lt;')}»)`:''}.</div>`;
+ const isMulti=i=>!!(i&&i.hasAttribute&&i.hasAttribute('data-multi'));
+ const lab=i=>i.closest('label'),chipsBox=i=>i.parentElement,store=i=>lab(i).querySelector('input[type="hidden"]');
+ const chipVals=i=>[...chipsBox(i).querySelectorAll('.nx-chip')].map(c=>c.dataset.v);
+ /* el valor que lee el formulario: etiquetas + lo que quedó escrito sin confirmar, separados con «; » */
+ const sync=i=>{if(!isMulti(i))return;const h=store(i),list=chipVals(i),pend=i.value.trim();if(h)h.value=[...list,...(pend&&!list.some(v=>norm(v)===norm(pend))?[pend]:[])].join('; ');};
+ const addChip=(i,v)=>{v=String(v||'').trim();if(!v)return false;const list=chipVals(i);if(list.some(x=>norm(x)===norm(v)))return false;
+  const c=document.createElement('span');c.className='nx-chip';c.dataset.v=v;const t=document.createElement('span');t.className='nx-chip-t';t.textContent=v;
+  const x=document.createElement('span');x.className='nx-chip-x';x.setAttribute('role','button');x.tabIndex=0;x.setAttribute('aria-label','Quitar '+v);x.title='Quitar';x.textContent='×';c.append(t,x);i.before(c);return true;};
+ const commit=i=>{if(!isMulti(i))return;if(i.value.trim()){addChip(i,i.value);i.value='';}sync(i);};
+ const close=()=>{if(panel){panel.remove();panel=null;}active=-1;document.querySelectorAll('.nx-combo-input').forEach(i=>{i.setAttribute('aria-expanded','false');commit(i);});};
+ const build=input=>{const q=norm(input.value).split(/\s+/).filter(Boolean),taken=isMulti(input)?new Set(chipVals(input).map(norm)):new Set();
+  const groups=(typeof IV_TITLES!=='undefined'?IV_TITLES:[]).map(([g,list])=>[g,list.filter(t=>{const n=norm(t);return !taken.has(n)&&q.every(w=>n.includes(w));})]).filter(([g,l])=>l.length);
+  if(!panel){panel=document.createElement('div');panel.className='nx-combo-list';panel.setAttribute('role','listbox');lab(input).append(panel);}
+  if(isMulti(input)){const w=input.parentElement;panel.style.top=(w.offsetTop+w.offsetHeight+2)+'px';}
+  items=[];let html='';groups.forEach(([g,l])=>{html+=`<div class="nx-combo-group">${esc(g)}</div>`;l.forEach(t=>{items.push(t);html+=`<div class="nx-combo-opt" role="option" data-v="${esc(t)}">${esc(t)}</div>`;});});
+  const typed=input.value.trim();
+  if(!items.length)html=isMulti(input)?(typed?`<div class="nx-combo-empty">Sin coincidencias: presioná Enter para sumar «${esc(typed)}».</div>`:`<div class="nx-combo-empty">${taken.size?'Ya sumaste todas las opciones disponibles.':'Escribí para buscar una carrera o formación.'}</div>`):`<div class="nx-combo-empty">Sin coincidencias: se usará lo que escribiste${typed?` («${esc(typed)}»)`:''}.</div>`;
+  else if(isMulti(input))html+=`<div class="nx-combo-hint">Podés elegir varias: cada una queda como etiqueta.</div>`;
   panel.innerHTML=html;active=-1;input.setAttribute('aria-expanded','true');};
- const pick=(input,v)=>{input.value=v;input.dispatchEvent(new Event('input',{bubbles:true}));close();};
+ const pick=(input,v)=>{if(isMulti(input)){addChip(input,v);input.value='';sync(input);build(input);input.focus();return;}input.value=v;input.dispatchEvent(new Event('input',{bubbles:true}));close();};
  const mark=()=>{if(!panel)return;[...panel.querySelectorAll('.nx-combo-opt')].forEach((o,i)=>{o.classList.toggle('on',i===active);if(i===active)o.scrollIntoView({block:'nearest'});});};
  document.addEventListener('focusin',e=>{if(e.target.classList&&e.target.classList.contains('nx-combo-input'))build(e.target);else if(!e.target.closest||!e.target.closest('.nx-combo-list'))close();});
- document.addEventListener('input',e=>{if(e.target.classList&&e.target.classList.contains('nx-combo-input'))build(e.target);});
+ document.addEventListener('input',e=>{if(e.target.classList&&e.target.classList.contains('nx-combo-input')){sync(e.target);build(e.target);}});
  document.addEventListener('mousedown',e=>{const o=e.target.closest&&e.target.closest('.nx-combo-opt');if(o){e.preventDefault();pick(o.closest('label').querySelector('.nx-combo-input'),o.dataset.v);return;}if(!e.target.closest||!e.target.closest('.nx-combo'))close();});
- document.addEventListener('keydown',e=>{const input=e.target;if(!input.classList||!input.classList.contains('nx-combo-input')||!panel)return;
+ /* quitar una etiqueta */
+ const dropChip=x=>{const c=x.closest('.nx-chip'),inp=lab(c).querySelector('.nx-combo-input');c.remove();sync(inp);if(panel)build(inp);inp.focus();};
+ document.addEventListener('click',e=>{const x=e.target.closest&&e.target.closest('.nx-chip-x');if(!x)return;e.preventDefault();dropChip(x);});
+ document.addEventListener('keydown',e=>{const x=e.target.closest&&e.target.closest('.nx-chip-x');if(x&&(e.key==='Enter'||e.key===' ')){e.preventDefault();dropChip(x);return;}
+  const input=e.target;if(!input.classList||!input.classList.contains('nx-combo-input'))return;
+  if(isMulti(input)){
+   if(e.key==='Backspace'&&!input.value&&chipVals(input).length){const last=[...chipsBox(input).querySelectorAll('.nx-chip')].pop();if(last){last.remove();sync(input);if(panel)build(input);}return;}
+   if(e.key===','&&input.value.trim()){e.preventDefault();commit(input);build(input);return;}
+   if(e.key==='Enter'&&active<0&&input.value.trim()){e.preventDefault();commit(input);build(input);return;}
+  }
+  if(!panel)return;
   if(e.key==='ArrowDown'){e.preventDefault();active=Math.min(items.length-1,active+1);mark();}else if(e.key==='ArrowUp'){e.preventDefault();active=Math.max(0,active-1);mark();}else if(e.key==='Enter'&&active>=0){e.preventDefault();pick(input,items[active]);}else if(e.key==='Escape'){e.stopPropagation();close();}});
 })();
 
@@ -6323,6 +6439,15 @@ NX.xlsxTableBlob=async function(sheetName,headers,rows,opts={}){
  const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
  const seen=new Set(),cols=headers.map((h,i)=>{let n=String(h).trim()||('Columna'+(i+1)),k=n,j=2;while(seen.has(k.toLowerCase()))k=n+' '+j++;seen.add(k.toLowerCase());return k;});
  zip.file('xl/tables/table1.xml',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><table xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" id="1" name="${name}" displayName="${name}" ref="${ref}" totalsRowShown="0"><autoFilter ref="${ref}"/><tableColumns count="${cols.length}">${cols.map((c,i)=>`<tableColumn id="${i+1}" name="${esc(c)}"/>`).join('')}</tableColumns><tableStyleInfo name="${style}" showFirstColumn="0" showLastColumn="0" showRowStripes="1" showColumnStripes="0"/></table>`,{createFolders:false});
+ /* v91: todas las hojas salen preparadas para imprimir en A4 (vertical; horizontal si la tabla es ancha), ajustadas al ancho de la hoja */
+ const land=opts.orient==='landscape'||(opts.orient!=='portrait'&&headers.length>6);
+ for(const f of Object.keys(zip.files).filter(n=>/^xl\/worksheets\/sheet\d+\.xml$/.test(n))){
+  let x=await zip.file(f).async('string');
+  if(!/<pageSetUpPr/.test(x)){if(/<sheetPr[ >\/]/.test(x)&&!/<sheetPr[^>]*\/>/.test(x))x=x.replace(/<sheetPr([^>]*)>/,'<sheetPr$1><pageSetUpPr fitToPage="1"/>');else if(/<sheetPr[^>]*\/>/.test(x))x=x.replace(/<sheetPr([^>]*)\/>/,'<sheetPr$1><pageSetUpPr fitToPage="1"/></sheetPr>');else x=x.replace(/(<worksheet[^>]*>)/,'$1<sheetPr><pageSetUpPr fitToPage="1"/></sheetPr>');}
+  x=x.replace(/<pageSetup[^>]*\/>/,'');
+  const ps=`<pageSetup paperSize="9" orientation="${land?'landscape':'portrait'}" fitToWidth="1" fitToHeight="0"/>`;
+  if(/<pageMargins[^>]*\/>/.test(x))x=x.replace(/(<pageMargins[^>]*\/>)/,'$1'+ps);else if(/<\/sheetData>/.test(x)){const m='<pageMargins left="0.5" right="0.5" top="0.6" bottom="0.6" header="0.3" footer="0.3"/>';x=x.replace(/(<\/sheetData>(?:<autoFilter[^>]*\/>)?(?:<mergeCells[\s\S]*?<\/mergeCells>)?)/,'$1'+m+ps);}
+  zip.file(f,x,{createFolders:false});}
  const sp='xl/worksheets/sheet1.xml';let sx=await zip.file(sp).async('string');sx=sx.replace(/<autoFilter[^>]*\/>/,'');
  if(!/xmlns:r=/.test(sx))sx=sx.replace('<worksheet ','<worksheet xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" ');
  sx=sx.replace('</worksheet>','<tableParts count="1"><tablePart r:id="rIdTbl1"/></tableParts></worksheet>');zip.file(sp,sx);
@@ -6710,7 +6835,7 @@ document.addEventListener('click',function(e){const b=e.target.closest&&e.target
  load();});
 
 /* ===== Diagnóstico: versión visible y aviso de errores ===== */
-NX.VERSION='v90';
+NX.VERSION='v91';
 (function(){const b=document.createElement('div');b.id='nx-version';b.textContent='NexoLab '+NX.VERSION;b.title='Versión del archivo que estás usando';document.body.append(b);
  let n=0;const show=m=>{if(n++>4)return;const t=document.createElement('div');t.className='nx-error-toast';t.setAttribute('role','alert');t.innerHTML='<strong>Algo falló en esta acción.</strong> '+String(m||'Error desconocido').replace(/[<&]/g,c=>c==='<'?'&lt;':'&amp;').slice(0,220)+' <button type="button" aria-label="Cerrar">×</button>';t.querySelector('button').onclick=()=>t.remove();document.body.append(t);setTimeout(()=>t.remove(),20000);};
  window.addEventListener('error',e=>show(e.message));window.addEventListener('unhandledrejection',e=>show(e.reason&&e.reason.message?e.reason.message:e.reason));})();
@@ -6803,30 +6928,39 @@ NX.offerBlocks=function(text){const out=[];String(text).split('\n').forEach(raw=
 
 /* ---- Diseño ---- */
 /* una palabra más ancha que la columna (por ejemplo un e-mail largo) se corta en vez de salirse de la página */
+/* Corte de una palabra más larga que la línea: prefiere cortar después de @ / . - _ ? & (direcciones, enlaces) y nunca deja una sola letra suelta */
+NX.offerCut=function(w,ok){let n=1;while(n<w.length&&ok(w.slice(0,n+1)))n++;if(n>=w.length)return[w,''];
+ const sub=w.slice(0,n),m=Math.max(sub.lastIndexOf('@'),sub.lastIndexOf('/'),sub.lastIndexOf('.'),sub.lastIndexOf('-'),sub.lastIndexOf('_'),sub.lastIndexOf('?'),sub.lastIndexOf('&')),cut=m>=2?m+1:n;return[w.slice(0,cut),w.slice(cut)];};
 NX.offerWrap=function(text,measure,width){const o=[];let c='';String(text).split(/\s+/).filter(Boolean).forEach(w=>{
- if(measure(w)>width){if(c){o.push(c);c='';}let p='';for(const ch of w){if(p&&measure(p+ch)>width){o.push(p);p=ch;}else p+=ch;}c=p;return;}
+ if(measure(w)>width){if(c){o.push(c);c='';}let rest=w;for(;;){const[h,r]=NX.offerCut(rest,x=>measure(x)<=width);if(!r){c=h;break;}o.push(h);rest=r;}return;}
  const k=c?c+' '+w:w;if(c&&measure(k)>width){o.push(c);c=w;}else c=k;});if(c)o.push(c);return o.length?o:[''];};
+/* Con rótulo en negrita («Modalidad de trabajo: Remota»): si la palabra no entra en lo que queda de la primera línea, pasa entera a la siguiente (no se parte a mitad de palabra) */
 NX.offerWrapLabel=function(label,text,measure,width){const lw=label?measure(label+' ',true):0,words=String(text).split(/\s+/).filter(Boolean),lines=[];let cur='',first=true;const lim=()=>width-(first?lw:0);
  words.forEach(w=>{
-  if(measure(w,false)>lim()){if(cur){lines.push({l:first?label:'',t:cur});first=false;cur='';}let p='';for(const ch of w){if(p&&measure(p+ch,false)>lim()){lines.push({l:first?label:'',t:p});first=false;p=ch;}else p+=ch;}cur=p;return;}
-  const k=cur?cur+' '+w:w;if(cur&&measure(k,false)>lim()){lines.push({l:first?label:'',t:cur});first=false;cur=w;}else cur=k;});
+  if(measure(w,false)>width){
+   if(cur){lines.push({l:first?label:'',t:cur});first=false;cur='';}
+   if(first&&label&&lim()<width*.35){lines.push({l:label,t:''});first=false;}
+   let rest=w;for(;;){const[h,r]=NX.offerCut(rest,x=>measure(x,false)<=lim());if(!r){cur=h;break;}lines.push({l:first?label:'',t:h});first=false;rest=r;}return;}
+  const k=cur?cur+' '+w:w;
+  if(measure(k,false)>lim()){if(cur){lines.push({l:first?label:'',t:cur});first=false;cur=w;}else if(first&&label){lines.push({l:label,t:''});first=false;cur=w;}else cur=w;}
+  else cur=k;});
  lines.push({l:first?label:'',t:cur});return lines;};
 /* ---- Diseño: un solo plan (columnas, escala y aire) que usan la vista previa, PNG/JPG, PDF y Word ---- */
 /* o: {W,H (pt), M, blocks, size, measure(text,bold,size), auto, logoAspect, safety, bandTop, bottom} */
-NX.offerPlan=function(o){
- const W=o.W,H=o.H,M=o.M,m=o.measure,safe=o.safety||1,kick=o.blocks.find(b=>b.k==='kicker'),title=o.blocks.find(b=>b.k==='title');
- const ts=Math.min(W*.039,H*.039),ks=Math.max(5.5,ts*.42);let lbw=o.logoAspect?Math.max(36,W*.16):0,lbh=lbw?Math.min(lbw*.8,Math.max(lbw*.4,lbw/o.logoAspect+lbw*.16)):0;
+NX.offerPlan1=function(o,cp){
+ cp=cp||0;const W=o.W,H=o.H,M=o.docx?o.M:Math.max(o.M*(1-.38*cp),Math.min(o.M,16)),m=o.measure,safe=o.safety||1,kick=o.blocks.find(b=>b.k==='kicker'),title=o.blocks.find(b=>b.k==='title');
+ const ts=Math.min(W*.039,H*.039)*(1-.18*cp),ks=Math.max(5.5,ts*.42);let lbw=o.logoAspect?Math.max(36,W*.16):0,lbh=lbw?Math.min(lbw*.8,Math.max(lbw*.4,lbw/o.logoAspect+lbw*.16)):0;
  if(lbw&&lbh+M*.6>H*.15){const f=Math.max(.35,(H*.15-M*.6)/lbh);lbw*=f;lbh*=f;}
  const tw=W-2*M-(lbw?lbw+M*.7:0)-(o.docx?(lbw?M*.15+3:M*.5+3):0),tRows=NX.offerWrap((title&&title.t)||'Oferta laboral',t=>m(t,true,ts),tw);
- const bandTop=o.bandTop||0,textH=ks*1.4+tRows.length*ts*1.2,bandH=Math.max(M*.46+textH+M*.36,lbw?lbh+M*.55:0),tOff=(bandH-textH)/2,top=bandTop+bandH+M*.5,availH=H-top-(o.bottom==null?M*.8:o.bottom),avail=availH*safe;
+ const bandTop=o.bandTop||0,textH=ks*1.4+tRows.length*ts*1.2,bandH=Math.max(M*.46+textH+M*.36,lbw?lbh+M*.55:0),tOff=(bandH-textH)/2,top=bandTop+bandH+M*.5,availH=H-top-(o.bottom==null?Math.max(M*.8,15):o.bottom),avail=availH*safe;
  const grow=o.auto?1.6:1,gut=M*.8,aspect=W/H,maxCols=aspect>=1.6?3:aspect>=.95?2:1;
  /* a = "aire": reparte el espacio que sobra entre líneas y títulos para que el contenido llene la página */
- const build=(sc,a,cols)=>{const colW=(W-2*M-gut*(cols-1))/cols,textW=colW*safe,s=o.size*sc,lh=s*(1.38+.2*a),g=1+1.6*a,items=[];
+ const build=(sc,a,cols)=>{const colW=(W-2*M-gut*(cols-1))/cols,textW=colW*safe,s=o.size*sc,lh=s*(1.38-.2*cp+.2*a),g=(1+1.6*a)*(1-.5*cp),items=[];
   const push=(it,h)=>{it.h=h;items.push(it);};
   o.blocks.forEach(b=>{if(b===kick||b===title)return;
    if(b.k==='gap'){push({k:'gap'},s*.4*g);return;}
-   if(b.k==='section'){const ss=s*1.15,off=ss*.6+(b.e?ss*1.5:0),sx=ss*.4*(1+a),lines=NX.offerWrap(b.t,t=>m(t,true,ss),textW-off);push({k:'gap'},s*.5*g);push({k:'section',t:b.t,e:b.e,lines,s:ss,off,sx},lines.length*ss*1.25+sx);return;}
-   if(b.k==='bullet'||b.k==='kv'){const ind=b.k==='bullet'?s*1.4:0,lines=NX.offerWrapLabel(b.l,b.t,(t,bd)=>m(t,!!bd,s),textW-ind),ex=b.k==='bullet'?s*.1*(1+3*a):0;push({k:b.k,l:b.l,t:b.t,lines,s,ind,lh,ex},lines.length*lh+ex);return;}
+   if(b.k==='section'){const ss=s*1.15,off=ss*.6+(b.e?ss*1.5:0),sx=ss*.4*(1+a)*(1-.5*cp),lines=NX.offerWrap(b.t,t=>m(t,true,ss),textW-off);push({k:'gap'},s*.5*g);push({k:'section',t:b.t,e:b.e,lines,s:ss,off,sx},lines.length*ss*1.25+sx);return;}
+   if(b.k==='bullet'||b.k==='kv'){const ind=b.k==='bullet'?s*(1.4-.4*cp):0,lines=NX.offerWrapLabel(b.l,b.t,(t,bd)=>m(t,!!bd,s),textW-ind),ex=b.k==='bullet'?s*.1*(1+3*a)*(1-cp):0;push({k:b.k,l:b.l,t:b.t,lines,s,ind,lh,ex},lines.length*lh+ex);return;}
    const lines=NX.offerWrap(b.t,t=>m(t,false,s),textW);push({k:'para',t:b.t,lines,s,lh},lines.length*lh);});
   return{items,colW};};
  /* reparte los bloques en columnas sin dejar un título solo al pie de una columna */
@@ -6846,7 +6980,12 @@ NX.offerPlan=function(o){
  const B=build(best.sc,best.a,best.cols);let L=lay(B.items,best.cols,avail);
  /* columnas parejas: se baja la altura de corte hasta el mínimo que todavía entra */
  if(best.cols>1&&L.n>1){let lo=Math.max(...B.items.map(i=>i.h)),hi=avail;for(let i=0;i<14;i++){const mid=(lo+hi)/2,r=lay(B.items,best.cols,mid);if(r.fits)hi=mid;else lo=mid;}L=lay(B.items,best.cols,hi);}
- return{W,H,M,kick,title,ts,ks,tRows,bandH,tOff,bandTop,lbw,lbh,top,avail,availH,sc:best.sc,air:best.a,cols:best.cols,colW:B.colW,gut,items:B.items,used:L.used,fits:L.fits,textW:B.colW*safe,size:o.size,eqPt:o.size*best.sc,auto:!!o.auto};};
+ return{W,H,M,cp,kick,title,ts,ks,tRows,bandH,tOff,bandTop,lbw,lbh,top,avail,availH,sc:best.sc,air:best.a,cols:best.cols,colW:B.colW,gut,items:B.items,used:L.used,fits:L.fits,textW:B.colW*safe,size:o.size,eqPt:o.size*best.sc,auto:!!o.auto};};
+/* Un solo plan para todos los formatos. Primero se prueba con márgenes, interlineado y sangrías amplios; si para que entre la letra queda chica, se compacta de a poco (márgenes, interlineado, sangrías, espacios) antes de seguir achicando la letra. */
+NX.offerPlan=function(o){
+ const social=Math.max(o.W,o.H)<=576.5,target=social?.021:.0185,min=Math.min(o.W,o.H);let pl=null;
+ for(const cp of [0,.25,.5,.75,1]){pl=NX.offerPlan1(o,cp);if(pl.fits&&pl.eqPt/min>=target)break;}
+ return pl;};
 NX.offerFitNote=function(pl,style){if(!pl)return'';if(pl.logoDark)return'El logo no tiene fondo y es de colores oscuros: sobre el encabezado azul se ve poco. Probá con una versión clara del logo (o con fondo) para que se lea bien.';if(pl.eqPt/Math.min(pl.W,pl.H)<.0118)return'Con este formato el texto queda muy pequeño: elegí una dimensión más grande (por ejemplo A4) o acortá el contenido.';if(!pl.auto&&pl.sc<.99)return'El tamaño de letra elegido no entra en este formato: se redujo para que la oferta ocupe una sola página.';return'';};
 NX.offerM=function(d){return Math.min(d.width*.07,d.height*.075);};
 NX.offerBase=function(style,d){return(Number(style.size)||14)*Math.min(d.width/595.28,d.height/841.89);};
@@ -6872,7 +7011,7 @@ NX.offerCanvas=async function(text,logo,style,px){
  canvas.width=Math.round(px);canvas.height=(Math.round(px)===d.pixelWidth)?d.pixelHeight:Math.round(H*k);const ctx=canvas.getContext('2d');
  const lg=await NX.offerLogoOk(logo),blocks=NX.offerBlocks(text),F=(b,s)=>`${b?'700 ':''}${s*k}px "${fam}", Arial, sans-serif`;
  const measure=(t,b,s)=>{ctx.font=F(b,s);return ctx.measureText(t).width/k;};
- const pl=NX.offerPlan({W,H,M:NX.offerM(d),blocks,size:NX.offerBase(style,d),measure,logoAspect:lg?lg.w/lg.h:0,auto:!!style.auto});pl.logoTr=!!(lg&&lg.transparent);pl.logoDark=!!(lg&&lg.transparent&&lg.lum<.35);
+ const pl=NX.offerPlan({W,H,M:NX.offerM(d),blocks,size:NX.offerBase(style,d),measure,logoAspect:lg?lg.w/lg.h:0,auto:!!style.auto});pl.logoTr=!!(lg&&lg.transparent&&lg.lum>=.55);pl.logoDark=false;
  ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.textBaseline='alphabetic';ctx.textAlign='left';
  const api={measure,rect:(x,y,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(x*k,y*k,w*k,h*k);},
   text:(t,x,y,s,b,c,e)=>{ctx.fillStyle=c;ctx.font=F(b,s);let xx=x;if(e){ctx.font=`${s*k}px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif`;ctx.fillText(e,xx*k,y*k);xx+=s*1.3;ctx.font=F(b,s);}ctx.fillText(t,xx*k,y*k);},
@@ -6894,7 +7033,7 @@ async function makeOfferPdf(text,logo,style={}){
  const lg=await NX.offerLogoOk(logo),emb=lg?await doc.embedPng(lg.bytes):null,clean=NX.offerBlocks(text).map(b=>Object.assign({},b,{t:b.t==null?b.t:offerPdfClean(b.t),l:b.l==null?b.l:offerPdfClean(b.l)}));
  const hex=c=>{const h=(c||'#000000').replace('#','');return P.rgb(parseInt(h.slice(0,2),16)/255,parseInt(h.slice(2,4),16)/255,parseInt(h.slice(4,6),16)/255);};
  const measure=(t,b,s)=>(b?bold:reg).widthOfTextAtSize(String(t),s);
- const pl=NX.offerPlan({W,H,M:NX.offerM(d),blocks:clean,size:NX.offerBase(style,d),measure,logoAspect:lg?lg.w/lg.h:0,auto:!!style.auto});pl.logoTr=!!(lg&&lg.transparent);pl.logoDark=!!(lg&&lg.transparent&&lg.lum<.35);
+ const pl=NX.offerPlan({W,H,M:NX.offerM(d),blocks:clean,size:NX.offerBase(style,d),measure,logoAspect:lg?lg.w/lg.h:0,auto:!!style.auto});pl.logoTr=!!(lg&&lg.transparent&&lg.lum>=.55);pl.logoDark=false;
  const page=doc.addPage([W,H]),emojis={};
  for(const it of pl.items)if(it.e)emojis[it.e]=null;if(pl.kick&&pl.kick.e)emojis[pl.kick.e]=null;
  for(const e of Object.keys(emojis)){try{emojis[e]=await doc.embedPng(await NX.emojiPng(e));}catch(err){emojis[e]=null;}}
@@ -6924,7 +7063,7 @@ async function makeOfferDocx(text,logo,style={}){
  const navy='0B1E33',amber='E2A45F',shd=c=>`<w:shd w:val="clear" w:color="auto" w:fill="${c}"/>`;
  const kickRun=(pl.kick&&pl.kick.e?run(pl.kick.e+' ',{b:true,s:pl.ks,c:amber,emoji:true}):'')+run(((pl.kick&&pl.kick.t)||'DESCRIPCIÓN DE LA OFERTA').toUpperCase(),{b:true,s:pl.ks,c:amber});
  const leftCell=`<w:tc><w:tcPr><w:tcW w:w="${tw(leftW)}" w:type="dxa"/>${shd(navy)}<w:vAlign w:val="top"/></w:tcPr>${para(kickRun,{line:pl.ks*1.4,before:pl.tOff,ind:`<w:ind w:left="${tw(M*.5)}"/>`})}${pl.tRows.map(r=>para(run(r,{b:true,s:pl.ts,c:'FFFFFF'}),{line:pl.ts*1.2,ind:`<w:ind w:left="${tw(M*.5)}"/>`})).join('')}</w:tc>`;
- const rightCell=pl.lbw?`<w:tc><w:tcPr><w:tcW w:w="${tw(logoCol)}" w:type="dxa"/>${shd(navy)}<w:vAlign w:val="center"/></w:tcPr><w:p><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="${lg&&lg.transparent?navy:'FFFFFF'}"/><w:spacing w:before="0" w:after="0" w:line="${tw(pl.lbh)}" w:lineRule="exact"/><w:ind w:left="${tw(M*.1)}" w:right="${tw(M*.1)}"/><w:jc w:val="center"/></w:pPr>${logoXml}</w:p></w:tc>`:'';
+ const rightCell=pl.lbw?`<w:tc><w:tcPr><w:tcW w:w="${tw(logoCol)}" w:type="dxa"/>${shd(navy)}<w:vAlign w:val="center"/></w:tcPr><w:p><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="${lg&&lg.transparent&&lg.lum>=.55?navy:'FFFFFF'}"/><w:spacing w:before="0" w:after="0" w:line="${tw(pl.lbh)}" w:lineRule="exact"/><w:ind w:left="${tw(M*.1)}" w:right="${tw(M*.1)}"/><w:jc w:val="center"/></w:pPr>${logoXml}</w:p></w:tc>`:'';
  ps.push(`<w:tbl><w:tblPr><w:tblW w:w="${tw(bandW)}" w:type="dxa"/><w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="0" w:type="dxa"/><w:left w:w="0" w:type="dxa"/><w:bottom w:w="0" w:type="dxa"/><w:right w:w="0" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid><w:gridCol w:w="${tw(leftW)}"/>${pl.lbw?`<w:gridCol w:w="${tw(logoCol)}"/>`:''}</w:tblGrid><w:tr><w:trPr><w:cantSplit/><w:trHeight w:val="${tw(pl.bandH)}" w:hRule="exact"/></w:trPr>${leftCell}${rightCell}</w:tr></w:tbl>`);
  ps.push(`<w:p><w:pPr><w:pBdr><w:top w:val="single" w:sz="18" w:space="0" w:color="${amber}"/></w:pBdr><w:spacing w:before="0" w:after="0" w:line="${tw(M*.5-2)}" w:lineRule="exact"/></w:pPr></w:p>`);
  const itemXml=it=>{
@@ -6995,7 +7134,7 @@ async function downloadGeneratedOffer(format,form){const text=form.offerDocument
 /* ---- Pantalla: vista previa idéntica al archivo ---- */
 function showGeneratedOffer(form,result,text,logo){
  const style={align:'left',font:'Arial',size:14,auto:true,color:'#14283d'};form.offerBaseText=text;form.offerLogoFile=logo;
- result.innerHTML=`<fieldset class="offer-fieldset offer-wide offer-generated-format"><legend>Formato de la oferta</legend><div class="offer-format-grid"><label class="action-field">Dimensión<select name="offer-dimension"><option value="a4">A4 · vertical</option><option value="a5">A5 · vertical</option><option value="letter">Carta · vertical</option><option value="a4landscape">A4 · horizontal</option><option value="square">Post social · cuadrado 1:1 (Instagram / Facebook)</option><option value="story">Historia o Reel · vertical 9:16</option><option value="facebook">Post horizontal · Facebook 1.91:1</option></select></label><label class="offer-radio"><input type="checkbox" name="offer-emojis"> Incluir emojis en los títulos</label><label class="action-field">Alineación del texto<select name="offer-align"><option value="left">Izquierda</option><option value="center">Centro</option><option value="right">Derecha</option></select></label><label class="action-field">Fuente<select name="offer-font"><option value="Arial">Arial</option><option value="Georgia">Georgia</option><option value="Verdana">Verdana</option><option value="Times New Roman">Times New Roman</option></select></label><label class="action-field">Color del texto<input class="offer-format-color" name="offer-text-color" type="color" value="#14283d" style="--offer-color:#14283d"></label></div></fieldset><h3 class="offer-preview-title">Vista previa de la oferta</h3><div class="offer-preview-stage"><div class="offer-preview-sheet" id="offer-preview-sheet"></div></div><p id="offer-fit-note" class="offer-fit-note" aria-live="polite"></p><div class="offer-downloads"><button type="button" class="offer-download-button" data-offer-format="docx">Word (.docx)</button><button type="button" class="offer-download-button" data-offer-format="pdf">PDF</button><button type="button" class="offer-download-button" data-offer-format="xlsx">Excel (.xlsx)</button><button type="button" class="offer-download-button" data-offer-format="png">Imagen PNG</button><button type="button" class="offer-download-button" data-offer-format="jpg">Imagen JPG</button><button type="button" class="offer-download-button" data-offer-format="txt">Texto (.txt)</button></div><p id="offer-download-status" class="offer-download-status" aria-live="polite">La vista previa es idéntica al archivo que se descarga: una sola página, con el formato y el logo elegidos.</p>`;
+ result.innerHTML=`<fieldset class="offer-fieldset offer-wide offer-generated-format"><legend>Formato de la oferta</legend><div class="offer-format-grid"><label class="action-field">Dimensión<select name="offer-dimension"><option value="a4">A4 · vertical</option><option value="a5">A5 · vertical</option><option value="letter">Carta · vertical</option><option value="a4landscape">A4 · horizontal</option><option value="square">Post social · cuadrado 1:1 (Instagram / Facebook)</option><option value="story">Historia o Reel · vertical 9:16</option><option value="facebook">Post horizontal · Facebook 1.91:1</option></select></label><label class="action-field">Alineación del texto<select name="offer-align"><option value="left">Izquierda</option><option value="center">Centro</option><option value="right">Derecha</option></select></label><label class="action-field">Fuente<select name="offer-font"><option value="Arial">Arial</option><option value="Georgia">Georgia</option><option value="Verdana">Verdana</option><option value="Times New Roman">Times New Roman</option></select></label><label class="action-field">Color del texto<input class="offer-format-color" name="offer-text-color" type="color" value="#14283d" style="--offer-color:#14283d"></label><label class="action-field offer-emoji-field">Títulos<span class="offer-emoji-box"><input type="checkbox" name="offer-emojis"> Incluir emojis en los títulos</span></label></div></fieldset><h3 class="offer-preview-title">Vista previa de la oferta</h3><div class="offer-preview-stage"><div class="offer-preview-sheet" id="offer-preview-sheet"></div></div><p id="offer-fit-note" class="offer-fit-note" aria-live="polite"></p><div class="offer-downloads"><button type="button" class="offer-download-button" data-offer-format="docx">Word (.docx)</button><button type="button" class="offer-download-button" data-offer-format="pdf">PDF</button><button type="button" class="offer-download-button" data-offer-format="xlsx">Excel (.xlsx)</button><button type="button" class="offer-download-button" data-offer-format="png">Imagen PNG</button><button type="button" class="offer-download-button" data-offer-format="jpg">Imagen JPG</button><button type="button" class="offer-download-button" data-offer-format="txt">Texto (.txt)</button></div><p id="offer-download-status" class="offer-download-status" aria-live="polite">La vista previa es idéntica al archivo que se descarga: una sola página, con el formato y el logo elegidos.</p>`;
  result.style.display='block';
  const sheet=result.querySelector('#offer-preview-sheet'),note=result.querySelector('#offer-fit-note'),emojis=result.querySelector('[name="offer-emojis"]'),align=result.querySelector('[name="offer-align"]'),font=result.querySelector('[name="offer-font"]'),color=result.querySelector('[name="offer-text-color"]'),dimension=result.querySelector('[name="offer-dimension"]');
  let emojiVariant='',token=0,timer=0;
@@ -7016,19 +7155,20 @@ function showGeneratedOffer(form,result,text,logo){
 
 /* ===== v78: exportación de un resultado (indicadores + tabla) a Excel, Word y PDF ===== */
 NX.reportRows=rows=>rows.map(r=>r.map(v=>v==null?'':v));
+NX.reportLand=spec=>spec.orient==='landscape'||(spec.orient!=='portrait'&&(spec.headers||[]).length>6);
 NX.reportXlsx=async function(spec){
  const sum=(spec.summary||[]).map(s=>[s[0],s[1]]),head=[[spec.title],[spec.subtitle||''],[]];
  const extra=sum.length?[{name:'Resumen',aoa:[...head,['Indicador','Valor'],...sum],cols:[34,40]}]:[];
  return NX.xlsxTableBlob((spec.sheetName||'Detalle').slice(0,31),spec.headers,NX.reportRows(spec.rows),{name:spec.tableName||'Detalle',style:'TableStyleMedium2',extraSheets:extra});};
 NX.reportDocx=async function(spec){
  const Zip=window.JSZip||await ensureZipLibrary(),esc=s=>String(s==null?'':s).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
- const NAVY='0B1E33',AMBER='E2A45F',INK='1B2A3B',MUTED='5F6F82',ZEBRA='F3F6FA',LINE='D9DEE4',TW=14400;/* A4 horizontal, márgenes 1000 */
+ const NAVY='0B1E33',AMBER='E2A45F',INK='1B2A3B',MUTED='5F6F82',ZEBRA='F3F6FA',LINE='D9DEE4',LAND=NX.reportLand(spec),TW=LAND?14400:9906;/* A4 (horizontal o vertical), márgenes 1000 */
  const run=(t,o={})=>`<w:r><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/>${o.b?'<w:b/>':''}<w:color w:val="${o.c||INK}"/><w:sz w:val="${o.sz||20}"/><w:szCs w:val="${o.sz||20}"/></w:rPr><w:t xml:space="preserve">${esc(t)}</w:t></w:r>`;
  const para=(inner,o={})=>`<w:p><w:pPr>${o.keep?'<w:keepNext/>':''}<w:spacing w:before="${o.before||0}" w:after="${o.after||0}" w:line="${o.line||250}" w:lineRule="auto"/>${o.jc?`<w:jc w:val="${o.jc}"/>`:''}</w:pPr>${inner}</w:p>`;
  const H=spec.headers,R=spec.rows.map(r=>r.map(v=>v==null?'':String(v)));
  /* anchos proporcionales al contenido (mínimo 8%, máximo 38%) */
  const raw=H.map((h,i)=>Math.max(String(h).length+2,R.slice(0,200).reduce((m,r)=>Math.max(m,String(r[i]).length),0)));
- const lim=raw.map(v=>Math.min(Math.max(v,6),36)),tot=lim.reduce((a,b)=>a+b,0);let grid=lim.map(v=>Math.round(TW*v/tot));grid[grid.length-1]+=TW-grid.reduce((a,b)=>a+b,0);
+ const lw=H.map((h,i)=>Math.max(...[h,...R.slice(0,200).map(r=>r[i])].map(t=>Math.max(0,...String(t).split(/\s+/).map(w=>w.length))))),lim=raw.map((v,i)=>Math.min(Math.max(v,6,Math.min(lw[i],24)+4),36)),tot=lim.reduce((a,b)=>a+b,0);let grid=lim.map(v=>Math.round(TW*v/tot));grid[grid.length-1]+=TW-grid.reduce((a,b)=>a+b,0);
  const bdr=`<w:tcBorders><w:bottom w:val="single" w:sz="4" w:space="0" w:color="${LINE}"/></w:tcBorders>`;
  const cell=(w,t,o={})=>`<w:tc><w:tcPr><w:tcW w:w="${w}" w:type="dxa"/>${bdr}${o.fill?`<w:shd w:val="clear" w:color="auto" w:fill="${o.fill}"/>`:''}<w:tcMar><w:top w:w="70" w:type="dxa"/><w:left w:w="110" w:type="dxa"/><w:bottom w:w="70" w:type="dxa"/><w:right w:w="110" w:type="dxa"/></w:tcMar><w:vAlign w:val="center"/></w:tcPr>${para(run(t,{b:o.b,c:o.c,sz:o.sz||19}),{line:240})}</w:tc>`;
  const rowsXml=[`<w:tr><w:trPr><w:cantSplit/><w:tblHeader/></w:trPr>${H.map((h,i)=>cell(grid[i],h,{fill:NAVY,b:1,c:'FFFFFF',sz:18})).join('')}</w:tr>`,...R.map((r,k)=>`<w:tr><w:trPr><w:cantSplit/></w:trPr>${r.map((v,i)=>cell(grid[i],v,{fill:k%2?ZEBRA:''})).join('')}</w:tr>`)].join('');
@@ -7047,21 +7187,23 @@ NX.reportDocx=async function(spec){
  zip.file('_rels/.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>');
  zip.file('word/_rels/document.xml.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/></Relationships>');
  zip.file('word/footer1.xml',footer);
- zip.file('word/document.xml',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document ${ns}><w:body>${body.join('')}<w:sectPr><w:footerReference w:type="default" r:id="rId1"/><w:pgSz w:w="16838" w:h="11906" w:orient="landscape"/><w:pgMar w:top="1000" w:right="1000" w:bottom="1000" w:left="1000" w:header="500" w:footer="450" w:gutter="0"/></w:sectPr></w:body></w:document>`);
+ zip.file('word/document.xml',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document ${ns}><w:body>${body.join('')}<w:sectPr><w:footerReference w:type="default" r:id="rId1"/>${LAND?'<w:pgSz w:w="16838" w:h="11906" w:orient="landscape"/>':'<w:pgSz w:w="11906" w:h="16838"/>'}<w:pgMar w:top="1000" w:right="1000" w:bottom="1000" w:left="1000" w:header="500" w:footer="450" w:gutter="0"/></w:sectPr></w:body></w:document>`);
  return zip.generateAsync({type:'blob',compression:'DEFLATE',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});};
 NX.reportPdf=async function(spec){
  const PL=window.PDFLib;if(!PL)throw new Error('No se pudo cargar la herramienta para generar PDF.');const {PDFDocument,StandardFonts,rgb}=PL,S=NX.protoSan,doc=await PDFDocument.create(),F=await doc.embedFont(StandardFonts.Helvetica),FB=await doc.embedFont(StandardFonts.HelveticaBold);
- const W=841.89,Hh=595.28,M=40,CW=W-2*M,navy=rgb(.043,.118,.2),amber=rgb(.886,.643,.373),ink=rgb(.106,.165,.231),muted=rgb(.37,.43,.51),zebra=rgb(.953,.965,.98),line=rgb(.85,.87,.89);
+ const LAND=NX.reportLand(spec),W=LAND?841.89:595.28,Hh=LAND?595.28:841.89,M=40,CW=W-2*M,navy=rgb(.043,.118,.2),amber=rgb(.886,.643,.373),ink=rgb(.106,.165,.231),muted=rgb(.37,.43,.51),zebra=rgb(.953,.965,.98),line=rgb(.85,.87,.89);
  const H=spec.headers.map(S),R=spec.rows.map(r=>r.map(v=>S(v==null?'':v)));
  const raw=H.map((h,i)=>Math.max(h.length+2,R.slice(0,300).reduce((m,r)=>Math.max(m,r[i].length),0))),lim=raw.map(v=>Math.min(Math.max(v,6),34)),tot=lim.reduce((a,b)=>a+b,0),cw=lim.map(v=>CW*v/tot);
  const FS=9,LH=11.5,PADX=6,PADY=5;
- const wrap=(t,w,font)=>{const out=[];let cur='';String(t).split(' ').forEach(word=>{let wd=word;while(font.widthOfTextAtSize(wd,FS)>w){let k=wd.length;while(k>1&&font.widthOfTextAtSize(wd.slice(0,k),FS)>w)k--;if(cur){out.push(cur);cur='';}out.push(wd.slice(0,k));wd=wd.slice(k);}const test=cur?cur+' '+wd:wd;if(font.widthOfTextAtSize(test,FS)<=w)cur=test;else{if(cur)out.push(cur);cur=wd;}});out.push(cur);return out.slice(0,4);};
+ {const mins=H.map((h,i)=>{let m=0;String(h).split(' ').forEach(w=>{m=Math.max(m,FB.widthOfTextAtSize(w,FS));});R.slice(0,120).forEach(r=>String(r[i]).split(' ').forEach(w=>{m=Math.max(m,Math.min(F.widthOfTextAtSize(w,FS),96));}));return m+2*PADX+2;});
+  for(let it=0;it<6;it++){let need=0,free=0;cw.forEach((w,i)=>{if(w<mins[i])need+=mins[i]-w;else free+=w-mins[i];});if(need<=0.01)break;const k=free>0?Math.min(1,need/free):0;cw.forEach((w,i)=>{cw[i]=w<mins[i]?mins[i]:w-(w-mins[i])*k;});}}
+ const wrap=(t,w,font)=>{const out=[];let cur='';String(t).split(' ').forEach(word=>{let wd=word;while(font.widthOfTextAtSize(wd,FS)>w){let k=wd.length;while(k>1&&font.widthOfTextAtSize(wd.slice(0,k),FS)>w)k--;if(cur){out.push(cur);cur='';}out.push(wd.slice(0,k));wd=wd.slice(k);}const test=cur?cur+' '+wd:wd;if(font.widthOfTextAtSize(test,FS)<=w)cur=test;else{if(cur)out.push(cur);cur=wd;}});out.push(cur);const mx=spec.maxLines||4;if(out.length>mx){const r=out.slice(0,mx);let l=r[mx-1];while(l.length>1&&font.widthOfTextAtSize(l+'…',FS)>w)l=l.slice(0,-1);r[mx-1]=l+'…';return r;}return out;};
  const pages=[];let page,y;
  const newPage=first=>{page=doc.addPage([W,Hh]);pages.push(page);y=Hh-M;
   if(first){page.drawRectangle({x:0,y:Hh-96,width:W,height:96,color:navy});page.drawRectangle({x:0,y:Hh-99,width:W,height:3,color:amber});
    page.drawText('NEXOLAB',{x:M,y:Hh-34,size:9,font:FB,color:amber});page.drawText(S(spec.title),{x:M,y:Hh-62,size:22,font:FB,color:rgb(1,1,1)});if(spec.subtitle)page.drawText(S(spec.subtitle).slice(0,150),{x:M,y:Hh-82,size:10,font:F,color:rgb(.78,.84,.9)});y=Hh-96-22;}
   else y=Hh-M;};
- const headerRow=()=>{const h=LH+2*PADY;page.drawRectangle({x:M,y:y-h,width:CW,height:h,color:navy});let x=M;H.forEach((t,i)=>{page.drawText(wrap(t,cw[i]-2*PADX,FB)[0],{x:x+PADX,y:y-PADY-LH+3,size:FS,font:FB,color:rgb(1,1,1)});x+=cw[i];});y-=h;};
+ const headerRow=()=>{const hl=H.map((t,i)=>wrap(t,cw[i]-2*PADX,FB)),nl=Math.max(1,...hl.map(l=>l.length)),h=nl*LH+2*PADY;page.drawRectangle({x:M,y:y-h,width:CW,height:h,color:navy});let x=M;hl.forEach((ls,i)=>{ls.forEach((t,j)=>page.drawText(t,{x:x+PADX,y:y-PADY-LH*(j+1)+3,size:FS,font:FB,color:rgb(1,1,1)}));x+=cw[i];});y-=h;};
  newPage(true);
  const sum=spec.summary||[];
  if(sum.length){const n=Math.min(sum.length,5),bw=(CW-(n-1)*8)/n;sum.slice(0,n).forEach((s,i)=>{const x=M+i*(bw+8);page.drawRectangle({x,y:y-46,width:bw,height:46,color:zebra,borderColor:line,borderWidth:.6});page.drawText(S(s[0]).slice(0,34),{x:x+8,y:y-15,size:8,font:F,color:muted});page.drawText(S(s[1]).slice(0,22),{x:x+8,y:y-37,size:16,font:FB,color:navy});});y-=46+16;
@@ -8403,15 +8545,32 @@ NX.exp=NX.exp||{};
  const tx=el=>el?clean(el.textContent):'';
  const uniq=(name,used)=>{let b=String(name||'Hoja').replace(/[\\\/?*\[\]:]/g,' ').replace(/\s+/g,' ').trim().slice(0,31)||'Hoja',k=b,i=2;while(used.has(k.toLowerCase())){const suf=' '+i++;k=b.slice(0,31-suf.length)+suf;}used.add(k.toLowerCase());return k;};
 
- /* ---------- Gráfico SVG -> PNG con fondo oscuro (los gráficos usan letras claras) ---------- */
+ /* ---------- Gráfico SVG -> PNG sin fondo (v91) ----------
+    En pantalla los gráficos se dibujan sobre azul oscuro con letras claras. Para los archivos se quita ese fondo
+    y se pasan textos, líneas y marcas a tonos oscuros, así se leen sobre la hoja blanca de Word y PDF. */
+ X.svgLight=function(svg){
+  const T={'#fff':'#14263a','#ffffff':'#14263a','#dfe7ef':'#22364b','#c3d1de':'#4a5b6d','#8497a8':'#566679','#e2a45f':'#945512','#8fb8d9':'#2c6595','#3f6e9a':'#2c6595','#b8741f':'#945512'};
+  const Sh={'#0a1829':'#ffffff','#8fb8d9':'#4f8fc0','#e2a45f':'#e08e2b','#dfe7ef':'#aab7c4','#ffffff22':'#1f2d3d26','#fff':'#1f2d3d','#ffffff':'#1f2d3d'};
+  const head=(svg.match(/<svg[^>]*>/)||[''])[0],bw=(head.match(/\swidth="([\d.]+)/)||[])[1],bh=(head.match(/\sheight="([\d.]+)/)||[])[1];
+  let first=true;
+  return svg.replace(/<(rect|text|circle|line|path|polyline|polygon|ellipse|tspan)\b[^>]*>/g,tag=>{
+   const nm=tag.match(/^<(\w+)/)[1];
+   if(nm==='rect'&&first){first=false;const w=(tag.match(/\swidth="([\d.]+)/)||[])[1],h=(tag.match(/\sheight="([\d.]+)/)||[])[1],f=(tag.match(/\sfill="([^"]+)"/)||[])[1];
+    if(f&&/^#0[a-b]/i.test(f)&&(w===bw||!bw)&&(h===bh||!bh))return tag.replace(/\sfill="[^"]*"/,' fill="none"').replace(/\srx="[^"]*"/,'');}
+   first=false;
+   const map=nm==='text'||nm==='tspan'?T:Sh;
+   return tag.replace(/\s(fill|stroke)="([^"]+)"/g,(m,a,v)=>{const k=v.toLowerCase();if(a==='stroke'&&map===T)return k==='#0a1829'?' stroke="#ffffff"':m;return map[k]?` ${a}="${map[k]}"`:m;});
+  });
+ };
  X.svgPng=function(svg){return new Promise((res,rej)=>{
   try{
+   svg=X.svgLight(svg);
    if(!/xmlns=/.test(svg))svg=svg.replace('<svg','<svg xmlns="http://www.w3.org/2000/svg"');
    const head=svg.match(/<svg[^>]*>/)[0];let w=parseFloat((head.match(/\swidth="([\d.]+)/)||[])[1]),h=parseFloat((head.match(/\sheight="([\d.]+)/)||[])[1]);
    const vb=head.match(/viewBox="([\d.\s-]+)"/);if((!w||!h)&&vb){const p=vb[1].trim().split(/\s+/).map(Number);w=p[2];h=p[3];}
    if(!w||!h){w=640;h=360;}
    if(!/\swidth="/.test(head)||!/\sheight="/.test(head))svg=svg.replace(head,head.replace(/\s(width|height)="[^"]*"/g,'').replace('<svg',`<svg width="${w}" height="${h}"`));
-   const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=w*2;c.height=h*2;const x=c.getContext('2d');x.fillStyle='#0b1e33';x.fillRect(0,0,c.width,c.height);x.scale(2,2);x.drawImage(img,0,0,w,h);
+   const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=w*2;c.height=h*2;const x=c.getContext('2d');x.scale(2,2);x.drawImage(img,0,0,w,h);
     c.toBlob(async b=>{if(!b)return rej(new Error('No se pudo preparar un gráfico'));res({bytes:new Uint8Array(await b.arrayBuffer()),w,h});},'image/png');};
    img.onerror=()=>rej(new Error('No se pudo preparar un gráfico'));img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
   }catch(e){rej(e);}});};
@@ -8582,7 +8741,7 @@ NX.exp=NX.exp||{};
   NX.download(blob,doc.file+'.'+fmt);};
  X.bar=function(out){
   const w=document.createElement('div');w.className='nx-dlbar';
-  w.innerHTML='<div class="nx-dl-t"><strong>Descargar este resultado</strong><span>Elegí el formato que necesites</span></div><div class="nx-actions nx-dl-b"><button type="button" data-xf="xlsx">Excel</button><button type="button" data-xf="docx">Word</button><button type="button" data-xf="pdf">PDF</button><button type="button" data-xf="csv">CSV</button></div><p class="nx-note nx-dlmsg" role="status"></p>';
+  w.innerHTML='<div class="nx-actions nx-dl-b"><button type="button" data-xf="xlsx">Descargar Excel</button><button type="button" data-xf="docx">Descargar Word</button><button type="button" data-xf="pdf">Descargar PDF</button><button type="button" data-xf="csv">Descargar CSV</button></div><p class="nx-note nx-dlmsg" role="status"></p>';
   w.addEventListener('click',async e=>{const b=e.target.closest('[data-xf]');if(!b)return;const m=w.querySelector('.nx-dlmsg');b.disabled=true;m.textContent='Preparando archivo…';
    try{await X.download(b.dataset.xf,out);m.textContent='Archivo listo.';}catch(err){console.error(err);m.textContent=(err&&err.message)||'No se pudo preparar el archivo.';}finally{b.disabled=false;}});
   return w;};
@@ -8623,6 +8782,288 @@ NX.candDemoBar=function(data){const total=NX.candDemo().length,have=(data.candid
 /* Acción de los botones (se llama desde el seguimiento): devuelve el mensaje a mostrar */
 NX.candDemoAct=function(data,act){if(act==='load'){const n=NX.candDemoLoad(data);savePeopleTracking(data);return n?`Se cargaron ${n} candidatos de ejemplo.`:'Los candidatos de ejemplo ya estaban cargados.';}
  const n=NX.candDemoClear(data);savePeopleTracking(data);return n?`Se quitaron ${n} candidatos de ejemplo.`:'No había candidatos de ejemplo para quitar.';};
+
+/* ===== v91: Marca de agua — orientación (horizontal / diagonal) y capa (sobre / detrás del contenido) ===== */
+/* "Detrás" se logra mezclando la marca en modo «multiplicar»: el texto y las partes oscuras del documento quedan por encima de la marca,
+   y se nota sobre las zonas claras. Funciona igual en la vista previa, en PDF y en imágenes. */
+NX.WM_DEG=45;
+/* Geometría de la marca girada: w,h = caja sin girar al tamaño pedido; devuelve el factor de ajuste k y el centro (cx,cy; y hacia abajo). */
+NX.wmGeom=function(W,H,w,h,pos,deg,mg){const t=deg*Math.PI/180,c=Math.abs(Math.cos(t)),s=Math.abs(Math.sin(t));let bw=w*c+h*s,bh=w*s+h*c;
+ const k=Math.min(1,W*.92/bw,H*.92/bh);bw*=k;bh*=k;let cx=W/2,cy=H/2;pos=String(pos||'center');
+ if(pos.includes('left'))cx=mg+bw/2;if(pos.includes('right'))cx=W-mg-bw/2;if(pos.startsWith('top'))cy=mg+bh/2;if(pos.startsWith('bottom'))cy=H-mg-bh/2;
+ return{k,cx,cy,bw,bh};};
+/* Vista previa: coloca la marca girada dentro de su contenedor (se recalcula al cambiar el zoom o el tamaño) */
+NX.wmPlace=function(mark,box){const W=box.clientWidth,H=box.clientHeight;if(!W||!H||!mark.isConnected)return;
+ const z=box.id==='document-frame'&&typeof workspacePreviewZoom==='number'?workspacePreviewZoom:1,mg=14*z,pos=mark.dataset.pos||'center',img=mark.tagName==='IMG',n=Number(mark.dataset.dn)||32;
+ mark.style.transform='none';mark.style.left='0px';mark.style.top='0px';let w,h;
+ if(img){w=W*.34;const ar=mark.naturalWidth&&mark.naturalHeight?mark.naturalHeight/mark.naturalWidth:180/840;h=w*ar;}
+ else{mark.style.fontSize=(n*z)+'px';w=mark.offsetWidth;h=mark.offsetHeight;}
+ if(!w||!h)return;const g=NX.wmGeom(W,H,w,h,pos,NX.WM_DEG,mg);
+ if(img){mark.style.width=(w*g.k)+'px';mark.style.height=(h*g.k)+'px';}else mark.style.fontSize=(n*z*g.k)+'px';
+ mark.style.left=g.cx+'px';mark.style.top=g.cy+'px';mark.style.transform=`translate(-50%,-50%) rotate(-${NX.WM_DEG}deg)`;};
+NX.wmWatch=function(box){box._wmRun=()=>box.querySelectorAll('.preview-watermark[data-diag]').forEach(m=>NX.wmPlace(m,box));
+ if(!box._wmRO&&typeof ResizeObserver!=='undefined'){box._wmRO=new ResizeObserver(()=>box._wmRun&&box._wmRun());box._wmRO.observe(box);}
+ requestAnimationFrame(()=>box._wmRun&&box._wmRun());};
+window.addWatermarkPreview=function(container){const $=id=>document.getElementById(id),position=$('watermark-position')?.value||'center',opacity=String(Number($('watermark-opacity')?.value??42)/100),
+ diag=$('watermark-angle')?.value==='diag',extra=(($('watermark-layer')?.value==='under')?' wm-under':'')+(diag?' wm-diag':'');
+ if($('watermark-use-logo')?.checked){const mark=document.createElement('img');mark.className=`preview-watermark${extra} ${diag?'':position}`;mark.alt='Logo de NexoLab como marca de agua';
+  mark.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="840" height="180" viewBox="0 0 840 180"><rect x="24" y="24" width="132" height="132" rx="42" fill="#087e83"/><path d="M54 120V72h12l36 30V72h12v48h-12L66 90v30H54Z" fill="white"/><circle cx="132" cy="50" r="9" fill="#9de3da"/><text x="190" y="123" fill="#112e40" font-family="Arial,sans-serif" font-size="82" font-weight="700">NexoLab</text></svg>');
+  mark.style.width='34%';mark.style.height='auto';mark.style.opacity=opacity;if(diag){mark.dataset.diag='1';mark.dataset.pos=position;mark.addEventListener('load',()=>NX.wmPlace(mark,container));}container.append(mark);if(diag)NX.wmWatch(container);return;}
+ const text=$('watermark-text')?.value.trim();if(!text)return;const mark=document.createElement('span'),font=$('watermark-font').value,n=Number($('watermark-size')?.value||32);
+ mark.className=`preview-watermark nl-keep${extra} ${diag?'':position}`;mark.textContent=text;
+ if(diag){mark.dataset.diag='1';mark.dataset.dn=String(n);mark.dataset.pos=position;}else{mark.dataset.n=String(n);mark.style.fontSize=`${n*(container&&container.id==='document-frame'?workspacePreviewZoom:1)}px`;}
+ mark.style.color=$('watermark-color').value;mark.style.opacity=opacity;mark.style.fontFamily=watermarkPreviewFont(font);mark.style.fontWeight=font.toLowerCase().includes('bold')?'700':'400';mark.style.fontStyle=font.toLowerCase().includes('italic')||font.toLowerCase().includes('oblique')?'italic':'normal';
+ container.append(mark);if(diag)NX.wmWatch(container);};
+/* Archivo de salida: igual que la vista previa al 100 % */
+window.createWatermarkedFile=async function(pdfLib,file){const $=id=>document.getElementById(id);
+ const useLogo=$('watermark-use-logo')?.checked,text=$('watermark-text').value.trim();if(!useLogo&&!text)throw new Error('Escribí el texto de la marca de agua o elegí usar el logo de NexoLab.');
+ const type=fileFormat(file),position=$('watermark-position').value,hex=$('watermark-color').value,fontKey=$('watermark-font').value,opacity=Number($('watermark-opacity').value)/100,requestedSize=Number($('watermark-size').value)||32,
+  diag=$('watermark-angle')?.value==='diag',under=$('watermark-layer')?.value==='under',DEG=NX.WM_DEG,T=DEG*Math.PI/180,
+  outputName=`${file.name.replace(/\.[^.]+$/,'')}-con-marca-de-agua.${type==='jpg'?'jpg':type}`;
+ if(type==='pdf'){
+  const out=await pdfLib.PDFDocument.create(),blend=under&&pdfLib.BlendMode?{blendMode:pdfLib.BlendMode.Multiply}:{},src=await pdfLib.PDFDocument.load(await file.arrayBuffer()),copied=await out.copyPages(src,src.getPageIndices());
+  if(useLogo){const lb=await createNexoLabLogoPng(),logo=await out.embedPng(lb instanceof Blob?new Uint8Array(await lb.arrayBuffer()):lb);
+   copied.forEach(page=>{const {width,height}=page.getSize(),mg=14*NX_wmFactor('pdf',width,height),dw0=width*.34,dh0=dw0*logo.height/logo.width;
+    if(diag){const g=NX.wmGeom(width,height,dw0,dh0,position,DEG,mg),dw=dw0*g.k,dh=dh0*g.k,x=g.cx-(dw/2*Math.cos(T)-dh/2*Math.sin(T)),y=(height-g.cy)-(dw/2*Math.sin(T)+dh/2*Math.cos(T));page.drawImage(logo,{x,y,width:dw,height:dh,rotate:pdfLib.degrees(DEG),opacity,...blend});}
+    else{let x=(width-dw0)/2,y=(height-dh0)/2;if(position.includes('left'))x=mg;if(position.includes('right'))x=width-dw0-mg;if(position.startsWith('top'))y=height-dh0-mg;if(position.startsWith('bottom'))y=mg;page.drawImage(logo,{x,y,width:dw0,height:dh0,opacity,...blend});}
+    out.addPage(page);});}
+  else{const font=await out.embedFont(pdfLib.StandardFonts[fontKey]),color=pdfLib.rgb(parseInt(hex.slice(1,3),16)/255,parseInt(hex.slice(3,5),16)/255,parseInt(hex.slice(5,7),16)/255);
+   copied.forEach(page=>{const {width,height}=page.getSize(),wmf=NX_wmFactor('pdf',width,height),mg=14*wmf;
+    if(diag){let size=requestedSize*wmf;const tw0=font.widthOfTextAtSize(text,size),g=NX.wmGeom(width,height,tw0,size,position,DEG,mg);size*=g.k;const tw=tw0*g.k,x=g.cx-(tw/2*Math.cos(T)-.35*size*Math.sin(T)),y=(height-g.cy)-(tw/2*Math.sin(T)+.35*size*Math.cos(T));page.drawText(text,{x,y,size,font,color,opacity,rotate:pdfLib.degrees(DEG),...blend});}
+    else{const size=Math.min(requestedSize*wmf,width*.92/Math.max(1,font.widthOfTextAtSize(text,1))),tw=font.widthOfTextAtSize(text,size);let x=(width-tw)/2,y=(height-size)/2;if(position.includes('left'))x=mg;if(position.includes('right'))x=width-tw-mg;if(position.startsWith('top'))y=height-size-mg;if(position.startsWith('bottom'))y=mg;page.drawText(text,{x,y,size,font,color,opacity,...blend});}
+    out.addPage(page);});}
+  return{blob:new Blob([await out.save()],{type:'application/pdf'}),name:outputName};}
+ if(['png','jpg','webp'].includes(type)){
+  const image=await loadImage(file),canvas=document.createElement('canvas');canvas.width=image.width;canvas.height=image.height;const ctx=canvas.getContext('2d');ctx.drawImage(image,0,0);
+  const W=canvas.width,H=canvas.height,wmf=NX_wmFactor('img',W,H),mg=14*wmf;ctx.save();ctx.globalAlpha=opacity;if(under)ctx.globalCompositeOperation='multiply';
+  if(useLogo){const logo=await loadImage(new File([await createNexoLabLogoPng()],'nexolab-logo.png',{type:'image/png'})),dw0=W*.34,dh0=dw0*logo.height/logo.width;
+   if(diag){const g=NX.wmGeom(W,H,dw0,dh0,position,DEG,mg);ctx.translate(g.cx,g.cy);ctx.rotate(-T);ctx.drawImage(logo,-dw0*g.k/2,-dh0*g.k/2,dw0*g.k,dh0*g.k);}
+   else{let x=(W-dw0)/2,y=(H-dh0)/2;if(position.includes('left'))x=mg;if(position.includes('right'))x=W-dw0-mg;if(position.startsWith('top'))y=mg;if(position.startsWith('bottom'))y=H-dh0-mg;ctx.drawImage(logo,x,y,dw0,dh0);}}
+  else{let size=requestedSize*wmf;const low=fontKey.toLowerCase(),family=low.includes('courier')?'monospace':low.includes('times')?'Georgia,serif':'Arial,sans-serif',weight=low.includes('bold')?'700':'400',style=/italic|oblique/i.test(fontKey)?'italic ':'',setFont=()=>{ctx.font=`${style}${weight} ${size}px ${family}`;};
+   ctx.fillStyle=hex;ctx.textBaseline='middle';setFont();let width=ctx.measureText(text).width;
+   if(diag){const g=NX.wmGeom(W,H,width,size,position,DEG,mg);size*=g.k;setFont();ctx.translate(g.cx,g.cy);ctx.rotate(-T);ctx.textAlign='center';ctx.fillText(text,0,0);}
+   else{if(width>W*.92){size*=W*.92/width;setFont();width=ctx.measureText(text).width;}let x=(W-width)/2,y=H/2;if(position.includes('left'))x=mg;if(position.includes('right'))x=W-width-mg;if(position.startsWith('top'))y=mg+size/2;if(position.startsWith('bottom'))y=H-mg-size/2;ctx.fillText(text,x,y);}}
+  ctx.restore();const mime=type==='jpg'?'image/jpeg':`image/${type}`,blob=await new Promise(resolve=>canvas.toBlob(resolve,mime,.94));if(!blob)throw new Error('No se pudo generar el archivo con marca de agua.');return{blob,name:outputName};}
+ if(['txt','csv'].includes(type)){const contents=await file.text(),blob=new Blob([`${text}\n`,contents],{type:type==='csv'?'text/csv':'text/plain'});return{blob,name:outputName};}
+ throw new Error('El formato del archivo no admite una marca de agua.');};
+
+/* ===== v91: Rotar páginas — la vista previa gira solo las páginas elegidas (igual que la descarga) ===== */
+/* Giro que se muestra en el visor: el elegido si la página que se mira está seleccionada; 0° si no. Fuera de «Rotar páginas» nunca se gira. */
+NX.rotNow=function(){const rot=((workspaceRotation%360)+360)%360;if(document.getElementById('file-operation')?.value!=='rotate')return rot;const sel=window.previewSelectedPages;return sel&&sel.has(workspaceActivePage)?rot:0;};
+NX.rotUi=function(){if(document.getElementById('file-operation')?.value!=='rotate')return;
+ const sel=window.previewSelectedPages||new Set(),rot=((workspaceRotation%360)+360)%360,on=sel.has(workspaceActivePage),a=document.getElementById('document-angle');
+ if(a)a.textContent=on?`${rot}°`:'Sin giro · página no seleccionada';
+ document.querySelectorAll('#extract-preview .document-thumb').forEach((b,i)=>{const c=b.querySelector('canvas');if(!c)return;const r=sel.has(i+1)?rot:0;let k=1;
+  if(r%180!==0){const W=c.offsetWidth||c.width,H=c.offsetHeight||c.height;if(W&&H)k=Math.min(W/H,H/W);}
+  c.style.transition='transform .2s ease';c.style.transform=r?`rotate(${r}deg) scale(${k})`:'none';});};
+
+/* ===== v91: ejemplos de licencias, vacaciones y ausencias con todos los campos completos ===== */
+/* Datos ficticios y coherentes con cada tipo de registro (los mismos campos que pide «Agregar evento»). */
+NX.DEMO_LEAVE={
+ 'demo-absence-vac-1':{area:'Recursos Humanos',period:'2026',replacement:'Camila Duarte',approvedBy:'Carolina Méndez · Jefa de Recursos Humanos',description:'Tramo de vacaciones anuales. Deja las novedades de personal al día y los pendientes a cargo de su reemplazante.'},
+ 'demo-absence-vac-2':{area:'Administración y Finanzas',period:'2026',replacement:'Lucía Ortega',approvedBy:'Gustavo Ferrari · Gerencia de Administración y Finanzas',description:'Vacaciones anuales en dos semanas corridas. Cierra la conciliación bancaria del mes antes de salir.'},
+ 'demo-absence-vac-3':{area:'Operaciones',period:'2026',replacement:'Joaquín Paredes',approvedBy:'Federico Ibarra · Jefe de Operaciones',description:'Vacaciones de verano en una semana. Coordinó con su jefatura la cobertura del turno durante enero.'},
+ 'demo-absence-lic-1':{area:'Logística',kind:'Enfermedad o accidente inculpable',paid:'Con goce de haberes',certificate:'Presentó certificado',description:'Cuadro gripal con reposo indicado por tres días. El certificado médico fue entregado a Recursos Humanos al inicio de la licencia.'},
+ 'demo-absence-lic-2':{area:'Atención al Cliente',kind:'Examen o estudio',paid:'Con goce de haberes',certificate:'Pendiente de presentar',description:'Rinde el examen final de Derecho del Trabajo en la facultad. Presentará la constancia de rendición al reincorporarse.'},
+ 'demo-absence-abs-1':{area:'Sistemas',kind:'Justificada',certificate:'Presentó certificado',notified:'Sí',description:'Citación como testigo en el juzgado de paz de su localidad. Entregó copia de la cédula y coordinó con su jefatura la cobertura de sus tareas.'},
+ 'demo-absence-abs-2':{area:'Comercial',kind:'Trámite personal o familiar',certificate:'Pendiente de presentar',notified:'Sí',description:'Acompaña a un familiar a una intervención programada. Avisó con anticipación y presentará la constancia del centro de salud al volver.'}
+};
+NX.DEMO_LEAVE_LABELS={area:'Área o sector',kind:{licencias:'Tipo de licencia',ausencias:'Tipo de ausencia'},paid:'Goce de haberes',certificate:'Certificado o constancia',period:'Período vacacional',replacement:'Reemplazante o quien cubre',approvedBy:'Aprobado por',notified:'Avisó con anticipación'};
+NX.demoFill=function(){try{loadAbsenceRecords();let ch=false;
+ absenceRecords.forEach(r=>{const d=r&&r.demo===true&&NX.DEMO_LEAVE[r.id];if(!d||r.demoFull===1)return;
+  const L=NX.DEMO_LEAVE_LABELS,order=['area','kind','paid','period','replacement','approvedBy','certificate','notified'],extra=[];
+  order.forEach(k=>{if(d[k]==null)return;const lab=typeof L[k]==='object'?L[k][r.type]:L[k];extra.push([lab,d[k]]);});
+  const reason=[d.kind,d.description].filter(Boolean).join(': ');
+  Object.assign(r,d,{reason,description:reason,extra,demoFull:1});ch=true;});
+ if(ch)saveAbsenceRecords();}catch(e){console.warn('No se pudieron completar los ejemplos:',e);}};
+(function(){const base=ensureCalendarDemoRecords;ensureCalendarDemoRecords=function(){const r=base.apply(this,arguments);NX.demoFill();return r;};})();
+
+/* ===== v91: Preparación de ofertas laborales — «Cargar un ejemplo» (datos ficticios completos) ===== */
+NX.offerDemo=function(){
+ const d=new Date();d.setDate(d.getDate()+21);const deadline=String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear();
+ return {
+  text:{'offer-company':'NexoLab','offer-email':'postulaciones@example.com',
+   'offer-about':'NexoLab es una consultora de gestión de personas con 15 años de trayectoria. Acompañamos a empresas pyme en selección, administración de personal y desarrollo del talento, con un equipo de 40 personas y foco en el trato cercano y la mejora continua.',
+   'offer-position':'Analista de Recursos Humanos','offer-location':'Córdoba, Córdoba',
+   'offer-responsibilities':'Gestionar el proceso de selección completo: publicación de avisos, preselección, entrevistas y armado de ternas.\nAdministrar altas, bajas, licencias y novedades de personal para la liquidación de sueldos.\nMantener actualizados los legajos y la dotación en el sistema.\nColaborar en el plan anual de capacitación y en las evaluaciones de desempeño.\nElaborar indicadores mensuales de rotación y ausentismo.',
+   'offer-experience-amount':'2','offer-careers':'Lic. en Relaciones del Trabajo, Lic. en Recursos Humanos, Lic. en Psicología (orientación laboral)',
+   'offer-pay-range':'$1.400.000 a $1.700.000 brutos mensuales','offer-deadline':deadline,'offer-apply':'https://example.com/trabaja-con-nosotros',
+   'offer-values':'Colaboración, responsabilidad, confidencialidad y mejora continua.',
+   'offer-benefits':'Cobertura médica prepaga\nModalidad híbrida: 3 días presenciales y 2 remotos\nCapacitación continua y becas de formación\nDía libre por cumpleaños\nBono anual por objetivos'},
+  radio:{'offer-experience':'Sí','offer-seniority':'Semisenior','offer-workload':'Completa (full-time)','offer-contract':'Tiempo indeterminado','offer-modality':'Híbrida','offer-mobility':'Transporte público','offer-education':'Universitaria','offer-pay':'Rango salarial'},
+  checks:{'offer-schedule':['Diurna'],'offer-license':['No requerida']},
+  skills:[['Hard Skills',['Liquidación de sueldos y cargas sociales','Legislación laboral (LCT y convenios colectivos)','Excel intermedio-avanzado','Sistemas de gestión de RR. HH.']],['Soft Skills',['Comunicación efectiva','Trabajo en equipo','Confidencialidad','Orientación al detalle']]]};
+};
+NX.offerDemoFill=async function(){
+ const f=document.getElementById('action-form');if(!f||!f.elements.namedItem('offer-company'))return;
+ const D=NX.offerDemo(),fire=(el,t)=>el.dispatchEvent(new Event(t,{bubbles:true}));
+ NX.offerDemoClear(true);
+ Object.entries(D.text).forEach(([n,v])=>{const el=f.elements.namedItem(n);if(el){el.value=v;fire(el,'input');fire(el,'change');}});
+ Object.entries(D.radio).forEach(([n,v])=>{const el=[...f.querySelectorAll('input[name="'+n+'"]')].find(x=>x.value===v);if(el&&!el.checked)el.click();});
+ Object.entries(D.checks).forEach(([n,vs])=>vs.forEach(v=>{const el=[...f.querySelectorAll('input[name="'+n+'"]')].find(x=>x.value===v);if(el&&!el.checked)el.click();}));
+ const inp=document.getElementById('offer-skill-input');
+ if(inp)D.skills.forEach(([type,list])=>{const r=[...f.querySelectorAll('input[name="offer-skill-type"]')].find(x=>x.value===type);if(!r)return;r.click();list.forEach(n=>{inp.value=n;inp.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true,cancelable:true}));});});
+ const sel=[...f.querySelectorAll('input[name="offer-skill-type"]')].find(x=>x.value==='Hard Skills');if(sel&&!sel.checked)sel.click();
+ /* logo: el de NexoLab, generado en el momento */
+ try{const li=document.getElementById('offer-logo');if(li&&typeof createNexoLabLogoPng==='function'){const blob=await createNexoLabLogoPng();const file=new File([blob],'logo-nexolab.png',{type:'image/png'});const dt=new DataTransfer();dt.items.add(file);li.files=dt.files;fire(li,'change');}}catch(e){}
+ const st=document.getElementById('nx-offer-demo-note');if(st)st.textContent='Se cargó un ejemplo con datos ficticios en todos los campos. Podés editarlos antes de generar la oferta.';
+ document.getElementById('action-fields')?.scrollIntoView?.({block:'start'});
+};
+NX.offerDemoClear=function(silent){
+ const f=document.getElementById('action-form');if(!f||!f.elements.namedItem('offer-company'))return;
+ f.reset();
+ f.querySelectorAll('input[type="radio"],input[type="checkbox"]').forEach(el=>{el.checked=false;el.dispatchEvent(new Event('change',{bubbles:true}));});
+ const arr=f.offerSkills;if(arr)arr.length=0;const sl=document.getElementById('offer-skill-list');if(sl)sl.innerHTML='';const sw=document.getElementById('offer-skill-input-wrap');if(sw)sw.hidden=true;
+ const li=document.getElementById('offer-logo');if(li){li.value='';li.dispatchEvent(new Event('change',{bubbles:true}));}
+ const st=document.getElementById('nx-offer-demo-note');if(st&&!silent)st.textContent='Se vaciaron todos los campos.';
+};
+(function(){
+ const host=document.getElementById('action-fields');if(!host)return;
+ const put=()=>{if(!host.querySelector('[name="offer-company"]')||host.querySelector('.nx-offer-demo'))return;
+  const bar=document.createElement('div');bar.className='nx-demobar nx-offer-demo';
+  bar.innerHTML='<button type="button" class="nx-demo-btn" data-offer-demo="load">Cargar un ejemplo</button><button type="button" class="nx-demo-btn nx-demo-btn-ghost" data-offer-demo="clear">Vaciar campos</button><small id="nx-offer-demo-note">Completa todo el formulario con una oferta ficticia para que veas cómo queda.</small>';
+  bar.addEventListener('click',e=>{const b=e.target.closest('[data-offer-demo]');if(!b)return;e.preventDefault();if(b.dataset.offerDemo==='load')NX.offerDemoFill();else NX.offerDemoClear();});
+  host.prepend(bar);};
+ new MutationObserver(put).observe(host,{childList:true});put();
+})();
+
+/* ===== v91: ajustes de interfaz ===== */
+/* Guía de gráficos de Excel: cuadro más grande (casi todo el ancho y el alto de la pantalla) */
+(function(){const base=NX.openChartGuide;if(typeof base!=='function')return;
+ NX.openChartGuide=function(){const f=base.apply(this,arguments),d=f&&f.closest?f.closest('.action-dialog'):null;if(d)d.classList.add('nx-wide','nx-guide-dialog');return f;};})();
+
+/* ===== v91: calendarios de Gestión de fechas =====
+   · Licencias, vacaciones y ausencias: «Quitar selección» en «Equipo», y al elegir una persona solo se pintan SUS días.
+   · Calendario general y específicos: al abrir, si hoy no tiene eventos se muestra el día con eventos más cercano. */
+(function(){
+ const norm=s=>String(s||'').trim().toLocaleLowerCase('es-AR');
+ const samePerson=(a,b)=>!!a&&!!b&&norm(a.legajo)===norm(b.legajo)&&norm(a.employee)===norm(b.employee);
+ const focused=()=>absenceFocusedRecordId?absenceRecords.find(r=>r.id===absenceFocusedRecordId)||null:null;
+ const monthRange=()=>[dateToIso(new Date(absenceSelectedYear,absenceSelectedMonth,1)),dateToIso(new Date(absenceSelectedYear,absenceSelectedMonth+1,0))];
+
+ /* ---------- pintado: con una persona elegida, solo se ven sus días ---------- */
+ const baseColor=NX.gAbsColor;
+ NX.gAbsColor=function(){
+  baseColor.apply(this,arguments);
+  const host=document.getElementById('absence-calendar-content');if(!host)return;
+  const sel=focused();
+  host.classList.toggle('nx-abs-person',!!sel);
+  if(sel){
+   host.querySelectorAll('.absence-day').forEach(btn=>{
+    if(btn.classList.contains('focused-record')){
+     /* el color de cada día lo da el registro de la persona elegida (no el de otra persona que coincida ese día) */
+     const t=['vacaciones','licencias','ausencias'].find(x=>btn.classList.contains(x));
+     btn.classList.remove('nx-abs-vacaciones','nx-abs-licencias','nx-abs-ausencias');if(t)btn.classList.add('nx-abs-'+t);return;}
+    btn.classList.remove('has-absence-record','nx-abs-vacaciones','nx-abs-licencias','nx-abs-ausencias');
+    if(btn.title&&/·/.test(btn.title)&&!/ al /.test(btn.title))btn.removeAttribute('title');
+   });
+  }
+  const lg=host.querySelector('.nx-abs-legend');
+  if(lg)lg.querySelectorAll('span').forEach((s,i)=>{s.hidden=!!sel&&i<3;});
+ };
+
+ /* ---------- «Equipo»: encabezado + «Quitar selección» ---------- */
+ const clearSel=()=>{absenceFocusedRecordId=null;renderAbsenceCalendar();};
+ NX.gRosterHead=function(){
+  const aside=document.querySelector('#absence-backdrop .absence-roster');if(!aside)return;
+  const h=aside.querySelector(':scope > h3.absence-picker-title,:scope > .nx-roster-head > h3');if(!h)return;
+  let head=aside.querySelector(':scope > .nx-roster-head');
+  if(!head){head=document.createElement('div');head.className='nx-roster-head';h.before(head);head.append(h);}
+  let b=head.querySelector('.clear-general-date-selection');
+  if(!b){
+   b=document.createElement('button');b.type='button';b.className='clear-general-date-selection';b.id='absence-clear-selection';
+   b.innerHTML='<svg class="nx-x" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M2.2 2.2l7.6 7.6M9.8 2.2L2.2 9.8" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></svg><span>Quitar selección</span>';
+   b.setAttribute('aria-label','Quitar la selección de la persona');b.addEventListener('click',clearSel);head.append(b);
+  }
+  b.disabled=!focused();
+ };
+ const baseRos=renderAbsenceRoster;
+ renderAbsenceRoster=function(){baseRos.apply(this,arguments);NX.gRosterHead();};
+
+ /* ---------- elegir a una persona: se queda en el mes que se ve y se vuelve a tocar para soltarla ---------- */
+ NX.gPickPerson=function(row){
+  const label=row.querySelector('strong')?.textContent||'';
+  const [a,z]=monthRange();
+  const recs=absenceRecords.filter(r=>r.startDate<=z&&r.endDate>=a&&`${r.employee} · ${r.legajo}`===label);
+  if(!recs.length)return;
+  const cur=focused();
+  if(cur&&recs.some(r=>r.id===cur.id)){absenceFocusedRecordId=null;renderAbsenceCalendar();return;}
+  const chosen=recs.find(r=>r.type===absenceRosterFilter)||recs[0];
+  absenceFocusedRecordId=chosen.id;
+  const d=chosen.startDate<a?a:chosen.startDate;absenceSelectedDate=d;
+  absenceView='days';renderAbsenceCalendar();
+ };
+ document.addEventListener('click',e=>{
+  const row=e.target.closest('#absence-backdrop .absence-roster .absence-person[role="button"]');if(!row)return;
+  e.preventDefault();e.stopImmediatePropagation();NX.gPickPerson(row);
+ },true);
+ document.addEventListener('keydown',e=>{
+  if(e.key!=='Enter'&&e.key!==' ')return;
+  const row=e.target.closest&&e.target.closest('#absence-backdrop .absence-roster .absence-person[role="button"]');if(!row)return;
+  e.preventDefault();e.stopImmediatePropagation();NX.gPickPerson(row);
+ },true);
+
+ /* ---------- al abrir un calendario de Gestión de fechas: si hoy no hay eventos, se muestra el día más cercano con eventos ---------- */
+ NX.gNearest=function(){
+  const items=[...workImportantDates.filter(generalCalendarEventMatches),...absenceRecords.filter(generalCalendarAbsenceMatches)];
+  if(!items.length)return null;
+  const today=dateToIso(new Date());
+  if(items.some(r=>r.startDate<=today&&r.endDate>=today))return null;
+  const up=items.filter(r=>r.startDate>today).sort((x,y)=>x.startDate.localeCompare(y.startDate))[0];
+  if(up)return {iso:up.startDate,when:'próximo'};
+  const past=items.slice().sort((x,y)=>y.endDate.localeCompare(x.endDate))[0];
+  return past?{iso:past.endDate,when:'último'}:null;
+ };
+ const baseOpen=openWorkDatesCalendar;
+ openWorkDatesCalendar=function(){
+  const r=baseOpen.apply(this,arguments);
+  try{
+   const n=NX.gNearest();
+   if(n){
+    NX.gGoto(n.iso);generalCalendarSelectedDate=n.iso;
+    const s=document.querySelector('#work-date-entry-form [name="startDate"]'),e=document.querySelector('#work-date-entry-form [name="endDate"]');
+    if(s)s.value=n.iso;if(e)e.value=n.iso;
+    if(NX.gEnforce)NX.gEnforce();
+    renderWorkDateCategorySidebar();renderWorkDatesCalendar();renderWorkDateEvents();
+    const host=document.getElementById('work-date-events');
+    if(host&&host.querySelector('.work-date-event')&&!host.querySelector('.nx-nearest-note')){
+     const p=document.createElement('p');p.className='nx-nearest-note';
+     p.textContent=`Hoy no hay eventos. Se muestra el ${n.when==='próximo'?'próximo día con eventos':'último día con eventos'}: ${shortDate(n.iso)}.`;host.prepend(p);
+    }
+   }
+  }catch(err){console.warn(err);}
+  return r;
+ };
+})();
+
+/* ===== v91: Seguimiento de nuevos candidatos — la descarga sale como la tabla de la pantalla =====
+   Excel, CSV y PDF toman las mismas columnas, en el mismo orden y con el mismo formato que se ve en la página
+   (fechas dd/mm/aa, valoración n/5, «—» cuando no hay dato), respetan la búsqueda activa y salen en A4 horizontal.
+   El JSON conserva todos los campos del registro. */
+(function(){
+ const pageTable=()=>{
+  const t=document.querySelector('#people-record-list .people-tracking-table');if(!t)return null;
+  const headers=[...t.querySelectorAll('thead th')].map(th=>th.textContent.trim()).filter(h=>h!=='Acción');
+  const rows=[...t.querySelectorAll('tbody tr')].filter(tr=>!tr.querySelector('td[colspan]')).map(tr=>[...tr.querySelectorAll('td')].slice(0,headers.length).map(td=>td.textContent.trim()));
+  return {headers,rows};
+ };
+ document.addEventListener('click',async e=>{
+  const btn=e.target.closest('[data-people-export]');if(!btn)return;
+  const fmt=btn.dataset.peopleExport;if(!['xlsx','csv','pdf'].includes(fmt))return;
+  const t=pageTable();if(!t)return;
+  e.preventDefault();e.stopImmediatePropagation();
+  const st=document.getElementById('people-export-status');
+  btn.disabled=true;if(st)st.textContent='Preparando descarga…';
+  try{
+   const d=new Date(),pad=n=>String(n).padStart(2,'0'),when=`${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()}`;
+   const q=(document.getElementById('people-search')?.value||'').trim();
+   const spec={title:'Seguimiento de nuevos candidatos',subtitle:`Generado el ${when} · ${t.rows.length} candidato${t.rows.length===1?'':'s'}${q?' · Búsqueda: «'+q+'»':''}`,headers:t.headers,rows:t.rows,file:'seguimiento_candidatos',sheetName:'Candidatos',tableName:'Candidatos',orient:'landscape',maxLines:30};
+   await NX.reportDownload(fmt,spec);
+   if(st)st.textContent=`Descarga lista (${t.rows.length} candidato${t.rows.length===1?'':'s'}).`;
+  }catch(err){console.error(err);if(st)st.textContent=err.message||'No se pudo preparar la descarga.';}
+  finally{btn.disabled=false;}
+ },true);
+})();
 
 
 (function(){const prev=openAction;openAction=function(data,index){document.querySelector('.action-dialog')?.classList.remove('nx-calc-dialog');if(data.title==='Cálculos y análisis'){const h={0:NX.openSeniority,1:NX.openVacation,3:NX.openPayroll,2:NX.openAbsence,4:NX.openKpis,5:NX.openCharts,6:NX.openChartGuide,7:NX.openSeverance}[index];if(typeof h==='function'){h();return;}}return prev(data,index);};openAbsenteeismWorkspace=function(){NX.openAbsence();};openKpiWorkspace=function(){NX.openKpis();};openDashboardWorkspace=function(){NX.openCharts();};})();
