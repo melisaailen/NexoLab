@@ -1915,7 +1915,6 @@ input.nx-secret{-webkit-text-security:disc;text-security:disc;font-family:inheri
 .workspace-grid{align-items:stretch!important}
 .workspace-grid>div{display:flex;flex-direction:column;min-width:0}
 .workspace-grid>div:last-child>.operation-fields{flex:1 1 auto}
-.workspace-grid>div:first-child>.company-logo-download:not([hidden]){flex:1 1 auto}
 .workspace-grid>div:first-child:not(:has(.company-logo-download:not([hidden])))>.workspace-block:last-of-type{flex:1 1 auto;display:flex;flex-direction:column}
 .workspace-grid>div:first-child:not(:has(.company-logo-download:not([hidden])))>.workspace-block:last-of-type>.file-drop{flex:1 1 auto}
 .wm-note{display:block;margin-top:8px;color:#8fa6b8;line-height:1.4;font-size:12px}
@@ -1998,6 +1997,64 @@ input.nx-secret{-webkit-text-security:disc;text-security:disc;font-family:inheri
 #absence-backdrop .absence-roster .nx-roster-head .clear-general-date-selection:disabled{opacity:.4;cursor:default}
 .nx-nearest-note{margin:0 0 10px;padding:7px 10px;border-radius:8px;background:rgba(226,164,95,.12);border:1px solid rgba(226,164,95,.35);color:#f4d9b4;font-size:12.5px;line-height:1.35}
 #absence-backdrop .absence-day:not(.focused-record).nx-abs-dim{opacity:.55}
+
+/* v91: Marca de agua — cuadro del logo de NexoLab compacto (logo + texto y los dos botones en una fila) */
+.workspace-grid>div:first-child>.company-logo-download:not([hidden]){display:flex!important;flex-wrap:wrap;align-items:center;gap:8px 10px!important;flex:0 0 auto!important;padding:12px 14px!important;margin-top:10px!important}
+.company-logo-download .company-logo-sample{flex:1 1 100%;gap:9px;font-size:16px}
+.company-logo-download .company-logo-sample svg,.company-logo-download .company-logo-sample img{width:30px!important;height:30px!important}
+.company-logo-download p{flex:1 1 100%;margin:0!important;font-size:12.5px!important;line-height:1.35}
+.company-logo-download button{width:auto!important;height:auto!important;min-height:0!important;min-width:0!important;margin:0!important;padding:7px 13px!important;font-size:12.5px!important;line-height:1.2!important;border-radius:8px!important}
+.company-logo-download .workspace-status{flex:1 1 100%;margin:0;font-size:12px}
+.company-logo-download .workspace-status:empty{display:none}
+
+/* ===== v91: Extraer / Rotar páginas — estados claros (sin marcar / marcada / activa) ===== */
+#extract-preview .extract-page-select{position:relative;border:1px solid rgba(255,255,255,.16)!important;background:rgba(255,255,255,.04)!important;box-shadow:none!important;transition:border-color .15s,background .15s}
+#extract-preview .extract-page-select:hover{border-color:rgba(226,164,95,.6)!important}
+#extract-preview .extract-page-select.selected{border:2px solid #e2a45f!important;background:rgba(226,164,95,.18)!important;box-shadow:0 0 0 3px rgba(226,164,95,.2)!important}
+#extract-preview .extract-page-select.selected::after{content:"✓";position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:#e2a45f;color:#0b1e33;font-weight:800;font-size:15px;display:grid;place-items:center;line-height:1}
+#extract-preview .document-thumb{position:relative;border:1px solid rgba(255,255,255,.16)!important;background:rgba(255,255,255,.04)!important;box-shadow:none!important}
+#extract-preview .document-thumb:hover{border-color:rgba(226,164,95,.6)!important}
+#extract-preview .document-thumb.selected{border:2px solid #e2a45f!important;background:rgba(226,164,95,.18)!important;box-shadow:0 0 0 3px rgba(226,164,95,.2)!important}
+#extract-preview .document-thumb .nx-thumb-n{position:absolute;left:5px;top:5px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:rgba(11,30,51,.85);color:#f4d9b4;font-size:11px;font-weight:700;display:grid;place-items:center;line-height:1;z-index:2}
+#extract-preview .document-thumb .nx-rot-badge{position:absolute;right:5px;top:5px;padding:2px 6px;border-radius:9px;background:#e2a45f;color:#0b1e33;font-size:10.5px;font-weight:800;line-height:1.2;z-index:2}
+#extract-preview .document-thumb .nx-thumb-rot{position:absolute;left:0;right:0;bottom:4px;display:flex;justify-content:center;gap:6px;z-index:2;opacity:.0;transition:opacity .15s}
+#extract-preview .document-thumb:hover .nx-thumb-rot,#extract-preview .document-thumb:focus-within .nx-thumb-rot,#extract-preview .document-thumb.selected .nx-thumb-rot{opacity:1}
+#extract-preview .document-thumb .nx-thumb-rot span{width:24px;height:24px;border-radius:50%;background:rgba(11,30,51,.9);border:1px solid #e2a45f;color:#f4d9b4;font-size:14px;display:grid;place-items:center;cursor:pointer;line-height:1}
+#extract-preview .document-thumb .nx-thumb-rot span:hover{background:#e2a45f;color:#0b1e33}
+.nx-rot-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:10px 0 0}
+.nx-rot-bar button{padding:6px 12px;font-size:12.5px;border-radius:8px;min-height:0}
+.nx-rot-bar .nx-rot-sum{flex:1 1 260px;font-size:12.5px;color:#c3d1de}
+#extract-preview .document-thumb canvas{max-width:72px!important;max-height:96px!important}
+#extract-preview .document-thumb{padding:4px!important}
+#extract-preview .document-thumbnails{gap:10px!important}
+
+/* v92: cuadro de información de la persona elegida en «Equipo» (motivo, legajo, fechas, datos del registro) */
+#absence-backdrop .absence-roster .nx-person-info{display:grid;gap:10px;margin:-2px 0 4px;padding:12px 14px 13px;border:1px solid rgba(226,164,95,.5);border-top:0;border-radius:0 0 10px 10px;background:rgba(226,164,95,.07)}
+#absence-backdrop .absence-roster .absence-person[aria-expanded="true"]{border-bottom-left-radius:0;border-bottom-right-radius:0}
+#absence-backdrop .absence-roster .nx-pi-rec{display:grid;gap:7px;padding-top:9px;border-top:1px solid var(--line)}
+#absence-backdrop .absence-roster .nx-pi-rec:first-child{padding-top:0;border-top:0}
+#absence-backdrop .absence-roster .nx-pi-rec h4{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 10px;margin:0;color:var(--amber2);font-size:13px;font-weight:700;line-height:1.3}
+#absence-backdrop .absence-roster .nx-pi-rec h4 small{color:var(--txt);font-size:11.5px;font-weight:600}
+#absence-backdrop .absence-roster .nx-pi-rec dl{display:grid;grid-template-columns:minmax(96px,max-content) minmax(0,1fr);gap:5px 12px;margin:0}
+#absence-backdrop .absence-roster .nx-pi-rec dt{color:var(--amber);font-size:11.5px;font-weight:700;line-height:1.4}
+#absence-backdrop .absence-roster .nx-pi-rec dd{margin:0;color:#e4ecf2;font-size:12.5px;line-height:1.4;overflow-wrap:anywhere}
+@media(max-width:520px){#absence-backdrop .absence-roster .nx-pi-rec dl{grid-template-columns:1fr;gap:1px}#absence-backdrop .absence-roster .nx-pi-rec dd{margin-bottom:5px}}
+
+/* v92: la vista previa de la oferta se ve entera (se achica para entrar en la ventana), sin recorte ni barra interna */
+.offer-preview-stage{max-height:none!important;overflow:visible!important}
+
+/* v92: «Cálculos y análisis» — los 8 cuadros (Antigüedad, Vacaciones, Ausentismo, Liquidar sueldos, Análisis de datos,
+   Gráficos recomendados, Guía de gráficos y Despidos) se abren con EXACTAMENTE el mismo tamaño: el más grande que entra
+   en la ventana, centrado y con el mismo margen en todos. El contenido se desplaza adentro si no entra. */
+.action-dialog.nx-calc-dialog,.action-dialog.nx-calc-dialog.nx-wide,.action-dialog.nx-calc-dialog.nx-guide-dialog{
+ box-sizing:border-box!important;width:min(1400px,calc(100vw - 40px))!important;max-width:calc(100vw - 40px)!important;
+ height:calc(100vh - 36px)!important;max-height:calc(100vh - 36px)!important;min-height:0!important;padding:30px 44px 34px!important;overflow:auto!important}
+@supports (height:100dvh){.action-dialog.nx-calc-dialog,.action-dialog.nx-calc-dialog.nx-wide,.action-dialog.nx-calc-dialog.nx-guide-dialog{height:calc(100dvh - 36px)!important;max-height:calc(100dvh - 36px)!important}}
+@media(max-width:900px){.action-dialog.nx-calc-dialog,.action-dialog.nx-calc-dialog.nx-wide,.action-dialog.nx-calc-dialog.nx-guide-dialog{width:calc(100vw - 20px)!important;max-width:calc(100vw - 20px)!important;height:calc(100vh - 20px)!important;max-height:calc(100vh - 20px)!important;padding:22px 18px 26px!important}}
+@media(max-width:900px){@supports (height:100dvh){.action-dialog.nx-calc-dialog,.action-dialog.nx-calc-dialog.nx-wide,.action-dialog.nx-calc-dialog.nx-guide-dialog{height:calc(100dvh - 20px)!important;max-height:calc(100dvh - 20px)!important}}}
+.action-dialog.nx-calc-dialog #action-title,.action-dialog.nx-calc-dialog.nx-guide-dialog #action-title{font-size:28px!important}
+.action-dialog.nx-calc-dialog .nx-intro,.action-dialog.nx-calc-dialog.nx-guide-dialog .nx-intro{font-size:15px!important}
+@media(max-width:900px){.action-dialog.nx-calc-dialog #action-title,.action-dialog.nx-calc-dialog.nx-guide-dialog #action-title{font-size:23px!important}}
 </style>
 <script>/* compatibilidad */
 (function(){try{
@@ -3461,14 +3518,14 @@ B('¿Qué beneficio valorabas más?'),B('¿Qué beneficio faltaba?'),B('¿La ofe
       const op = document.getElementById('file-operation').value;
       const host = document.getElementById('operation-fields');
       document.getElementById('extract-preview-wrap').style.display = 'block';
-      document.getElementById('preview-label').textContent = op === 'rotate' ? 'Seleccioná las páginas y revisá el giro' : op === 'watermark' ? 'Vista previa del documento y la marca de agua' : op === 'compress' ? 'Vista previa del archivo comprimido' : op === 'merge' ? 'Vista previa de los archivos en el orden de unión' : op === 'convert' ? 'Vista previa ampliada del archivo para convertir' : 'Vista previa de páginas';
+      document.getElementById('preview-label').textContent = op === 'rotate' ? 'Girá cada página por separado' : op === 'watermark' ? 'Vista previa del documento y la marca de agua' : op === 'compress' ? 'Vista previa del archivo comprimido' : op === 'merge' ? 'Vista previa de los archivos en el orden de unión' : op === 'convert' ? 'Vista previa ampliada del archivo para convertir' : 'Vista previa de páginas';
       if (op === 'merge') host.innerHTML = '<p>Uní cualquier combinación de PDF, imágenes (PNG, JPG, WEBP, GIF, BMP) y archivos de texto (TXT, CSV, JSON, MD). Si mezclás formatos, el resultado es un único PDF.</p>';
       if (op === 'compress') host.innerHTML = '<p id="compress-description">Comprimí un archivo al tamaño y calidad elegidos.</p><div id="compress-image-options"><div class="dimension-fields"><label class="workspace-label">Ancho máximo (px)<input class="workspace-control" id="compress-width" type="number" min="200" max="5000" value="1200"></label><label class="workspace-label">Alto máximo (px)<input class="workspace-control" id="compress-height" type="number" min="200" max="7000" value="1600"></label></div><label class="workspace-label" style="margin-top:12px">Calidad de imagen <input class="workspace-control" id="compress-quality" type="range" min="30" max="95" value="72"></label></div><p id="compress-text-note" style="display:none">TXT y CSV se descargan sin cambios para conservar su formato.</p>';
       if (op === 'convert') { host.innerHTML = '<div class="operation-row"><label class="workspace-label">Formato del archivo<select class="workspace-control" id="conversion-source"></select></label><label class="workspace-label">Convertir a<select class="workspace-control" id="conversion-target"></select></label></div><p id="conversion-hint" style="margin:10px 0 0;color:#627586;font-size:11px">Elegí el formato al que querés convertir el archivo.</p>'; updateConversionFormats(); }
       if (op === 'extract') host.innerHTML = '<label class="workspace-label">Páginas a extraer<input class="workspace-control" id="extract-pages" type="text" placeholder="Hacé clic en cada página o indicá 1, 3-5"></label><p style="margin:9px 0 0;color:#627586;font-size:11px">Hacé clic en cada página de la vista previa para seleccionarla. Podés elegir varias y volver a hacer clic para quitar una. Los demás formatos se descargan sin cambios.</p>';
-      if (op === 'rotate') { host.innerHTML = '<div id="rotate-upload-slot"></div><p style="margin:10px 0 0;color:#627586;font-size:11px">Elegí las páginas desde las miniaturas y usá las flechas junto al documento para ajustar el giro.</p>';host.querySelector('#rotate-upload-slot').append(workspaceUploadBlock); }
+      if (op === 'rotate') { host.innerHTML = '<div id="rotate-upload-slot"></div><p style="margin:10px 0 0;color:#627586;font-size:11px">Cada página gira por su cuenta: elegí una miniatura y usá las flechas junto al documento (o las de la miniatura). Se descarga un solo PDF con todas las páginas y sus giros.</p>';host.querySelector('#rotate-upload-slot').append(workspaceUploadBlock); }
       else if(workspaceUploadBlock&&workspaceUploadHome&&workspaceUploadBlock.parentElement!==workspaceUploadHome)workspaceUploadHome.append(workspaceUploadBlock);
-      if (op === 'watermark') host.innerHTML = '<label class="workspace-label">Texto<input class="workspace-control" id="watermark-text" type="text" placeholder="Ej.: CONFIDENCIAL"></label><label class="workspace-label" style="display:flex;align-items:center;gap:8px;margin-top:10px"><input id="watermark-use-logo" type="checkbox" style="width:auto"> Usar el logo de NexoLab como marca de agua</label><div class="operation-row"><label class="workspace-label">Fuente<select class="workspace-control" id="watermark-font"><option value="Helvetica">Helvetica</option><option value="HelveticaBold">Helvetica Bold</option><option value="HelveticaOblique">Helvetica Oblique</option><option value="TimesRoman">Times New Roman</option><option value="TimesRomanBold">Times New Roman Bold</option><option value="TimesRomanItalic">Times New Roman Italic</option><option value="Courier">Courier</option><option value="CourierBold">Courier Bold</option><option value="Symbol">Symbol</option><option value="ZapfDingbats">Zapf Dingbats</option></select></label><label class="workspace-label">Color<input class="workspace-control" id="watermark-color" type="color" value="#627586"></label></div><label class="workspace-label" style="margin-top:11px">Ubicación<select class="workspace-control" id="watermark-position"><option value="center">Centro</option><option value="top-left">Arriba a la izquierda</option><option value="top-center">Arriba al centro</option><option value="top-right">Arriba a la derecha</option><option value="middle-left">Centro a la izquierda</option><option value="middle-right">Centro a la derecha</option><option value="bottom-left">Abajo a la izquierda</option><option value="bottom-center">Abajo al centro</option><option value="bottom-right">Abajo a la derecha</option></select></label><div class="operation-row" style="margin-top:11px"><label class="workspace-label">Orientación<select class="workspace-control" id="watermark-angle"><option value="0">Horizontal</option><option value="diag">Diagonal</option></select></label><label class="workspace-label">Capa<select class="workspace-control" id="watermark-layer"><option value="over">Sobre el contenido</option><option value="under">Detrás del contenido</option></select></label></div><small class="wm-note">Detrás del contenido: el texto y las partes oscuras quedan por encima de la marca, que se nota sobre las zonas claras.</small>';
+      if (op === 'watermark') host.innerHTML = '<label class="workspace-label">Texto<input class="workspace-control" id="watermark-text" type="text" placeholder="Ej.: CONFIDENCIAL"></label><label class="workspace-label" style="display:flex;align-items:center;gap:8px;margin-top:10px"><input id="watermark-use-logo" type="checkbox" style="width:auto"> Usar el logo de NexoLab como marca de agua</label><div class="operation-row"><label class="workspace-label">Fuente<select class="workspace-control" id="watermark-font"><option value="Helvetica">Helvetica</option><option value="HelveticaBold">Helvetica Bold</option><option value="HelveticaOblique">Helvetica Oblique</option><option value="TimesRoman">Times New Roman</option><option value="TimesRomanBold">Times New Roman Bold</option><option value="TimesRomanItalic">Times New Roman Italic</option><option value="Courier">Courier</option><option value="CourierBold">Courier Bold</option><option value="Symbol">Symbol</option><option value="ZapfDingbats">Zapf Dingbats</option></select></label><label class="workspace-label">Color<input class="workspace-control" id="watermark-color" type="color" value="#627586"></label></div><label class="workspace-label" style="margin-top:11px">Ubicación<select class="workspace-control" id="watermark-position"><option value="center">Centro</option><option value="top-left">Arriba a la izquierda</option><option value="top-center">Arriba al centro</option><option value="top-right">Arriba a la derecha</option><option value="middle-left">Centro a la izquierda</option><option value="middle-right">Centro a la derecha</option><option value="bottom-left">Abajo a la izquierda</option><option value="bottom-center">Abajo al centro</option><option value="bottom-right">Abajo a la derecha</option></select></label><div class="operation-row" style="margin-top:11px"><label class="workspace-label">Orientación<select class="workspace-control" id="watermark-angle"><option value="0">Horizontal</option><option value="vertical">Vertical</option><option value="diag">Diagonal</option></select></label><label class="workspace-label">Capa<select class="workspace-control" id="watermark-layer"><option value="over">Sobre el contenido</option><option value="under">Detrás del contenido</option></select></label></div><small class="wm-note">Detrás del contenido: el texto y las partes oscuras quedan por encima de la marca, que se nota sobre las zonas claras.</small>';
       if (op === 'watermark') host.insertAdjacentHTML('beforeend','<label class="workspace-label" style="margin-top:11px">Tamaño de fuente<select class="workspace-control" id="watermark-size"><option value="12">12</option><option value="16">16</option><option value="20">20</option><option value="24">24</option><option value="32" selected>32</option><option value="40">40</option><option value="48">48</option><option value="64">64</option><option value="72">72</option></select><small style="display:block;margin-top:4px;color:#627586">Se aplica en puntos para PDF y en píxeles para imágenes.</small></label>');
       if (op === 'watermark') host.insertAdjacentHTML('beforeend','<label class="workspace-label" style="margin-top:11px">Transparencia <span id="watermark-opacity-value">42%</span><input class="workspace-control" id="watermark-opacity" type="range" min="0" max="100" value="42"></label>');
       if (op === 'watermark') {['watermark-text','watermark-font','watermark-size','watermark-color','watermark-position','watermark-angle','watermark-layer','watermark-use-logo'].forEach(id=>host.querySelector(`#${id}`).addEventListener('input',updateOperationPreview));host.querySelector('#watermark-opacity').addEventListener('input',event=>updateWatermarkOpacityPreview(event.target.value));}
@@ -3527,7 +3584,7 @@ B('¿Qué beneficio valorabas más?'),B('¿Qué beneficio faltaba?'),B('¿La ofe
         const file=workspaceFiles[0],type=fileFormat(file);
         if(op==='compress'&&['pdf','png','jpg','webp'].includes(type)){await showCompressedPreview(file,renderId);return;}
         await renderDocumentStage(file,op);
-        if(meta)meta.textContent=op==='rotate'?'Vista previa centrada · seleccioná páginas y ajustá el giro con las flechas.':op==='watermark'?'Vista previa ampliada · los cambios se reflejan en tiempo real.':op==='compress'?'Vista previa centrada del archivo seleccionado.':op==='extract'?extractSelectionSummary():`Vista previa ampliada de ${file.name}.`;
+        if(meta)meta.textContent=op==='rotate'?'Vista previa centrada · girá cada página por separado con las flechas.':op==='watermark'?'Vista previa ampliada · los cambios se reflejan en tiempo real.':op==='compress'?'Vista previa centrada del archivo seleccionado.':op==='extract'?extractSelectionSummary():`Vista previa ampliada de ${file.name}.`;
       }catch(error){strip.textContent='No se pudo mostrar la vista previa del archivo.';}
     }    function addPreviewCard(canvas,labelText,options={}) {
       const strip=document.getElementById('extract-preview');const box=document.createElement('div');box.className=`preview-page${options.selectable?' selectable':''}${options.selected?' selected':''}`;
@@ -3578,7 +3635,7 @@ B('¿Qué beneficio valorabas más?'),B('¿Qué beneficio faltaba?'),B('¿La ofe
       viewer.append(frame);const caption=document.createElement('div');caption.className='workspace-status';caption.style.marginTop='8px';caption.textContent=`${file.name}${type==='pdf'?` · página ${active} de ${pageCount}`:''}`;viewer.append(caption);stage.append(viewer);
       if(isRotate){const right=document.createElement('div');right.className='document-stage-side';right.innerHTML='<button class="rotate-button" type="button" aria-label="Rotar a la derecha">↷</button>';stage.append(right);right.firstChild.addEventListener('click',()=>changeRotation(90));}
       if(rid!==workspacePreviewRenderId)return;strip.append(stage);if(isRotate){stage.querySelectorAll('.document-stage-side').forEach(s=>s.remove());const zb=viewer.querySelector('.document-zoom');const mk=(t,l,d)=>{const b=document.createElement('button');b.type='button';b.className='rotate-button';b.textContent=t;b.setAttribute('aria-label',l);b.addEventListener('click',()=>changeRotation(d));return b;};zb.prepend(mk('↶','Rotar a la izquierda',-90));zb.append(mk('↷','Rotar a la derecha',90));}fitDocumentPreview();requestAnimationFrame(fitDocumentPreview);
-      if(type==='pdf'&&pageCount>1){const thumbs=document.createElement('div');thumbs.className='document-thumbnails';for(let n=1;n<=pageCount;n++){if(rid!==workspacePreviewRenderId)return;const page=await sourcePdf.getPage(n),v=page.getViewport({scale:.15}),thumb=document.createElement('canvas');thumb.width=Math.ceil(v.width);thumb.height=Math.ceil(v.height);await page.render({canvasContext:thumb.getContext('2d'),viewport:v}).promise;const button=document.createElement('button');button.className=`document-thumb${(isRotate||isExtract)&&window.previewSelectedPages.has(n)?' selected':''}`;button.type='button';button.title=isRotate||isExtract?`Seleccionar página ${n}`:`Ver página ${n}`;button.append(thumb);button.addEventListener('click',()=>{if(isRotate||isExtract){if(window.previewSelectedPages.has(n))window.previewSelectedPages.delete(n);else window.previewSelectedPages.add(n);if(isExtract){const field=document.getElementById('extract-pages');if(field)field.value=[...window.previewSelectedPages].sort((a,b)=>a-b).join(', ');}}workspaceActivePage=n;renderOperationPreview();});thumbs.append(button);}if(rid!==workspacePreviewRenderId)return;strip.append(thumbs);NX.rotUi();}
+      if(type==='pdf'&&pageCount>1){const thumbs=document.createElement('div');thumbs.className='document-thumbnails';for(let n=1;n<=pageCount;n++){if(rid!==workspacePreviewRenderId)return;const page=await sourcePdf.getPage(n),v=page.getViewport({scale:.15}),thumb=document.createElement('canvas');thumb.width=Math.ceil(v.width);thumb.height=Math.ceil(v.height);await page.render({canvasContext:thumb.getContext('2d'),viewport:v}).promise;const button=document.createElement('button');button.className=`document-thumb${isRotate?(n===workspaceActivePage?' selected':''):(isExtract&&window.previewSelectedPages.has(n)?' selected':'')}`;button.type='button';button.title=isRotate?`Ver y girar la página ${n}`:isExtract?`Seleccionar página ${n}`:`Ver página ${n}`;button.append(thumb);button.addEventListener('click',()=>{if(isRotate||isExtract){if(!isRotate){if(window.previewSelectedPages.has(n))window.previewSelectedPages.delete(n);else window.previewSelectedPages.add(n);}if(isExtract){const field=document.getElementById('extract-pages');if(field)field.value=[...window.previewSelectedPages].sort((a,b)=>a-b).join(', ');}}workspaceActivePage=n;renderOperationPreview();});thumbs.append(button);}if(rid!==workspacePreviewRenderId)return;strip.append(thumbs);NX.rotUi();}
     }
     function extractSelectionSummary(){const selected=[...(window.previewSelectedPages||[])].sort((a,b)=>a-b);return selected.length?`Páginas seleccionadas (${selected.length}): ${selected.join(', ')}.`:'No hay páginas seleccionadas; al procesar se incluirán todas las páginas.';}
     async function renderExtractPageRail(strip,pdf,pageCount){
@@ -3702,7 +3759,7 @@ B('¿Qué beneficio valorabas más?'),B('¿Qué beneficio faltaba?'),B('¿La ofe
       return {blob:new Blob([await file.arrayBuffer()],{type:mime}),name:`${file.name.replace(/\.[^.]+$/,'')}-original.${type}`};
     }
     async function rotateImageFile(file){
-      const image=await loadImage(file),angle=((workspaceRotation%360)+360)%360,sideways=angle===90||angle===270,canvas=document.createElement('canvas');canvas.width=sideways?image.height:image.width;canvas.height=sideways?image.width:image.height;
+      const image=await loadImage(file),angle=NX.rotGet(1),sideways=angle===90||angle===270,canvas=document.createElement('canvas');canvas.width=sideways?image.height:image.width;canvas.height=sideways?image.width:image.height;
       const ctx=canvas.getContext('2d');ctx.translate(canvas.width/2,canvas.height/2);ctx.rotate(angle*Math.PI/180);ctx.drawImage(image,-image.width/2,-image.height/2);
       const type=fileFormat(file),mime=type==='jpg'?'image/jpeg':`image/${type}`,blob=await new Promise(resolve=>canvas.toBlob(resolve,mime,.94));if(!blob||blob.type!==mime)throw new Error('El navegador no pudo rotar la imagen conservando su formato.');return blob;
     }    async function pdfPagesToCanvas(file, width, height, quality) {
@@ -6481,9 +6538,9 @@ NX.demoFill=function(f,vals){Object.entries(vals).forEach(([k,v])=>{const el=f.q
 NX.demoLink=function(kind,run){const wrapName='open'+kind,orig=NX[wrapName];if(typeof orig!=='function')return;NX[wrapName]=function(){const res=orig.apply(this,arguments);try{const f=document.getElementById('action-fields')||document;const intro=f.querySelector('.nx-intro');if(intro&&!intro.querySelector('.nx-link')){const b=document.createElement('button');b.type='button';b.className='nx-link';b.id='nx-demo-'+kind;b.textContent='Cargar un ejemplo';intro.appendChild(document.createTextNode(' '));intro.appendChild(b);b.addEventListener('click',()=>{try{run(f,b);}catch(e){console.error(e);}});}}catch(e){console.error(e);}return res;};};
 NX.demoFile=function(f){const inp=f.querySelector('[name="nx-file"]');if(!inp)return;const dt=new DataTransfer();dt.items.add(new File([NX.demoCsv()],'ejemplo-personal.csv',{type:'text/csv'}));inp.files=dt.files;inp.dispatchEvent(new Event('change',{bubbles:true}));};
 const today=NX.iso(new Date());
-NX.demoLink('Seniority',f=>NX.demoFill(f,{'sn-hire':'2018-03-12','sn-asof':today,'sn-basic':'1350000','sn-type':'pct','sn-val':'1'}));
-NX.demoLink('Vacation',f=>NX.demoFill(f,{'vc-hire':'2019-03-01','vc-year':String(new Date().getFullYear()),'vc-rem':'1350000','vc-mode':'mensual','vc-regime':'lct','vc-half':'yes'}));
-NX.demoLink('Severance',f=>NX.demoFill(f,{'sn-causa':'sc','sn-hire':'2019-03-01','sn-end':today,'sn-basic':'1350000','sn-best':'1500000'}));
+NX.demoLink('Seniority',f=>{NX.demoFill(f,{'sn-hire':'2018-03-12','sn-asof':today,'sn-basic':'1350000','sn-type':'pct','sn-val':'1'});const g=f.querySelector('#sn-go');if(g)g.click();});
+NX.demoLink('Vacation',f=>{NX.demoFill(f,{'vc-hire':'2019-03-01','vc-year':String(new Date().getFullYear()),'vc-rem':'1350000','vc-mode':'mensual','vc-regime':'lct','vc-half':'yes'});const g=f.querySelector('#vc-go');if(g)g.click();});
+NX.demoLink('Severance',f=>{NX.demoFill(f,{'sn-causa':'sc','sn-hire':'2019-03-01','sn-end':today,'sn-basic':'1350000','sn-best':'1500000'});const g=f.querySelector('#sn-go');if(g)g.click();});
 NX.demoLink('Charts',f=>NX.demoFile(f));
 NX.demoLink('Kpis',f=>NX.demoFile(f));
 NX.demoLink('Absence',(f)=>{try{if(typeof ensureCalendarDemoRecords==='function')ensureCalendarDemoRecords();}catch(e){}NX.openAbsence();});
@@ -6835,7 +6892,7 @@ document.addEventListener('click',function(e){const b=e.target.closest&&e.target
  load();});
 
 /* ===== Diagnóstico: versión visible y aviso de errores ===== */
-NX.VERSION='v91';
+NX.VERSION='v92';
 (function(){const b=document.createElement('div');b.id='nx-version';b.textContent='NexoLab '+NX.VERSION;b.title='Versión del archivo que estás usando';document.body.append(b);
  let n=0;const show=m=>{if(n++>4)return;const t=document.createElement('div');t.className='nx-error-toast';t.setAttribute('role','alert');t.innerHTML='<strong>Algo falló en esta acción.</strong> '+String(m||'Error desconocido').replace(/[<&]/g,c=>c==='<'?'&lt;':'&amp;').slice(0,220)+' <button type="button" aria-label="Cerrar">×</button>';t.querySelector('button').onclick=()=>t.remove();document.body.append(t);setTimeout(()=>t.remove(),20000);};
  window.addEventListener('error',e=>show(e.message));window.addEventListener('unhandledrejection',e=>show(e.reason&&e.reason.message?e.reason.message:e.reason));})();
@@ -6910,6 +6967,26 @@ NX.offerNorm=async function(file){
 async function offerImageBytes(file){const n=await NX.offerNorm(file);return n&&n.bytes?{bytes:n.bytes,extension:'png',contentType:'image/png'}:null;}
 NX.offerLogoWhy=function(e){return e==='imagen'?'el archivo no es una imagen válida':e;};
 NX.offerLogoOk=async function(file){const n=await NX.offerNorm(file);return n&&n.img?n:null;};
+/* Logo para el encabezado azul: si el logo no tiene fondo (PNG transparente) y es oscuro, se aclaran sus tonos oscuros
+   (manteniendo el matiz) para que se lea directo sobre el azul, SIN recuadro blanco detrás. Word, PDF e imagen usan esta versión;
+   Excel conserva el original porque su hoja es blanca. */
+NX._logoLight=new WeakMap();
+NX.offerLogoHeader=async function(file){
+ const n=await NX.offerLogoOk(file);if(!n)return null;
+ if(!(n.transparent&&n.lum<.55))return n;
+ if(NX._logoLight.has(file))return NX._logoLight.get(file);
+ const p=(async()=>{try{
+  const c=document.createElement('canvas');c.width=n.w;c.height=n.h;const x=c.getContext('2d');x.drawImage(n.img,0,0);
+  const im=x.getImageData(0,0,n.w,n.h),d=im.data,TH=.26;
+  for(let i=0;i<d.length;i+=4){if(!d[i+3])continue;
+   const L=(Math.max(d[i],d[i+1],d[i+2])+Math.min(d[i],d[i+1],d[i+2]))/510;if(L>=TH)continue;
+   const k=Math.pow(Math.sqrt(Math.min(1,(TH-L)/TH)),.4);
+   d[i]=Math.round(d[i]+(255-d[i])*k);d[i+1]=Math.round(d[i+1]+(255-d[i+1])*k);d[i+2]=Math.round(d[i+2]+(255-d[i+2])*k);}
+  x.putImageData(im,0,0);
+  const blob=await new Promise(r=>c.toBlob(r,'image/png'));
+  return Object.assign({},n,{img:c,bytes:await blob.arrayBuffer(),lum:.9,lightened:true});
+ }catch(e){return n;}})();
+ NX._logoLight.set(file,p);return p;};
 
 /* ---- Contenido: bloques a partir del texto que arma el formulario ---- */
 NX.offerLabel=function(t,strict){const c=t.indexOf(':');if(c>0&&c<=44&&t.length>c+2&&!/^https?/i.test(t)&&!(strict&&!/^(Empresa|Lugar de trabajo):/i.test(t)))return{l:t.slice(0,c+1),t:t.slice(c+1).trim()};return{l:'',t};};
@@ -6986,7 +7063,7 @@ NX.offerPlan=function(o){
  const social=Math.max(o.W,o.H)<=576.5,target=social?.021:.0185,min=Math.min(o.W,o.H);let pl=null;
  for(const cp of [0,.25,.5,.75,1]){pl=NX.offerPlan1(o,cp);if(pl.fits&&pl.eqPt/min>=target)break;}
  return pl;};
-NX.offerFitNote=function(pl,style){if(!pl)return'';if(pl.logoDark)return'El logo no tiene fondo y es de colores oscuros: sobre el encabezado azul se ve poco. Probá con una versión clara del logo (o con fondo) para que se lea bien.';if(pl.eqPt/Math.min(pl.W,pl.H)<.0118)return'Con este formato el texto queda muy pequeño: elegí una dimensión más grande (por ejemplo A4) o acortá el contenido.';if(!pl.auto&&pl.sc<.99)return'El tamaño de letra elegido no entra en este formato: se redujo para que la oferta ocupe una sola página.';return'';};
+NX.offerFitNote=function(pl,style){if(!pl)return'';if(pl.logoDark)return'El logo no tiene fondo y es de colores oscuros: sobre el encabezado azul se ve poco. Probá con una versión clara del logo (o con fondo) para que se lea bien.';if(pl.eqPt/Math.min(pl.W,pl.H)<.0118)return'Con este formato el texto queda muy pequeño: elegí una dimensión más grande (por ejemplo A4) o acortá el contenido.';if(!pl.auto&&pl.sc<.99)return'El tamaño de letra elegido no entra en este formato: se redujo para que la oferta ocupe una sola página.';if(pl.logoLight)return'El logo no tiene fondo y tiene colores oscuros: se aclararon para que se lea sobre el encabezado azul.';return'';};
 NX.offerM=function(d){return Math.min(d.width*.07,d.height*.075);};
 NX.offerBase=function(style,d){return(Number(style.size)||14)*Math.min(d.width/595.28,d.height/841.89);};
 /* Dibujo común: api = {rect,text,img,emoji,measure,frame} en unidades de página (pt); y se mide desde la parte superior */
@@ -7009,9 +7086,9 @@ NX.offerDraw=function(pl,api,style){
 NX.offerCanvas=async function(text,logo,style,px){
  const d=offerDimensions[style.dimension]||offerDimensions.a4,W=d.width,H=d.height,k=px/W,canvas=document.createElement('canvas'),fam=style.font||'Arial';
  canvas.width=Math.round(px);canvas.height=(Math.round(px)===d.pixelWidth)?d.pixelHeight:Math.round(H*k);const ctx=canvas.getContext('2d');
- const lg=await NX.offerLogoOk(logo),blocks=NX.offerBlocks(text),F=(b,s)=>`${b?'700 ':''}${s*k}px "${fam}", Arial, sans-serif`;
+ const lg=await NX.offerLogoHeader(logo),blocks=NX.offerBlocks(text),F=(b,s)=>`${b?'700 ':''}${s*k}px "${fam}", Arial, sans-serif`;
  const measure=(t,b,s)=>{ctx.font=F(b,s);return ctx.measureText(t).width/k;};
- const pl=NX.offerPlan({W,H,M:NX.offerM(d),blocks,size:NX.offerBase(style,d),measure,logoAspect:lg?lg.w/lg.h:0,auto:!!style.auto});pl.logoTr=!!(lg&&lg.transparent&&lg.lum>=.55);pl.logoDark=false;
+ const pl=NX.offerPlan({W,H,M:NX.offerM(d),blocks,size:NX.offerBase(style,d),measure,logoAspect:lg?lg.w/lg.h:0,auto:!!style.auto});pl.logoTr=!!(lg&&lg.transparent&&lg.lum>=.55);pl.logoDark=false;pl.logoLight=!!(lg&&lg.lightened);
  ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.textBaseline='alphabetic';ctx.textAlign='left';
  const api={measure,rect:(x,y,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(x*k,y*k,w*k,h*k);},
   text:(t,x,y,s,b,c,e)=>{ctx.fillStyle=c;ctx.font=F(b,s);let xx=x;if(e){ctx.font=`${s*k}px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif`;ctx.fillText(e,xx*k,y*k);xx+=s*1.3;ctx.font=F(b,s);}ctx.fillText(t,xx*k,y*k);},
@@ -7030,7 +7107,7 @@ async function makeOfferPdf(text,logo,style={}){
  const P=window.PDFLib||await ensureBrowserLibrary('PDFLib',['https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js','https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js','https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js']);
  const d=offerDimensions[style.dimension]||offerDimensions.a4,W=d.width,H=d.height,doc=await P.PDFDocument.create(),serif=(style.font==='Georgia'||style.font==='Times New Roman');
  const reg=await doc.embedFont(serif?P.StandardFonts.TimesRoman:P.StandardFonts.Helvetica),bold=await doc.embedFont(serif?P.StandardFonts.TimesRomanBold:P.StandardFonts.HelveticaBold);
- const lg=await NX.offerLogoOk(logo),emb=lg?await doc.embedPng(lg.bytes):null,clean=NX.offerBlocks(text).map(b=>Object.assign({},b,{t:b.t==null?b.t:offerPdfClean(b.t),l:b.l==null?b.l:offerPdfClean(b.l)}));
+ const lg=await NX.offerLogoHeader(logo),emb=lg?await doc.embedPng(lg.bytes):null,clean=NX.offerBlocks(text).map(b=>Object.assign({},b,{t:b.t==null?b.t:offerPdfClean(b.t),l:b.l==null?b.l:offerPdfClean(b.l)}));
  const hex=c=>{const h=(c||'#000000').replace('#','');return P.rgb(parseInt(h.slice(0,2),16)/255,parseInt(h.slice(2,4),16)/255,parseInt(h.slice(4,6),16)/255);};
  const measure=(t,b,s)=>(b?bold:reg).widthOfTextAtSize(String(t),s);
  const pl=NX.offerPlan({W,H,M:NX.offerM(d),blocks:clean,size:NX.offerBase(style,d),measure,logoAspect:lg?lg.w/lg.h:0,auto:!!style.auto});pl.logoTr=!!(lg&&lg.transparent&&lg.lum>=.55);pl.logoDark=false;
@@ -7051,7 +7128,7 @@ async function makeOfferPdf(text,logo,style={}){
 async function makeOfferDocx(text,logo,style={}){
  const Z=window.JSZip||await ensureZipLibrary(),zip=new Z(),d=offerDimensions[style.dimension||'a4']||offerDimensions.a4,W=d.width,H=d.height,M=Math.max(NX.offerM(d),28),fam=style.font||'Arial';
  const cv=document.createElement('canvas'),ctx=cv.getContext('2d'),measure=(t,b,s)=>{ctx.font=`${b?'700 ':''}${s*4}px "${fam}", Arial, sans-serif`;return ctx.measureText(t).width/4;};
- const lg=await NX.offerLogoOk(logo),blocks=NX.offerBlocks(text);
+ const lg=await NX.offerLogoHeader(logo),blocks=NX.offerBlocks(text);
  const pl=NX.offerPlan({W,H,M,blocks,size:NX.offerBase(style,d),measure,logoAspect:lg?lg.w/lg.h:0,auto:!!style.auto,docx:true,safety:.9,bandTop:M,bottom:M});
  const tw=v=>Math.round(v*20),sz=s=>Math.max(8,Math.round(s*2)),fe=offerXmlEscape(fam),ink=(style.color||'#14283d').replace('#','').toUpperCase(),al=style.align==='center'?'center':style.align==='right'?'right':'left';
  const run=(t,{b=false,s=10,c=ink,emoji=false}={})=>{const f=emoji?'Segoe UI Emoji':fam;return`<w:r><w:rPr><w:rFonts w:ascii="${offerXmlEscape(f)}" w:hAnsi="${offerXmlEscape(f)}" w:cs="${offerXmlEscape(f)}"/>${b?'<w:b/>':''}<w:color w:val="${c}"/><w:sz w:val="${sz(s)}"/></w:rPr><w:t xml:space="preserve">${offerXmlEscape(t)}</w:t></w:r>`;};
@@ -7142,7 +7219,7 @@ function showGeneratedOffer(form,result,text,logo){
  const apply=async()=>{const my=++token;
   const updated=emojis.checked?(emojiVariant||addRandomOfferEmojis(form.offerBaseText)):form.offerBaseText;
   style.align=align.value;style.dimension=dimension.value;style.font=font.value;style.auto=true;style.size=14;style.color=color.value;form.offerStyle={...style};form.offerDocumentText=updated;color.style.setProperty('--offer-color',style.color);
-  const d=offerDimensions[style.dimension]||offerDimensions.a4,avail=Math.max(220,(result.clientWidth||520)-12),w=Math.min(avail,680,Math.round(700*d.width/d.height));
+  const d=offerDimensions[style.dimension]||offerDimensions.a4,avail=Math.max(220,(result.clientWidth||520)-12),maxH=Math.max(340,(window.innerHeight||800)-170),w=Math.max(180,Math.min(avail,680,Math.round(700*d.width/d.height),Math.round(maxH*d.width/d.height)));
   sheet.style.width=w+'px';
   try{const r=await NX.offerCanvas(updated,logo,style,Math.min(1400,Math.round(w*2)));if(my!==token)return;r.canvas.className='offer-preview-canvas';r.canvas.setAttribute('role','img');r.canvas.setAttribute('aria-label','Vista previa de la oferta');sheet.replaceChildren(r.canvas);form.offerPlan=r.plan;
    const fitMsg=NX.offerFitNote(r.plan,style),logoMsg=r.logoError?`No se pudo leer el logo: ${NX.offerLogoWhy(r.logoError)}. Adjuntá una imagen PNG, JPG, WebP o SVG.`:'';note.textContent=[fitMsg,logoMsg].filter(Boolean).join(' ');note.hidden=!note.textContent;note.classList.toggle('warn',!!note.textContent);}
@@ -7150,6 +7227,8 @@ function showGeneratedOffer(form,result,text,logo){
  const later=()=>{clearTimeout(timer);timer=setTimeout(apply,60);};
  emojis.addEventListener('change',()=>{emojiVariant=emojis.checked?addRandomOfferEmojis(form.offerBaseText):'';apply();});
  [align,font,color,dimension].forEach(c=>{c.addEventListener('input',later);c.addEventListener('change',later);});
+ /* la vista previa se ajusta al alto de la ventana: nunca queda cortada ni con barra interna */
+ let rz=0;window.addEventListener('resize',()=>{if(!sheet.isConnected)return;clearTimeout(rz);rz=setTimeout(apply,150);});
  result.querySelectorAll('[data-offer-format]').forEach(button=>button.addEventListener('click',async()=>{const st=result.querySelector('#offer-download-status');button.disabled=true;st.textContent='Preparando descarga…';try{await downloadGeneratedOffer(button.dataset.offerFormat,form);st.textContent=`Descarga de ${button.textContent} lista.`;}catch(error){st.textContent=error.message||'No se pudo generar el archivo.';}finally{button.disabled=false;}}));
  apply();}
 
@@ -7766,7 +7845,7 @@ NX.calPlain=function(strong,text){if(!strong)return;strong.textContent=text;stro
  NX.gCount=function(rec){
   const emails=[...new Set((rec.recipients||[]).map(x=>String(x||'').trim().toLowerCase()).filter(Boolean))];
   const sent=[],queued=[],missing=[];
-  emails.forEach(e=>{const d=NX.gDel(rec,e);if(d&&d.status==='Enviada')sent.push(e);else if(d&&d.status==='Programada')queued.push(e);else missing.push(e);});
+  emails.forEach(e=>{const d=NX.gDel(rec,e);if(d&&d.status==='Enviada')sent.push(e);else if(d&&d.status==='Programada'&&!d.stalled)queued.push(e);else missing.push(e);});
   return {emails,sent,queued,missing};
  };
  NX.gMailLine=function(rec){
@@ -7790,7 +7869,7 @@ NX.calPlain=function(strong,text){if(!strong)return;strong.textContent=text;stro
    if(d&&d.legacy){rec.emailDelivery[email]={id:d.id,status:d.status,attempt:1};d=rec.emailDelivery[email];}
    if(d&&d.status==='Enviada')continue;
    if(d&&d.status==='Programada'&&d.id){
-    try{const r=await gmailJsonp('status',{id:d.id});if(r&&r.status==='Enviada'){d.status='Enviada';continue;}if(r&&(r.status==='Programada')){continue;}}catch(err){continue;}
+    try{const r=await gmailJsonp('status',{id:d.id});if(r&&r.status==='Enviada'){d.status='Enviada';d.stalled=undefined;continue;}if(r&&(r.status==='Programada')&&!d.stalled){continue;}}catch(err){if(!d.stalled)continue;}
    }
    const attempt=(Number(d&&d.attempt)||0)+1,id=`${o.prefix}-${hash(email)}${attempt>1?'-'+attempt:''}`;
    try{await gmailPost('schedule',Object.assign({id,email,fireAt:String(Date.now()+15000)},o.payload(email)));posted.push({email,id,attempt});}
@@ -7818,10 +7897,10 @@ NX.calPlain=function(strong,text){if(!strong)return;strong.textContent=text;stro
  /* Consulta el estado de lo programado y lo actualiza (devuelve true si algo cambió) */
  NX.gPoll=async function(rec){
   let changed=false;
-  for(const e of NX.gCount(rec).queued){
+  for(const e of NX.gCount(rec).emails.filter(x=>{const q=NX.gDel(rec,x);return q&&q.status==='Programada';})){
    const d=NX.gDel(rec,e);if(!d||!d.id)continue;
    try{const r=await gmailJsonp('status',{id:d.id});
-    if(r&&(r.status==='Enviada'||r.status==='Error')){rec.emailDelivery=rec.emailDelivery||{};rec.emailDelivery[e]=Object.assign({},d,{status:r.status==='Enviada'?'Enviada':'Error',legacy:undefined});changed=true;}
+    if(r&&(r.status==='Enviada'||r.status==='Error')){rec.emailDelivery=rec.emailDelivery||{};rec.emailDelivery[e]=Object.assign({},d,{status:r.status==='Enviada'?'Enviada':'Error',legacy:undefined,stalled:undefined});changed=true;}
    }catch(err){}
   }
   if(changed){rec.notifiedRecipients=NX.gCount(rec).emails.filter(e=>{const d=NX.gDel(rec,e);return d&&(d.status==='Programada'||d.status==='Enviada');});const c=NX.gCount(rec);rec.notificationStatus=c.missing.length?'No confirmado':c.queued.length?'Programado':'Enviado';}
@@ -7836,6 +7915,13 @@ NX.calPlain=function(strong,text){if(!strong)return;strong.textContent=text;stro
    const changed=await NX.gPoll(cur),c=NX.gCount(cur);
    if(changed){listOf(cur).save();if(isOpen()){renderWorkDateEvents();}}
    if(!c.queued.length){if(statusEl&&statusEl.isConnected!==false&&changed)statusEl.textContent=c.missing.length?NX.gMsg(Object.assign(c,{total:c.emails.length,error:''})):'Google confirmó el envío a '+NX.mailPlural(c.emails.length)+'.';return;}
+   /* pasó más de un minuto y Google sigue sin enviar: se avisa y se habilita reintentar / enviar desde el correo propio */
+   if(tries===16){
+    const late=c.queued.slice();late.forEach(e=>{const d=NX.gDel(cur,e);if(d){cur.emailDelivery=cur.emailDelivery||{};cur.emailDelivery[e]=Object.assign({},d,{stalled:true,legacy:undefined});}});
+    cur.notificationStatus='No confirmado';listOf(cur).save();if(isOpen())renderWorkDateEvents();
+    if(statusEl&&statusEl.isConnected!==false){statusEl.textContent='Pasó más de un minuto y Google todavía no confirmó el envío a '+late.join(', ')+'. Podés reintentarlo con «Reintentar aviso» o mandarlo ahora desde tu correo.';try{NX.offerManual(cur,statusEl);}catch(err){}}
+    return;
+   }
    if(tries>=36)return;
    setTimeout(tick,5000);
   };
@@ -8787,6 +8873,8 @@ NX.candDemoAct=function(data,act){if(act==='load'){const n=NX.candDemoLoad(data)
 /* "Detrás" se logra mezclando la marca en modo «multiplicar»: el texto y las partes oscuras del documento quedan por encima de la marca,
    y se nota sobre las zonas claras. Funciona igual en la vista previa, en PDF y en imágenes. */
 NX.WM_DEG=45;
+/* Orientación elegida → grados (antihorario): Horizontal 0°, Diagonal 45°, Vertical 90° (texto de abajo hacia arriba) */
+NX.wmDegOf=function(v){return v==='diag'?45:v==='vertical'?90:0;};
 /* Geometría de la marca girada: w,h = caja sin girar al tamaño pedido; devuelve el factor de ajuste k y el centro (cx,cy; y hacia abajo). */
 NX.wmGeom=function(W,H,w,h,pos,deg,mg){const t=deg*Math.PI/180,c=Math.abs(Math.cos(t)),s=Math.abs(Math.sin(t));let bw=w*c+h*s,bh=w*s+h*c;
  const k=Math.min(1,W*.92/bw,H*.92/bh);bw*=k;bh*=k;let cx=W/2,cy=H/2;pos=String(pos||'center');
@@ -8798,27 +8886,27 @@ NX.wmPlace=function(mark,box){const W=box.clientWidth,H=box.clientHeight;if(!W||
  mark.style.transform='none';mark.style.left='0px';mark.style.top='0px';let w,h;
  if(img){w=W*.34;const ar=mark.naturalWidth&&mark.naturalHeight?mark.naturalHeight/mark.naturalWidth:180/840;h=w*ar;}
  else{mark.style.fontSize=(n*z)+'px';w=mark.offsetWidth;h=mark.offsetHeight;}
- if(!w||!h)return;const g=NX.wmGeom(W,H,w,h,pos,NX.WM_DEG,mg);
+ if(!w||!h)return;const DEG=Number(mark.dataset.deg)||NX.WM_DEG,g=NX.wmGeom(W,H,w,h,pos,DEG,mg);
  if(img){mark.style.width=(w*g.k)+'px';mark.style.height=(h*g.k)+'px';}else mark.style.fontSize=(n*z*g.k)+'px';
- mark.style.left=g.cx+'px';mark.style.top=g.cy+'px';mark.style.transform=`translate(-50%,-50%) rotate(-${NX.WM_DEG}deg)`;};
+ mark.style.left=g.cx+'px';mark.style.top=g.cy+'px';mark.style.transform=`translate(-50%,-50%) rotate(-${DEG}deg)`;};
 NX.wmWatch=function(box){box._wmRun=()=>box.querySelectorAll('.preview-watermark[data-diag]').forEach(m=>NX.wmPlace(m,box));
  if(!box._wmRO&&typeof ResizeObserver!=='undefined'){box._wmRO=new ResizeObserver(()=>box._wmRun&&box._wmRun());box._wmRO.observe(box);}
  requestAnimationFrame(()=>box._wmRun&&box._wmRun());};
 window.addWatermarkPreview=function(container){const $=id=>document.getElementById(id),position=$('watermark-position')?.value||'center',opacity=String(Number($('watermark-opacity')?.value??42)/100),
- diag=$('watermark-angle')?.value==='diag',extra=(($('watermark-layer')?.value==='under')?' wm-under':'')+(diag?' wm-diag':'');
+ deg=NX.wmDegOf($('watermark-angle')?.value),diag=deg>0,extra=(($('watermark-layer')?.value==='under')?' wm-under':'')+(diag?' wm-diag':'');
  if($('watermark-use-logo')?.checked){const mark=document.createElement('img');mark.className=`preview-watermark${extra} ${diag?'':position}`;mark.alt='Logo de NexoLab como marca de agua';
   mark.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="840" height="180" viewBox="0 0 840 180"><rect x="24" y="24" width="132" height="132" rx="42" fill="#087e83"/><path d="M54 120V72h12l36 30V72h12v48h-12L66 90v30H54Z" fill="white"/><circle cx="132" cy="50" r="9" fill="#9de3da"/><text x="190" y="123" fill="#112e40" font-family="Arial,sans-serif" font-size="82" font-weight="700">NexoLab</text></svg>');
-  mark.style.width='34%';mark.style.height='auto';mark.style.opacity=opacity;if(diag){mark.dataset.diag='1';mark.dataset.pos=position;mark.addEventListener('load',()=>NX.wmPlace(mark,container));}container.append(mark);if(diag)NX.wmWatch(container);return;}
+  mark.style.width='34%';mark.style.height='auto';mark.style.opacity=opacity;if(diag){mark.dataset.diag='1';mark.dataset.deg=String(deg);mark.dataset.pos=position;mark.addEventListener('load',()=>NX.wmPlace(mark,container));}container.append(mark);if(diag)NX.wmWatch(container);return;}
  const text=$('watermark-text')?.value.trim();if(!text)return;const mark=document.createElement('span'),font=$('watermark-font').value,n=Number($('watermark-size')?.value||32);
  mark.className=`preview-watermark nl-keep${extra} ${diag?'':position}`;mark.textContent=text;
- if(diag){mark.dataset.diag='1';mark.dataset.dn=String(n);mark.dataset.pos=position;}else{mark.dataset.n=String(n);mark.style.fontSize=`${n*(container&&container.id==='document-frame'?workspacePreviewZoom:1)}px`;}
+ if(diag){mark.dataset.diag='1';mark.dataset.deg=String(deg);mark.dataset.dn=String(n);mark.dataset.pos=position;}else{mark.dataset.n=String(n);mark.style.fontSize=`${n*(container&&container.id==='document-frame'?workspacePreviewZoom:1)}px`;}
  mark.style.color=$('watermark-color').value;mark.style.opacity=opacity;mark.style.fontFamily=watermarkPreviewFont(font);mark.style.fontWeight=font.toLowerCase().includes('bold')?'700':'400';mark.style.fontStyle=font.toLowerCase().includes('italic')||font.toLowerCase().includes('oblique')?'italic':'normal';
  container.append(mark);if(diag)NX.wmWatch(container);};
 /* Archivo de salida: igual que la vista previa al 100 % */
 window.createWatermarkedFile=async function(pdfLib,file){const $=id=>document.getElementById(id);
  const useLogo=$('watermark-use-logo')?.checked,text=$('watermark-text').value.trim();if(!useLogo&&!text)throw new Error('Escribí el texto de la marca de agua o elegí usar el logo de NexoLab.');
  const type=fileFormat(file),position=$('watermark-position').value,hex=$('watermark-color').value,fontKey=$('watermark-font').value,opacity=Number($('watermark-opacity').value)/100,requestedSize=Number($('watermark-size').value)||32,
-  diag=$('watermark-angle')?.value==='diag',under=$('watermark-layer')?.value==='under',DEG=NX.WM_DEG,T=DEG*Math.PI/180,
+  DEG=NX.wmDegOf($('watermark-angle')?.value),diag=DEG>0,under=$('watermark-layer')?.value==='under',T=DEG*Math.PI/180,
   outputName=`${file.name.replace(/\.[^.]+$/,'')}-con-marca-de-agua.${type==='jpg'?'jpg':type}`;
  if(type==='pdf'){
   const out=await pdfLib.PDFDocument.create(),blend=under&&pdfLib.BlendMode?{blendMode:pdfLib.BlendMode.Multiply}:{},src=await pdfLib.PDFDocument.load(await file.arrayBuffer()),copied=await out.copyPages(src,src.getPageIndices());
@@ -8847,15 +8935,55 @@ window.createWatermarkedFile=async function(pdfLib,file){const $=id=>document.ge
  if(['txt','csv'].includes(type)){const contents=await file.text(),blob=new Blob([`${text}\n`,contents],{type:type==='csv'?'text/csv':'text/plain'});return{blob,name:outputName};}
  throw new Error('El formato del archivo no admite una marca de agua.');};
 
-/* ===== v91: Rotar páginas — la vista previa gira solo las páginas elegidas (igual que la descarga) ===== */
-/* Giro que se muestra en el visor: el elegido si la página que se mira está seleccionada; 0° si no. Fuera de «Rotar páginas» nunca se gira. */
-NX.rotNow=function(){const rot=((workspaceRotation%360)+360)%360;if(document.getElementById('file-operation')?.value!=='rotate')return rot;const sel=window.previewSelectedPages;return sel&&sel.has(workspaceActivePage)?rot:0;};
-NX.rotUi=function(){if(document.getElementById('file-operation')?.value!=='rotate')return;
- const sel=window.previewSelectedPages||new Set(),rot=((workspaceRotation%360)+360)%360,on=sel.has(workspaceActivePage),a=document.getElementById('document-angle');
- if(a)a.textContent=on?`${rot}°`:'Sin giro · página no seleccionada';
- document.querySelectorAll('#extract-preview .document-thumb').forEach((b,i)=>{const c=b.querySelector('canvas');if(!c)return;const r=sel.has(i+1)?rot:0;let k=1;
+/* ===== v91: Rotar páginas — cada página gira por su cuenta y se descarga un solo archivo con todas ===== */
+/* NX.pageRot guarda el giro (0/90/180/270) de cada página del archivo que se está viendo; se reinicia al cambiar de archivo. */
+NX.pageRot={};NX.pageRotKey='';
+NX.rotKeyNow=function(){const f=typeof workspaceFiles!=='undefined'&&workspaceFiles&&workspaceFiles[0];return f?`${f.name}|${f.size}|${f.lastModified}`:'';};
+NX.rotCheck=function(){const k=NX.rotKeyNow();if(k!==NX.pageRotKey){NX.pageRotKey=k;NX.pageRot={};}};
+NX.rotGet=function(n){NX.rotCheck();return (((NX.pageRot[n]||0)%360)+360)%360;};
+NX.rotSet=function(n,deg){NX.rotCheck();const v=((deg%360)+360)%360;if(v)NX.pageRot[n]=v;else delete NX.pageRot[n];};
+NX.rotIsRotate=function(){return document.getElementById('file-operation')?.value==='rotate';};
+/* Giro que se muestra en el visor: el de la página activa dentro de «Rotar páginas»; fuera de esa operación no se gira nada. */
+NX.rotNow=function(){if(!NX.rotIsRotate())return ((workspaceRotation%360)+360)%360;const r=NX.rotGet(workspaceActivePage||1);workspaceRotation=r;return r;};
+NX.rotPages=function(){return Object.keys(NX.pageRot).map(Number).filter(n=>NX.rotGet(n)).sort((a,b)=>a-b);};
+NX.rotTurn=function(n,delta){NX.rotSet(n,NX.rotGet(n)+delta);if(n===(workspaceActivePage||1))workspaceRotation=NX.rotGet(n);NX.rotUi();if(n===(workspaceActivePage||1))fitDocumentPreview();};
+changeRotation=function(delta){NX.rotTurn(workspaceActivePage||1,delta);};
+NX.rotUi=function(){if(!NX.rotIsRotate())return;
+ const act=workspaceActivePage||1,rot=NX.rotGet(act),a=document.getElementById('document-angle');
+ if(a)a.textContent=(document.querySelectorAll('#extract-preview .document-thumb').length?`Página ${act} · `:'')+`${rot}°`;
+ const strip=document.getElementById('extract-preview');if(!strip)return;
+ const thumbs=strip.querySelector('.document-thumbnails');
+ strip.querySelectorAll('.document-thumb').forEach((b,i)=>{const n=i+1,c=b.querySelector('canvas');if(!c)return;const r=NX.rotGet(n);let k=1;
   if(r%180!==0){const W=c.offsetWidth||c.width,H=c.offsetHeight||c.height;if(W&&H)k=Math.min(W/H,H/W);}
-  c.style.transition='transform .2s ease';c.style.transform=r?`rotate(${r}deg) scale(${k})`:'none';});};
+  c.style.transition='transform .2s ease';c.style.transform=r?`rotate(${r}deg) scale(${k})`:'none';
+  b.classList.toggle('selected',n===act);b.classList.toggle('nx-rotated',!!r);
+  let badge=b.querySelector('.nx-rot-badge');if(r){if(!badge){badge=document.createElement('span');badge.className='nx-rot-badge';b.append(badge);}badge.textContent=`${r}°`;}else if(badge)badge.remove();
+  let num=b.querySelector('.nx-thumb-n');if(!num){num=document.createElement('span');num.className='nx-thumb-n';b.append(num);}num.textContent=String(n);
+  if(!b.querySelector('.nx-thumb-rot')){const box=document.createElement('span');box.className='nx-thumb-rot';
+   [['-90','↶','a la izquierda'],['90','↷','a la derecha']].forEach(([d,g,t])=>{const s=document.createElement('span');s.setAttribute('role','button');s.tabIndex=0;s.dataset.d=d;s.textContent=g;s.title=`Girar la página ${n} ${t}`;s.setAttribute('aria-label',`Girar la página ${n} ${t}`);
+    const go=e=>{e.preventDefault();e.stopPropagation();NX.rotTurn(n,Number(d));};
+    s.addEventListener('click',go);s.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')go(e);});box.append(s);});
+   b.append(box);}});
+ /* barra bajo las miniaturas: girar todas / restablecer + resumen */
+ if(thumbs&&!strip.querySelector('.nx-rot-bar')){
+  const bar=document.createElement('div');bar.className='nx-rot-bar';
+  bar.innerHTML='<button type="button" data-a="all-l">↶ Girar todas</button><button type="button" data-a="all-r">↷ Girar todas</button><button type="button" data-a="reset">Restablecer giros</button><span class="nx-rot-sum" role="status"></span>';
+  bar.addEventListener('click',e=>{const t=e.target.closest('button[data-a]');if(!t)return;const count=strip.querySelectorAll('.document-thumb').length;
+   if(t.dataset.a==='reset'){NX.pageRot={};}else{const d=t.dataset.a==='all-l'?-90:90;for(let n=1;n<=count;n++)NX.rotSet(n,NX.rotGet(n)+d);}
+   workspaceRotation=NX.rotGet(workspaceActivePage||1);NX.rotUi();fitDocumentPreview();});
+  thumbs.after(bar);}
+ const sum=strip.querySelector('.nx-rot-sum');
+ if(sum){const g=NX.rotPages(),total=strip.querySelectorAll('.document-thumb').length;sum.textContent=g.length?`Páginas giradas (${g.length}): ${g.map(n=>`${n} (${NX.rotGet(n)}°)`).join(', ')}. Las demás quedan como están.`:'Ninguna página girada todavía.';}
+ const meta=document.getElementById('preview-meta');if(meta&&!meta.dataset.rotInit){meta.dataset.rotInit='1';}
+};
+/* Descarga: un solo PDF con TODAS las páginas, cada una con su propio giro */
+rotatePdfs=async function(pdfLib){
+ NX.rotCheck();const file=workspaceFiles[0],out=await pdfLib.PDFDocument.create(),src=await fileToPdf(pdfLib,file);let any=false;
+ src.getPages().forEach((page,i)=>{const r=NX.rotGet(i+1);if(r){any=true;page.setRotation(pdfLib.degrees((page.getRotation().angle+r)%360));}});
+ if(!any)throw new Error('Girá al menos una página con las flechas antes de descargar.');
+ const pages=await out.copyPages(src,src.getPageIndices());pages.forEach(page=>out.addPage(page));
+ return new Blob([await out.save()],{type:'application/pdf'});
+};
 
 /* ===== v91: ejemplos de licencias, vacaciones y ausencias con todos los campos completos ===== */
 /* Datos ficticios y coherentes con cada tipo de registro (los mismos campos que pide «Agregar evento»). */
@@ -8869,14 +8997,14 @@ NX.DEMO_LEAVE={
  'demo-absence-abs-2':{area:'Comercial',kind:'Trámite personal o familiar',certificate:'Pendiente de presentar',notified:'Sí',description:'Acompaña a un familiar a una intervención programada. Avisó con anticipación y presentará la constancia del centro de salud al volver.'}
 };
 NX.DEMO_LEAVE_LABELS={area:'Área o sector',kind:{licencias:'Tipo de licencia',ausencias:'Tipo de ausencia'},paid:'Goce de haberes',certificate:'Certificado o constancia',period:'Período vacacional',replacement:'Reemplazante o quien cubre',approvedBy:'Aprobado por',notified:'Avisó con anticipación'};
-NX.demoFill=function(){try{loadAbsenceRecords();let ch=false;
+NX.demoLeaveFill=function(){try{loadAbsenceRecords();let ch=false;
  absenceRecords.forEach(r=>{const d=r&&r.demo===true&&NX.DEMO_LEAVE[r.id];if(!d||r.demoFull===1)return;
   const L=NX.DEMO_LEAVE_LABELS,order=['area','kind','paid','period','replacement','approvedBy','certificate','notified'],extra=[];
   order.forEach(k=>{if(d[k]==null)return;const lab=typeof L[k]==='object'?L[k][r.type]:L[k];extra.push([lab,d[k]]);});
   const reason=[d.kind,d.description].filter(Boolean).join(': ');
   Object.assign(r,d,{reason,description:reason,extra,demoFull:1});ch=true;});
  if(ch)saveAbsenceRecords();}catch(e){console.warn('No se pudieron completar los ejemplos:',e);}};
-(function(){const base=ensureCalendarDemoRecords;ensureCalendarDemoRecords=function(){const r=base.apply(this,arguments);NX.demoFill();return r;};})();
+(function(){const base=ensureCalendarDemoRecords;ensureCalendarDemoRecords=function(){const r=base.apply(this,arguments);NX.demoLeaveFill();return r;};})();
 
 /* ===== v91: Preparación de ofertas laborales — «Cargar un ejemplo» (datos ficticios completos) ===== */
 NX.offerDemo=function(){
@@ -8977,8 +9105,40 @@ NX.offerDemoClear=function(silent){
   }
   b.disabled=!focused();
  };
+ /* ---------- cuadro de información de la persona elegida (motivo, legajo, fechas, datos del registro) ---------- */
+ const TL={ausencias:'Ausencia',licencias:'Licencia',vacaciones:'Vacaciones'};
+ const dayCount=r=>{const n=Number(r.days);if(Number.isFinite(n)&&n>0)return n;const d=(isoToLocalDate(r.endDate)-isoToLocalDate(r.startDate))/864e5;return Math.round(d)+1;};
+ NX.gRosterInfo=function(){
+  const aside=document.querySelector('#absence-backdrop .absence-roster');if(!aside)return;
+  aside.querySelectorAll('.nx-person-info').forEach(n=>n.remove());
+  const sel=focused(),rows=[...aside.querySelectorAll('.absence-person[role="button"]')];
+  rows.forEach(r=>r.setAttribute('aria-expanded','false'));
+  if(!sel)return;
+  const label=`${sel.employee} · ${sel.legajo}`,row=rows.find(r=>r.querySelector('strong')?.textContent===label);if(!row)return;
+  row.setAttribute('aria-expanded','true');
+  const [a,z]=monthRange();
+  const recs=absenceRecords.filter(r=>samePerson(r,sel)&&r.startDate<=z&&r.endDate>=a).sort((x,y)=>(x.id===sel.id?-1:y.id===sel.id?1:x.startDate.localeCompare(y.startDate)));
+  const box=document.createElement('div');box.className='nx-person-info';box.id='absence-person-info';box.setAttribute('role','region');box.setAttribute('aria-label','Información de '+label);
+  row.setAttribute('aria-controls',box.id);
+  const line=(dl,k,v)=>{if(v==null||String(v).trim()==='')return;const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=String(v);dl.append(dt,dd);};
+  recs.forEach((r,i)=>{
+   const sec=document.createElement('section');sec.className='nx-pi-rec'+(r.id===sel.id?' is-main':'')+' nx-pi-'+r.type;
+   const h=document.createElement('h4'),n=dayCount(r);h.textContent=`${TL[r.type]||r.type} · ${shortDate(r.startDate)} al ${shortDate(r.endDate)}`;
+   const sm=document.createElement('small');sm.textContent=`${n} ${n===1?'día':'días'}`;h.append(sm);sec.append(h);
+   const dl=document.createElement('dl');
+   line(dl,'Persona',r.employee);line(dl,'Legajo',r.legajo);
+   line(dl,'Desde',shortDate(r.startDate));line(dl,'Hasta',shortDate(r.endDate));
+   (r.extra||[]).filter(([l])=>l!=='Legajo').forEach(([l,v])=>line(dl,l,v));
+   line(dl,'Email de contacto',r.email||(r.recipients||[]).join(', '));
+   line(dl,'Motivo / descripción',r.reason||r.description);
+   line(dl,'Aviso por email',r.notificationStatus);
+   sec.append(dl);box.append(sec);
+  });
+  row.after(box);
+  try{box.scrollIntoView({block:'nearest',behavior:'smooth'});}catch(e){}
+ };
  const baseRos=renderAbsenceRoster;
- renderAbsenceRoster=function(){baseRos.apply(this,arguments);NX.gRosterHead();};
+ renderAbsenceRoster=function(){baseRos.apply(this,arguments);NX.gRosterHead();NX.gRosterInfo();};
 
  /* ---------- elegir a una persona: se queda en el mes que se ve y se vuelve a tocar para soltarla ---------- */
  NX.gPickPerson=function(row){
