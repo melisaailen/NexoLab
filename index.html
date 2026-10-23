@@ -1784,9 +1784,6 @@ input.nx-secret{-webkit-text-security:disc;text-security:disc;font-family:inheri
 @media (prefers-reduced-motion:reduce){.work-date-event-expanded.nx-slide{animation:none}}
 
 /* ===== v85: Licencias, vacaciones y ausencias — días con registros coloreados, registro elegido resaltado ===== */
-.absence-dialog .absence-day.has-absence-record{border-color:rgba(60,190,185,.95)!important;background:rgba(60,190,185,.16)!important}
-.absence-dialog .absence-day.has-absence-record.nx-abs-licencias{border-color:rgba(224,161,92,.95)!important;background:rgba(224,161,92,.18)!important}
-.absence-dialog .absence-day.has-absence-record.nx-abs-ausencias{border-color:rgba(130,160,255,.95)!important;background:rgba(130,160,255,.18)!important}
 .absence-dialog .absence-day.focused-record.absence-day,.absence-dialog .absence-day.has-absence-record.focused-record.absence-day{background:linear-gradient(180deg,#f2b35e,#e0a15c)!important;border-color:#ffd9a0!important;color:#0b1b30!important;box-shadow:0 0 0 2px rgba(255,217,160,.45)!important;outline:none!important}
 .absence-dialog .absence-day.focused-record .absence-day-number{color:#0b1b30!important}
 .absence-dialog .absence-person.is-selected-event{border-color:#e0a15c!important;box-shadow:0 0 0 1px rgba(224,161,92,.55)}
@@ -1942,7 +1939,7 @@ input.nx-secret{-webkit-text-security:disc;text-security:disc;font-family:inheri
 .nx-tags:focus-within{border-color:#e2a45f;box-shadow:0 0 0 1px rgba(226,164,95,.55)}
 .nx-tags .nx-combo-input.nx-combo-input{flex:1 1 170px;width:auto!important;min-width:150px;height:30px!important;min-height:30px!important;padding:0 2px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;outline:0!important}
 .nx-tags:has(.nx-chip) .nx-combo-input::placeholder{color:transparent}
-.nx-chip{display:inline-flex;align-items:center;gap:4px;max-width:100%;background:rgba(226,164,95,.13);border:1px solid #e2a45f;color:#f4d9b5;border-radius:999px;padding:2px 3px 2px 10px;font-size:12.5px;font-weight:600;line-height:1.25}
+.nx-tags .nx-chip{display:inline-flex;align-items:center;gap:4px;max-width:100%;background:rgba(226,164,95,.13);border:1px solid #e2a45f;color:#f4d9b5;border-radius:999px;padding:2px 3px 2px 10px;font-size:12.5px;font-weight:600;line-height:1.25}
 .nx-chip-t{overflow-wrap:anywhere}
 .nx-chip-x{flex:none;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;cursor:pointer;color:#e2a45f;font-size:14px;line-height:1;font-weight:700}
 .nx-chip-x:hover,.nx-chip-x:focus-visible{background:#e2a45f;color:#0b1e33;outline:0}
@@ -2055,6 +2052,19 @@ input.nx-secret{-webkit-text-security:disc;text-security:disc;font-family:inheri
 .action-dialog.nx-calc-dialog #action-title,.action-dialog.nx-calc-dialog.nx-guide-dialog #action-title{font-size:28px!important}
 .action-dialog.nx-calc-dialog .nx-intro,.action-dialog.nx-calc-dialog.nx-guide-dialog .nx-intro{font-size:15px!important}
 @media(max-width:900px){.action-dialog.nx-calc-dialog #action-title,.action-dialog.nx-calc-dialog.nx-guide-dialog #action-title{font-size:23px!important}}
+
+/* v92: botones-filtro («Este mes», «Ausencias»…): texto centrado en horizontal y vertical, con el mismo aire a ambos lados
+   (antes les llegaba el relleno asimétrico de las etiquetas de carreras) y estado activo bien marcado */
+button.nx-chip,.action-dialog button.nx-chip{display:inline-flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box;min-height:34px;padding:6px 16px!important;text-align:center;font-size:13px;font-weight:600;line-height:1.2;gap:0;white-space:nowrap}
+.action-dialog button.nx-chip.on{background-color:#e2a45f!important;color:#0b1e33!important;border-color:#e2a45f!important}
+
+/* v92: sin textos de relleno en la vista previa de la oferta; el estado de descarga solo ocupa lugar cuando tiene mensaje */
+.offer-download-status:empty,.offer-fit-note:empty{display:none!important}
+
+/* v92: sin leyenda de colores bajo el calendario de licencias, vacaciones y ausencias */
+.nx-abs-legend{display:none!important}
+
+/* v92: los días de licencias, vacaciones y ausencias ya no se colorean por categoría; solo se resalta (en ámbar) el período de la persona elegida */
 </style>
 <script>/* compatibilidad */
 (function(){try{
@@ -7063,7 +7073,7 @@ NX.offerPlan=function(o){
  const social=Math.max(o.W,o.H)<=576.5,target=social?.021:.0185,min=Math.min(o.W,o.H);let pl=null;
  for(const cp of [0,.25,.5,.75,1]){pl=NX.offerPlan1(o,cp);if(pl.fits&&pl.eqPt/min>=target)break;}
  return pl;};
-NX.offerFitNote=function(pl,style){if(!pl)return'';if(pl.logoDark)return'El logo no tiene fondo y es de colores oscuros: sobre el encabezado azul se ve poco. Probá con una versión clara del logo (o con fondo) para que se lea bien.';if(pl.eqPt/Math.min(pl.W,pl.H)<.0118)return'Con este formato el texto queda muy pequeño: elegí una dimensión más grande (por ejemplo A4) o acortá el contenido.';if(!pl.auto&&pl.sc<.99)return'El tamaño de letra elegido no entra en este formato: se redujo para que la oferta ocupe una sola página.';if(pl.logoLight)return'El logo no tiene fondo y tiene colores oscuros: se aclararon para que se lea sobre el encabezado azul.';return'';};
+NX.offerFitNote=function(pl,style){if(!pl)return'';if(pl.logoDark)return'El logo no tiene fondo y es de colores oscuros: sobre el encabezado azul se ve poco. Probá con una versión clara del logo (o con fondo) para que se lea bien.';if(pl.eqPt/Math.min(pl.W,pl.H)<.0118)return'Con este formato el texto queda muy pequeño: elegí una dimensión más grande (por ejemplo A4) o acortá el contenido.';if(!pl.auto&&pl.sc<.99)return'El tamaño de letra elegido no entra en este formato: se redujo para que la oferta ocupe una sola página.';return'';};
 NX.offerM=function(d){return Math.min(d.width*.07,d.height*.075);};
 NX.offerBase=function(style,d){return(Number(style.size)||14)*Math.min(d.width/595.28,d.height/841.89);};
 /* Dibujo común: api = {rect,text,img,emoji,measure,frame} en unidades de página (pt); y se mide desde la parte superior */
@@ -7211,7 +7221,7 @@ async function downloadGeneratedOffer(format,form){const text=form.offerDocument
 /* ---- Pantalla: vista previa idéntica al archivo ---- */
 function showGeneratedOffer(form,result,text,logo){
  const style={align:'left',font:'Arial',size:14,auto:true,color:'#14283d'};form.offerBaseText=text;form.offerLogoFile=logo;
- result.innerHTML=`<fieldset class="offer-fieldset offer-wide offer-generated-format"><legend>Formato de la oferta</legend><div class="offer-format-grid"><label class="action-field">Dimensión<select name="offer-dimension"><option value="a4">A4 · vertical</option><option value="a5">A5 · vertical</option><option value="letter">Carta · vertical</option><option value="a4landscape">A4 · horizontal</option><option value="square">Post social · cuadrado 1:1 (Instagram / Facebook)</option><option value="story">Historia o Reel · vertical 9:16</option><option value="facebook">Post horizontal · Facebook 1.91:1</option></select></label><label class="action-field">Alineación del texto<select name="offer-align"><option value="left">Izquierda</option><option value="center">Centro</option><option value="right">Derecha</option></select></label><label class="action-field">Fuente<select name="offer-font"><option value="Arial">Arial</option><option value="Georgia">Georgia</option><option value="Verdana">Verdana</option><option value="Times New Roman">Times New Roman</option></select></label><label class="action-field">Color del texto<input class="offer-format-color" name="offer-text-color" type="color" value="#14283d" style="--offer-color:#14283d"></label><label class="action-field offer-emoji-field">Títulos<span class="offer-emoji-box"><input type="checkbox" name="offer-emojis"> Incluir emojis en los títulos</span></label></div></fieldset><h3 class="offer-preview-title">Vista previa de la oferta</h3><div class="offer-preview-stage"><div class="offer-preview-sheet" id="offer-preview-sheet"></div></div><p id="offer-fit-note" class="offer-fit-note" aria-live="polite"></p><div class="offer-downloads"><button type="button" class="offer-download-button" data-offer-format="docx">Word (.docx)</button><button type="button" class="offer-download-button" data-offer-format="pdf">PDF</button><button type="button" class="offer-download-button" data-offer-format="xlsx">Excel (.xlsx)</button><button type="button" class="offer-download-button" data-offer-format="png">Imagen PNG</button><button type="button" class="offer-download-button" data-offer-format="jpg">Imagen JPG</button><button type="button" class="offer-download-button" data-offer-format="txt">Texto (.txt)</button></div><p id="offer-download-status" class="offer-download-status" aria-live="polite">La vista previa es idéntica al archivo que se descarga: una sola página, con el formato y el logo elegidos.</p>`;
+ result.innerHTML=`<fieldset class="offer-fieldset offer-wide offer-generated-format"><legend>Formato de la oferta</legend><div class="offer-format-grid"><label class="action-field">Dimensión<select name="offer-dimension"><option value="a4">A4 · vertical</option><option value="a5">A5 · vertical</option><option value="letter">Carta · vertical</option><option value="a4landscape">A4 · horizontal</option><option value="square">Post social · cuadrado 1:1 (Instagram / Facebook)</option><option value="story">Historia o Reel · vertical 9:16</option><option value="facebook">Post horizontal · Facebook 1.91:1</option></select></label><label class="action-field">Alineación del texto<select name="offer-align"><option value="left">Izquierda</option><option value="center">Centro</option><option value="right">Derecha</option></select></label><label class="action-field">Fuente<select name="offer-font"><option value="Arial">Arial</option><option value="Georgia">Georgia</option><option value="Verdana">Verdana</option><option value="Times New Roman">Times New Roman</option></select></label><label class="action-field">Color del texto<input class="offer-format-color" name="offer-text-color" type="color" value="#14283d" style="--offer-color:#14283d"></label><label class="action-field offer-emoji-field">Títulos<span class="offer-emoji-box"><input type="checkbox" name="offer-emojis"> Incluir emojis en los títulos</span></label></div></fieldset><h3 class="offer-preview-title">Vista previa de la oferta</h3><div class="offer-preview-stage"><div class="offer-preview-sheet" id="offer-preview-sheet"></div></div><p id="offer-fit-note" class="offer-fit-note" aria-live="polite"></p><div class="offer-downloads"><button type="button" class="offer-download-button" data-offer-format="docx">Word (.docx)</button><button type="button" class="offer-download-button" data-offer-format="pdf">PDF</button><button type="button" class="offer-download-button" data-offer-format="xlsx">Excel (.xlsx)</button><button type="button" class="offer-download-button" data-offer-format="png">Imagen PNG</button><button type="button" class="offer-download-button" data-offer-format="jpg">Imagen JPG</button><button type="button" class="offer-download-button" data-offer-format="txt">Texto (.txt)</button></div><p id="offer-download-status" class="offer-download-status" aria-live="polite"></p>`;
  result.style.display='block';
  const sheet=result.querySelector('#offer-preview-sheet'),note=result.querySelector('#offer-fit-note'),emojis=result.querySelector('[name="offer-emojis"]'),align=result.querySelector('[name="offer-align"]'),font=result.querySelector('[name="offer-font"]'),color=result.querySelector('[name="offer-text-color"]'),dimension=result.querySelector('[name="offer-dimension"]');
  let emojiVariant='',token=0,timer=0;
@@ -8013,8 +8023,10 @@ NX.calPlain=function(strong,text){if(!strong)return;strong.textContent=text;stro
    if(!hits.length)return;
    btn.classList.add('has-absence-record','nx-abs-'+hits[0].type);
    if(!btn.title)btn.title=hits.map(r=>(TYPE_LABEL[r.type]||r.type)+' · '+r.employee).join('\n');
+   /* aclara en el propio día si hay registros (igual que el calendario general) */
+   if(!btn.querySelector('.work-date-marker')){const m=document.createElement('small');m.className='work-date-marker';m.textContent=hits.length+(hits.length===1?' registro':' registros');btn.append(m);btn.setAttribute('aria-label',(btn.getAttribute('aria-label')||'')+', '+m.textContent);}
   });
-  if(!host.querySelector('.nx-abs-legend')){const lg=document.createElement('p');lg.className='nx-abs-legend';lg.innerHTML='<span><i class="nx-abs-vacaciones"></i>Vacaciones</span><span><i class="nx-abs-licencias"></i>Licencias</span><span><i class="nx-abs-ausencias"></i>Ausencias</span><span><i class="nx-abs-focus"></i>Registro elegido</span>';host.append(lg);}
+  host.querySelectorAll('.nx-abs-legend').forEach(n=>n.remove());
  };
  NX.gAbsRow=function(){
   const sel=absenceFocusedRecordId?absenceRecords.find(r=>r.id===absenceFocusedRecordId):null;
@@ -9081,13 +9093,16 @@ NX.offerDemoClear=function(silent){
     if(btn.classList.contains('focused-record')){
      /* el color de cada día lo da el registro de la persona elegida (no el de otra persona que coincida ese día) */
      const t=['vacaciones','licencias','ausencias'].find(x=>btn.classList.contains(x));
-     btn.classList.remove('nx-abs-vacaciones','nx-abs-licencias','nx-abs-ausencias');if(t)btn.classList.add('nx-abs-'+t);return;}
+     btn.classList.remove('nx-abs-vacaciones','nx-abs-licencias','nx-abs-ausencias');if(t)btn.classList.add('nx-abs-'+t);
+     /* con una persona elegida, el día cuenta solo SUS registros */
+     const dn=Number(btn.querySelector('.absence-day-number')?.textContent),iso=dateToIso(new Date(absenceSelectedYear,absenceSelectedMonth,dn)),cnt=absenceRecords.filter(r=>samePerson(r,sel)&&iso>=r.startDate&&iso<=r.endDate).length||1,mk=btn.querySelector('.work-date-marker');
+     if(mk){mk.textContent=cnt+(cnt===1?' registro':' registros');}
+     return;}
+    btn.querySelectorAll('.work-date-marker').forEach(n=>n.remove());
     btn.classList.remove('has-absence-record','nx-abs-vacaciones','nx-abs-licencias','nx-abs-ausencias');
     if(btn.title&&/·/.test(btn.title)&&!/ al /.test(btn.title))btn.removeAttribute('title');
    });
   }
-  const lg=host.querySelector('.nx-abs-legend');
-  if(lg)lg.querySelectorAll('span').forEach((s,i)=>{s.hidden=!!sel&&i<3;});
  };
 
  /* ---------- «Equipo»: encabezado + «Quitar selección» ---------- */
